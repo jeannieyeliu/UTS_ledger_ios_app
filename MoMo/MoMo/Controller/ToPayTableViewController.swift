@@ -13,6 +13,10 @@ class ToPayTableViewController: UITableViewController {
     @IBOutlet weak var btn_addToPay: UIBarButtonItem!
     @IBOutlet var tbl_toPay: UITableView!
     
+    @IBAction func btn_add(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "ToPay_Record", sender: nil)
+    }
+    
     var dateArray = [RecordDate]()
     var toPayArray = [Record]()
     let today = Date()
@@ -29,7 +33,7 @@ class ToPayTableViewController: UITableViewController {
                 let record = Record(id: Int("\(counter)\(r_counter)") ?? 0, amount: Double(counter+r_counter), note: "This is note \(r_counter)")
                 toPayArray.append(record)
             }
-            guard let nextDate = Calendar.current.date(byAdding: .day, value: counter, to: today)
+            guard let nextDate = Calendar.current.date(byAdding: .day, value: counter * 2, to: today)
                 else {return}
             let dateInString = "\(nextDate)".prefix(10)
             let date = RecordDate(date: String(dateInString), records: toPayArray)
@@ -62,19 +66,32 @@ class ToPayTableViewController: UITableViewController {
         cell.lb_amount.text = "$\(dateArray[indexPath.section].records[indexPath.row].amount)"
         cell.lb_note.text = "\(dateArray[indexPath.section].records[indexPath.row].note), id: \(dateArray[indexPath.section].records[indexPath.row].id)"
 
-        let isoDate = dateArray[indexPath.section].date
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
-        let date = dateFormatter.date(from:isoDate)!
+        let dateString = dateArray[indexPath.section].date
+        let date = getDate(dateString: dateString)
+        let todayDate = "\(today)".prefix(10)
+        let today = getDate(dateString: String(todayDate))
         let countDown = Calendar.current.dateComponents([.day], from: today, to: date)
         if let number = Int("\(countDown)".components(separatedBy:CharacterSet.decimalDigits.inverted).joined()) {
             cell.lb_countDown.text = "\(number)"
         }
         return cell
     }
- 
-
+    
+    func getDate(dateString: String) -> Date{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from: dateString)!
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.locale = Locale.current
+        return date
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier:"addRecordSB")
+        self.present(newViewController, animated: true, completion: nil)
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

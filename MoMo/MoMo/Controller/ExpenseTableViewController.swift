@@ -15,7 +15,8 @@ class ExpenseTableViewController: UITableViewController {
     var totalAmount = [Double]()
     let today = Date()
     
-    @IBAction func addRecord(_ sender: UIBarButtonItem) {
+    @IBAction func btn_add(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "Expense_Record", sender: nil)
     }
     
     @IBOutlet var tbl_expense_table: UITableView!
@@ -70,6 +71,13 @@ class ExpenseTableViewController: UITableViewController {
         cell.lb_note.text = "\(dateArray[indexPath.section].records[indexPath.row].note), id: \(dateArray[indexPath.section].records[indexPath.row].id)"
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "ExpenseCell", for: indexPath)
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier:"addRecordSB")
+        self.present(newViewController, animated: true, completion: nil)
     }
     
 
