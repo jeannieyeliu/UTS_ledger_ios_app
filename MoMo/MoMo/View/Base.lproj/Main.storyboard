@@ -86,6 +86,14 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BbU-Ba-J9w">
+                                        <rect key="frame" x="273" y="148" width="55" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="testNoti"/>
+                                        <connections>
+                                            <action selector="sendNoti:" destination="xC2-NP-wXF" eventType="touchUpInside" id="vXC-NY-ByS"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.8310445125" green="0.94042005100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -441,7 +449,6 @@
         <!--Add Record Table View Controller-->
         <scene sceneID="NfG-9Q-Hg7">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FqV-TI-c4g" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="addRecordSB" id="Bam-iG-13B" customClass="AddRecordTableViewController" customModule="MoMo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="V7H-kR-hCB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -622,6 +629,7 @@
                         <outlet property="tf_amount" destination="gQC-D2-Q94" id="uFw-he-mjU"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FqV-TI-c4g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-397" y="1880"/>
         </scene>
