@@ -15,7 +15,6 @@ class ExpenseTableViewCell: UITableViewCell {
     @IBOutlet weak var lb_countDown: UILabel!
     @IBOutlet weak var iv_category: UIImageView!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
