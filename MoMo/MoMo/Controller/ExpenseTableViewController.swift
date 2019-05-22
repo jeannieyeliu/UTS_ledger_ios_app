@@ -36,7 +36,7 @@ class ExpenseTableViewController: UITableViewController {
     func initDateArray() {
         for counter in 1...2 {
             for r_counter in 1...2 {
-                let record = Record(id: Int("\(counter)\(r_counter)") ?? 0, amount: Double(counter+r_counter), note: "This is note \(r_counter)")
+                let record = Record(id: "\(counter)\(r_counter)", amount: Double(counter+r_counter), category: "Others", note: "This is note \(r_counter)")
                 recordArray.append(record)
             }
             guard let lastDate = Calendar.current.date(byAdding: .day, value: -counter, to: today)
@@ -58,7 +58,7 @@ class ExpenseTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-         let cell: ExpenseTableViewSection = tableView.dequeueReusableCell(withIdentifier: "ExpenseSection") as! ExpenseTableViewSection
+        let cell: ExpenseTableViewSection = tableView.dequeueReusableCell(withIdentifier: "ExpenseSection") as! ExpenseTableViewSection
         cell.lb_date.text = dateArray[section].date
         cell.lb_totalAmount.text = "$\(dateArray[section].getTotalAmount(recordArray: dateArray[section].records))"
         return cell.contentView

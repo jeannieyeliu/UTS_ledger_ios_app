@@ -14,11 +14,11 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
     var ref: DatabaseReference!
     var categoryArray = [Category]()
     var date = String()
-    //var dateToSet = Date()
     var amount = Double()
     var category = String()
     var note = String()
     var id = ""//"-LfSvMZfKYcgS3xPZ5f3"
+    var imageName = "icons8-rating-64"
     
     @IBOutlet weak var ai_spinner: UIActivityIndicatorView!
     @IBOutlet weak var lb_categoryDesc: UILabel!
@@ -29,19 +29,29 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
     @IBAction func dp_date(_ sender: Any) {
     }
     
+    
+    @IBAction func btn_cancel(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func btn_save(_ sender: UIBarButtonItem) {
         guard let amountText = tf_amount.text else { return; }
         amount = Double(amountText) ?? 0.0
         date = String("\(dp_date_outlet.date)".prefix(10))
-        category = lb_categoryDesc.text == "" ? "Others" : lb_categoryDesc.text ?? "Others"
         note = tv_note.text ?? ""
         
-        ref.child("MoMo").child("Date").child(date).childByAutoId().setValue(["amount": amount, "category": category, "note": note])
+        //ref.child("MoMo").child("Date").child(date).childByAutoId().setValue(["amount": amount, "category": imageName, "note": note])
+        addRecord()
         
         if id != "" {
-            ref.child("MoMo").child("Date").child(date).child(id).setValue(["amount": amount, "category": category, "note": note])
+            ref.child("MoMo").child("Date").child(date).child(id).setValue(["amount": amount, "category": imageName, "note": note])
         }
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func addRecord() {
+        let record = ["amount": amount as Double, "category": imageName as String, "note": note as String] as [String : Any]
+        ref.child("MoMo").child("Date").child(date).childByAutoId().setValue(record)
     }
 
     override func viewDidLoad() {
@@ -49,8 +59,10 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
         ref = Database.database().reference()
         getCategoryData(completion: {})
         collv_category.allowsMultipleSelection = false
-        let dateToSet = getDate(dateString: date)
-        dp_date_outlet.setDate(dateToSet, animated: true)
+        if date != "" {
+            let dateToSet = getDate(dateString: date)
+            dp_date_outlet.setDate(dateToSet, animated: true)
+        }
     }
     
     func getCategoryData(completion: @escaping () -> Void) {
@@ -100,6 +112,7 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
         cell.layer.cornerRadius = 10
         cell.layer.borderColor = lb_categoryDesc.textColor.cgColor
         lb_categoryDesc.text = categoryArray[indexPath.row].description
+        imageName = categoryArray[indexPath.row].image
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -107,6 +120,7 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
         cell.layer.borderWidth = 0
         cell.layer.borderColor = nil
         lb_categoryDesc.text = ""
+        imageName = categoryArray[12].image
     }
     
     func getDate(dateString: String, format: String = "yyyy-MM-dd") -> Date {

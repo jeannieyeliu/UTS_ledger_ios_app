@@ -30,7 +30,7 @@ class ToPayTableViewController: UITableViewController {
     func initDateArray() {
         for counter in 1...2 {
             for r_counter in 1...2 {
-                let record = Record(id: Int("\(counter)\(r_counter)") ?? 0, amount: Double(counter+r_counter), note: "This is note \(r_counter)")
+                let record = Record(id: "\(counter)\(r_counter)", amount: Double(counter+r_counter), category: "Others", note: "This is note \(r_counter)")
                 toPayArray.append(record)
             }
             guard let nextDate = Calendar.current.date(byAdding: .day, value: counter * 2, to: today)

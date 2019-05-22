@@ -9,14 +9,23 @@
 import Foundation
 
 class Record {
-    var id = Int()
+    var id = String()
     var amount: Double = 0.0
     var note: String = "Note number: "
     var category = String()
     
-    init(id: Int, amount: Double, note: String){
+    init(id: String, amount: Double, category: String, note: String){
         self.id = id
         self.amount = amount
         self.note = note
+        self.category = category
+    }
+    
+    func getTotalAmount(recordArray: [Record]) -> Double {
+        var totalAmount = [Double]()
+        for record in recordArray {
+            totalAmount.append(record.amount)
+        }
+        return totalAmount.reduce(0, +)
     }
 }

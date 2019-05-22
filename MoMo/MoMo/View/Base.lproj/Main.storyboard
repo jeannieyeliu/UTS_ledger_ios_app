@@ -163,7 +163,7 @@
                                 <rect key="frame" x="0.0" y="396" width="414" height="466"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gWc-YI-N9W">
-                                        <rect key="frame" x="8" y="44" width="398" height="364"/>
+                                        <rect key="frame" x="8" y="44" width="398" height="414"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="expenseCell" rowHeight="70" id="Vi7-3E-Tq7" customClass="ExpenseTableViewCell" customModule="MoMo" customModuleProvider="target">
@@ -281,21 +281,21 @@
                                                     <outlet property="lb_note" destination="2X1-2K-BQX" id="krz-hB-Gfg"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="footerCell" rowHeight="49" id="yZe-MF-5iF" customClass="ExpenseTableViewSection" customModule="MoMo" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="198" width="398" height="49"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="footerCell" rowHeight="50" id="yZe-MF-5iF" customClass="ExpenseTableViewSection" customModule="MoMo" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="198" width="398" height="50"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yZe-MF-5iF" id="BHo-tc-zTc">
-                                                    <rect key="frame" x="0.0" y="0.0" width="398" height="49"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="398" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Amount:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MqU-pe-NJE">
-                                                            <rect key="frame" x="20" y="9.6666666666666661" width="128" height="29.333333333333336"/>
+                                                            <rect key="frame" x="20" y="9.6666666666666661" width="128" height="30.666666666666671"/>
                                                             <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="20"/>
                                                             <color key="textColor" red="0.83137254900000002" green="0.94042005100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1200" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aAP-Yx-Gzf">
-                                                            <rect key="frame" x="317" y="9.6666666666666661" width="61" height="29.333333333333336"/>
+                                                            <rect key="frame" x="317" y="9.6666666666666661" width="61" height="30.666666666666671"/>
                                                             <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="20"/>
                                                             <color key="textColor" red="0.83137254900000002" green="0.94042005100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -330,12 +330,14 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="8tA-fh-7kY" firstAttribute="centerX" secondItem="gWc-YI-N9W" secondAttribute="centerX" id="0Eo-Yg-Uge"/>
                                     <constraint firstItem="8tA-fh-7kY" firstAttribute="top" secondItem="B0E-Xh-f60" secondAttribute="top" id="5R0-8A-Yp6"/>
                                     <constraint firstItem="8tA-fh-7kY" firstAttribute="centerX" secondItem="B0E-Xh-f60" secondAttribute="centerX" id="7Yn-kw-acK"/>
+                                    <constraint firstAttribute="trailing" secondItem="gWc-YI-N9W" secondAttribute="trailing" constant="8" id="8nA-8m-2Id"/>
                                     <constraint firstItem="gWc-YI-N9W" firstAttribute="top" secondItem="8tA-fh-7kY" secondAttribute="bottom" constant="8" symbolic="YES" id="9Y7-a7-pBB"/>
+                                    <constraint firstItem="gWc-YI-N9W" firstAttribute="top" secondItem="8tA-fh-7kY" secondAttribute="bottom" constant="8" id="CTs-Ui-z3O"/>
                                     <constraint firstItem="gWc-YI-N9W" firstAttribute="leading" secondItem="B0E-Xh-f60" secondAttribute="leading" constant="8" id="E08-fq-05g"/>
-                                    <constraint firstAttribute="bottom" secondItem="gWc-YI-N9W" secondAttribute="bottom" constant="58" id="Yyg-mV-BPX"/>
+                                    <constraint firstAttribute="bottom" secondItem="gWc-YI-N9W" secondAttribute="bottom" constant="8" id="J9M-Xv-wXj"/>
+                                    <constraint firstItem="gWc-YI-N9W" firstAttribute="leading" secondItem="B0E-Xh-f60" secondAttribute="leading" constant="8" id="VNr-Nh-cH7"/>
                                     <constraint firstAttribute="trailing" secondItem="gWc-YI-N9W" secondAttribute="trailing" constant="8" id="c4p-bm-e9w"/>
                                 </constraints>
                             </view>
@@ -377,7 +379,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OG1-G8-N0f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1458" y="1880"/>
+            <point key="canvasLocation" x="-1459.4202898550725" y="1879.6875"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -685,7 +687,7 @@
                                 <navigationItem title="Add Record" id="ZzN-Fc-TNV">
                                     <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="gEw-Sn-2iA">
                                         <connections>
-                                            <action selector="btn_cancel:" destination="Bam-iG-13B" id="zjc-KC-CSA"/>
+                                            <action selector="btn_cancel:" destination="Bam-iG-13B" id="l5p-dT-TWv"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem key="rightBarButtonItem" systemItem="save" id="dgP-7z-93R">

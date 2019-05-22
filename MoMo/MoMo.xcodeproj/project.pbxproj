@@ -24,6 +24,7 @@
 		1C3CDA672293D429004BE391 /* recordType.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C3CDA662293D429004BE391 /* recordType.json */; };
 		1C3CDA692293D85B004BE391 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3CDA682293D85B004BE391 /* CategoryCollectionViewCell.swift */; };
 		1C3CDA6B229506CC004BE391 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3CDA6A229506CC004BE391 /* Category.swift */; };
+		1CDC2A8D22953EA900F0165E /* InitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDC2A8C22953EA900F0165E /* InitData.swift */; };
 		C0B99E6076F6D9AD9F2BDDA4 /* Pods_MoMo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C0E63B998A3BA292102654F /* Pods_MoMo.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		1C3CDA662293D429004BE391 /* recordType.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recordType.json; sourceTree = "<group>"; };
 		1C3CDA682293D85B004BE391 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		1C3CDA6A229506CC004BE391 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		1CDC2A8C22953EA900F0165E /* InitData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitData.swift; sourceTree = "<group>"; };
 		611AA5B4A827C8FF6E80C16B /* Pods-MoMo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoMo.debug.xcconfig"; path = "Target Support Files/Pods-MoMo/Pods-MoMo.debug.xcconfig"; sourceTree = "<group>"; };
 		7C0E63B998A3BA292102654F /* Pods_MoMo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoMo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -111,6 +113,7 @@
 				1C3CDA662293D429004BE391 /* recordType.json */,
 				1C3CDA4F228E992F004BE391 /* RecordInDay.swift */,
 				1C3CDA6A229506CC004BE391 /* Category.swift */,
+				1CDC2A8C22953EA900F0165E /* InitData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 			files = (
 				1C3CDA59228ED1E5004BE391 /* ExpenseTableViewSection.swift in Sources */,
 				1C3CDA57228ED100004BE391 /* ExpenseTableViewCell.swift in Sources */,
+				1CDC2A8D22953EA900F0165E /* InitData.swift in Sources */,
 				1C3CDA55228EBE4E004BE391 /* ExpenseTableViewController.swift in Sources */,
 				1C3CDA5B228EE18A004BE391 /* ToPayTableViewController.swift in Sources */,
 				1C3CDA61229197C9004BE391 /* AddRecordTableViewController.swift in Sources */,
