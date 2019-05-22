@@ -19,7 +19,7 @@ class StatisticViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         let chartConfig = BarsChartConfig(valsAxisConfig:
-            ChartAxisConfig(from: 1, to: 7, by: 1))
+            ChartAxisConfig(from: 1, to: 350, by: 1))
         
         let frame = CGRect(x:0, y: 300, width: chartContentView.frame.width, height: chartContentView.frame.height)
         
