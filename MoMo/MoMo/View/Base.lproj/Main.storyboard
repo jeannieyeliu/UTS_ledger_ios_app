@@ -140,6 +140,7 @@
                         <inset key="landscapeImageInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="chartContentView" destination="tw0-In-gUL" id="TQ2-Bt-8Mk"/>
                         <outlet property="tf_budget" destination="sjR-Dw-F9h" id="95k-ko-rfx"/>
                     </connections>
                 </viewController>
@@ -441,7 +442,6 @@
         <!--Add Record Table View Controller-->
         <scene sceneID="NfG-9Q-Hg7">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FqV-TI-c4g" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="addRecordSB" id="Bam-iG-13B" customClass="AddRecordTableViewController" customModule="MoMo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="V7H-kR-hCB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -622,6 +622,7 @@
                         <outlet property="tf_amount" destination="gQC-D2-Q94" id="uFw-he-mjU"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FqV-TI-c4g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-397" y="1880"/>
         </scene>
