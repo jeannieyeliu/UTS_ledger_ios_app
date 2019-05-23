@@ -7,16 +7,40 @@
 //
 
 import UIKit
+import SwiftCharts
 
 class StatisticViewController: UIViewController {
 
     @IBOutlet weak var tf_budget: UITextField!
+    @IBOutlet weak var chartContentView: UIView!
+    var chartView: BarsChart!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let chartConfig = BarsChartConfig(valsAxisConfig:
+            ChartAxisConfig(from: 0, to: 290, by: 50))
+        
+        let frame = CGRect(x:0, y: 0, width: chartContentView.frame.width, height: chartContentView.frame.height)
+        
+        let chart = BarsChart(frame: frame,
+                              chartConfig: chartConfig, xTitle: "Last 7 Days", yTitle: "Money Spent",
+                              bars: [("Mon", 125),
+                                     ("Tues", 250),
+                                     ("Wed", 25.8),
+                                     ("Thu", 215),
+                                     ("Wed", 23),
+                                     ("Sat", 210),
+                                     ("Sun", 218),
+            ],
+                              color: UIColor.red, barWidth: (15))
+        chartContentView.addSubview(chart.view)
+        self.chartView = chart
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
 
     /*
     // MARK: - Navigation

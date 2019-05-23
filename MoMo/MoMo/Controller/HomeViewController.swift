@@ -159,5 +159,8 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource, UITableV
         loadRecordDate(date: currentDate)
     }
     
+    func getEventNumber(){
+        
+    }
     
 }
