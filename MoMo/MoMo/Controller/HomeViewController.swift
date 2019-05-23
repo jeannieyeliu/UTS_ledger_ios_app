@@ -163,4 +163,8 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource, UITableV
         
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
 }

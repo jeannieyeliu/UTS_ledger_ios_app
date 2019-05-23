@@ -8,18 +8,39 @@
 
 import UIKit
 import SwiftCharts
+import FirebaseDatabase
 
 class StatisticViewController: UIViewController {
 
     @IBOutlet weak var tf_budget: UITextField!
     @IBOutlet weak var chartContentView: UIView!
+    @IBOutlet weak var scDateRange: UISegmentedControl!
     var chartView: BarsChart!
+    var refDate: DatabaseReference!
+    var recordArray = [Record]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        refDate = Database.database().reference().child("MoMo").child("Date")
+        setupSegmentedControl()
+        showChart()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
 
+    func setupSegmentedControl() {
+        let items = ["Last Week","This Week", "Next Week"]
+        scDateRange.selectedSegmentIndex = 1
+        
+    }
+    
+    @IBAction func scDateRangeChange(_ sender: UISegmentedControl) {
+    }
+    func showChart(){
         let chartConfig = BarsChartConfig(valsAxisConfig:
-            ChartAxisConfig(from: 0, to: 290, by: 50))
+            ChartAxisConfig(from: 0, to: 310, by: 50))
         
         let frame = CGRect(x:0, y: 0, width: chartContentView.frame.width, height: chartContentView.frame.height)
         
@@ -37,11 +58,6 @@ class StatisticViewController: UIViewController {
         chartContentView.addSubview(chart.view)
         self.chartView = chart
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
     /*
     // MARK: - Navigation
 

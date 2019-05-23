@@ -18,22 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tw0-In-gUL" userLabel="GraphView">
-                                <rect key="frame" x="20" y="361.33333333333326" width="374" height="500.66666666666674"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Du7-cs-igw">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <items>
-                                    <navigationItem title="Statistics" id="hAG-64-H2n">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="reply" id="XzW-UL-UWq">
-                                            <connections>
-                                                <segue destination="2tZ-IE-Sp5" kind="showDetail" id="TqJ-Y4-Vjw"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ewj-cd-B7L" userLabel="BudgetView">
                                 <rect key="frame" x="20" y="108.00000000000001" width="374" height="233.33333333333337"/>
                                 <subviews>
@@ -122,17 +106,48 @@
                                     <constraint firstItem="AGH-wC-7Bj" firstAttribute="trailing" secondItem="Ewj-cd-B7L" secondAttribute="trailingMargin" id="zU9-DJ-S7i"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tw0-In-gUL" userLabel="GraphView">
+                                <rect key="frame" x="20" y="409.33333333333326" width="374" height="452.66666666666674"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Du7-cs-igw">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Statistics" id="hAG-64-H2n">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="reply" id="XzW-UL-UWq">
+                                            <connections>
+                                                <segue destination="2tZ-IE-Sp5" kind="showDetail" id="TqJ-Y4-Vjw"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6fd-7v-mF0">
+                                <rect key="frame" x="40" y="361.33333333333331" width="334" height="29"/>
+                                <segments>
+                                    <segment title="Last Week"/>
+                                    <segment title="This Week"/>
+                                    <segment title="Next Week"/>
+                                </segments>
+                                <color key="tintColor" red="0.21865484120000001" green="0.49359011650000001" blue="0.73728734250000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <action selector="scDateRangeChange:" destination="xC2-NP-wXF" eventType="valueChanged" id="smB-ys-ZFt"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="6fd-7v-mF0" firstAttribute="top" secondItem="Ewj-cd-B7L" secondAttribute="bottom" constant="20" id="1y5-cQ-zKl"/>
                             <constraint firstItem="Ewj-cd-B7L" firstAttribute="top" secondItem="Du7-cs-igw" secondAttribute="bottom" constant="20" id="2uE-KY-wIL"/>
                             <constraint firstItem="tw0-In-gUL" firstAttribute="leading" secondItem="7N2-fG-8UN" secondAttribute="leading" constant="20" id="Blw-Qc-sP0"/>
+                            <constraint firstItem="tw0-In-gUL" firstAttribute="top" secondItem="6fd-7v-mF0" secondAttribute="bottom" constant="20" id="NeO-Yq-VIT"/>
+                            <constraint firstItem="6fd-7v-mF0" firstAttribute="leading" secondItem="7N2-fG-8UN" secondAttribute="leading" constant="40" id="Oja-69-cPJ"/>
                             <constraint firstItem="Du7-cs-igw" firstAttribute="leading" secondItem="Zaw-Qb-RbH" secondAttribute="leading" id="RHS-Fm-Ffs"/>
                             <constraint firstItem="7N2-fG-8UN" firstAttribute="trailing" secondItem="Ewj-cd-B7L" secondAttribute="trailing" constant="20" id="Uva-X4-Fo7"/>
                             <constraint firstItem="Du7-cs-igw" firstAttribute="top" secondItem="7N2-fG-8UN" secondAttribute="top" id="ZIz-L0-BuE"/>
                             <constraint firstItem="Du7-cs-igw" firstAttribute="centerX" secondItem="Ewj-cd-B7L" secondAttribute="centerX" id="aNb-xL-5h0"/>
+                            <constraint firstItem="7N2-fG-8UN" firstAttribute="trailing" secondItem="6fd-7v-mF0" secondAttribute="trailing" constant="40" id="dc8-4x-V9j"/>
                             <constraint firstItem="Ewj-cd-B7L" firstAttribute="leading" secondItem="7N2-fG-8UN" secondAttribute="leading" constant="20" id="mar-ti-eOe"/>
-                            <constraint firstItem="tw0-In-gUL" firstAttribute="top" secondItem="Ewj-cd-B7L" secondAttribute="bottom" constant="20" id="utd-Lu-OwB"/>
                             <constraint firstItem="tw0-In-gUL" firstAttribute="bottom" secondItem="7N2-fG-8UN" secondAttribute="bottom" id="xtK-bS-U27"/>
                             <constraint firstItem="7N2-fG-8UN" firstAttribute="trailing" secondItem="tw0-In-gUL" secondAttribute="trailing" constant="20" id="zZb-0k-9ma"/>
                         </constraints>
@@ -143,6 +158,7 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="chartContentView" destination="tw0-In-gUL" id="8jZ-bc-6cM"/>
+                        <outlet property="scDateRange" destination="6fd-7v-mF0" id="HoC-qq-fci"/>
                         <outlet property="tf_budget" destination="sjR-Dw-F9h" id="95k-ko-rfx"/>
                     </connections>
                 </viewController>
@@ -912,7 +928,7 @@
         <image name="to_pay_list" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oiy-Jl-NQz"/>
+        <segue reference="Ups-yS-3l4"/>
         <segue reference="Y0K-0Z-ZoI"/>
     </inferredMetricsTieBreakers>
 </document>
