@@ -72,13 +72,13 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="VN4-am-fOK">
                                         <rect key="frame" x="138" y="52" width="98" height="40"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgi-dj-IFY">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgi-dj-IFY">
                                                 <rect key="frame" x="0.0" y="0.0" width="14" height="40"/>
                                                 <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="25"/>
                                                 <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1000" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sjR-Dw-F9h">
+                                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1000" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sjR-Dw-F9h">
                                                 <rect key="frame" x="19" y="0.0" width="79" height="40"/>
                                                 <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="25"/>
@@ -106,7 +106,7 @@
                                     <constraint firstItem="AGH-wC-7Bj" firstAttribute="trailing" secondItem="Ewj-cd-B7L" secondAttribute="trailingMargin" id="zU9-DJ-S7i"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tw0-In-gUL" userLabel="GraphView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tw0-In-gUL" userLabel="GraphView" customClass="BarChartView" customModule="Charts">
                                 <rect key="frame" x="20" y="409.33333333333326" width="374" height="452.66666666666674"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -125,9 +125,9 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6fd-7v-mF0">
                                 <rect key="frame" x="40" y="361.33333333333331" width="334" height="29"/>
                                 <segments>
-                                    <segment title="Last Week"/>
-                                    <segment title="This Week"/>
-                                    <segment title="Next Week"/>
+                                    <segment title="Week"/>
+                                    <segment title="Month"/>
+                                    <segment title="All"/>
                                 </segments>
                                 <color key="tintColor" red="0.21865484120000001" green="0.49359011650000001" blue="0.73728734250000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
@@ -157,7 +157,7 @@
                         <inset key="landscapeImageInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                     </tabBarItem>
                     <connections>
-                        <outlet property="chartContentView" destination="tw0-In-gUL" id="8jZ-bc-6cM"/>
+                        <outlet property="chartContentView" destination="tw0-In-gUL" id="QWZ-Un-8h6"/>
                         <outlet property="scDateRange" destination="6fd-7v-mF0" id="HoC-qq-fci"/>
                         <outlet property="tf_budget" destination="sjR-Dw-F9h" id="95k-ko-rfx"/>
                     </connections>
@@ -928,7 +928,7 @@
         <image name="to_pay_list" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ups-yS-3l4"/>
+        <segue reference="oiy-Jl-NQz"/>
         <segue reference="Y0K-0Z-ZoI"/>
     </inferredMetricsTieBreakers>
 </document>

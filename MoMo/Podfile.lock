@@ -1,4 +1,7 @@
 PODS:
+  - Charts (3.3.0):
+    - Charts/Core (= 3.3.0)
+  - Charts/Core (3.3.0)
   - Firebase/Core (6.1.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.0.1)
@@ -62,6 +65,7 @@ PODS:
   - SwiftCharts (0.6.5)
 
 DEPENDENCIES:
+  - Charts
   - Firebase/Core
   - Firebase/Database
   - FSCalendar
@@ -69,6 +73,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Charts
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuthInterop
@@ -83,6 +88,7 @@ SPEC REPOS:
     - SwiftCharts
 
 SPEC CHECKSUMS:
+  Charts: ec1f57f9340054155691e84d4544a1d239d382c5
   Firebase: 8d77bb33624ae9b62d745d82ec023de5f70f7e4f
   FirebaseAnalytics: 629301c2b9925f3537d4093a17a72751ae5b7084
   FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
@@ -96,6 +102,6 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   SwiftCharts: 2e755ea292f0b87d3e4b2c1eb5afc080a20cdc15
 
-PODFILE CHECKSUM: 28363511782c528fc58b1a8fc863bc425427cedb
+PODFILE CHECKSUM: 1c251595e88422bcfa488145b85cd888c69d9c94
 
 COCOAPODS: 1.6.1

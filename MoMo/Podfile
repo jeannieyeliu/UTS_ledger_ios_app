@@ -11,4 +11,5 @@ target 'MoMo' do
   pod 'Firebase/Database'
   pod 'FSCalendar'
   pod 'SwiftCharts', '~> 0.6.1'
+  pod 'Charts'
 end

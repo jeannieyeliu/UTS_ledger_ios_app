@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		168EDAF82296760D00A81819 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168EDAF72296760D00A81819 /* Constants.swift */; };
 		16A7CB2C228E733D00B843BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A7CB2B228E733D00B843BD /* AppDelegate.swift */; };
 		16A7CB33228E733D00B843BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16A7CB31228E733D00B843BD /* Main.storyboard */; };
 		16A7CB35228E733F00B843BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16A7CB34228E733F00B843BD /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		1585869A212A6DCE56FF869C /* Pods-MoMo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoMo.release.xcconfig"; path = "Target Support Files/Pods-MoMo/Pods-MoMo.release.xcconfig"; sourceTree = "<group>"; };
+		168EDAF72296760D00A81819 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		16A7CB28228E733D00B843BD /* MoMo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoMo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16A7CB2B228E733D00B843BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16A7CB32228E733D00B843BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -66,6 +68,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		168EDAF62296758900A81819 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				168EDAF72296760D00A81819 /* Constants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		16A7CB1F228E733D00B843BD = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +97,7 @@
 		16A7CB2A228E733D00B843BD /* MoMo */ = {
 			isa = PBXGroup;
 			children = (
+				168EDAF62296758900A81819 /* Utils */,
 				1C3CDA4C228E9117004BE391 /* Controller */,
 				1C3CDA4B228E9112004BE391 /* Model */,
 				1C3CDA4A228E9109004BE391 /* View */,
@@ -231,6 +242,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MoMo/Pods-MoMo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftCharts/SwiftCharts.framework",
@@ -241,6 +253,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftCharts.framework",
@@ -292,6 +305,7 @@
 				1C3CDA6322924CF1004BE391 /* StatisticViewController.swift in Sources */,
 				1C3CDA692293D85B004BE391 /* CategoryCollectionViewCell.swift in Sources */,
 				1C3CDA4E228E9920004BE391 /* Date.swift in Sources */,
+				168EDAF82296760D00A81819 /* Constants.swift in Sources */,
 				1C3CDA50228E992F004BE391 /* RecordInDay.swift in Sources */,
 				1C3CDA6B229506CC004BE391 /* Category.swift in Sources */,
 			);
@@ -441,7 +455,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6CS4276UX2;
 				INFOPLIST_FILE = MoMo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -460,7 +474,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6CS4276UX2;
 				INFOPLIST_FILE = MoMo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
