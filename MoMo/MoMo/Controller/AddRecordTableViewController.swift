@@ -15,10 +15,10 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
     var categoryArray = [Category]()
     var date = String()
     var amount = Double()
-    var category = String()
     var note = String()
-    var id = ""//"-LfSvMZfKYcgS3xPZ5f3"
-    var imageName = "icons8-rating-64"
+    var id = String()
+    var imageName = String()
+    var categoryIndex = Int()
     
     @IBOutlet weak var ai_spinner: UIActivityIndicatorView!
     @IBOutlet weak var lb_categoryDesc: UILabel!
@@ -26,27 +26,29 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
     @IBOutlet weak var tv_note: UITextView!
     @IBOutlet weak var collv_category: UICollectionView!
     @IBOutlet weak var dp_date_outlet: UIDatePicker!
-    @IBAction func dp_date(_ sender: Any) {
-    }
-    
     
     @IBAction func btn_cancel(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "recordToHomeNav", sender: nil)
     }
     
     @IBAction func btn_save(_ sender: UIBarButtonItem) {
         guard let amountText = tf_amount.text else { return; }
         amount = Double(amountText) ?? 0.0
-        date = String("\(dp_date_outlet.date)".prefix(10))
         note = tv_note.text ?? ""
-        
-        //ref.child("MoMo").child("Date").child(date).childByAutoId().setValue(["amount": amount, "category": imageName, "note": note])
-        addRecord()
+        let correctDate = Calendar.current.date(byAdding: .day, value: 1, to: dp_date_outlet.date)!
+        let dateString = String("\(correctDate)".prefix(10))
         
         if id != "" {
+            if date != dateString {
+                ref.child("MoMo").child("Date").child(date).child(id).setValue(nil)
+            }
+            date = dateString
             ref.child("MoMo").child("Date").child(date).child(id).setValue(["amount": amount, "category": imageName, "note": note])
+        } else {
+            date = dateString
+            addRecord()
         }
-        self.dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "recordToHomeNav", sender: nil)
     }
     
     func addRecord() {
@@ -57,15 +59,18 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
-        getCategoryData(completion: {})
+        getCategoryData()
         collv_category.allowsMultipleSelection = false
+        tf_amount.text = amount == Double(Int.max) ? "" : "\(amount)"
+        tv_note.text = note
+        
         if date != "" {
             let dateToSet = getDate(dateString: date)
             dp_date_outlet.setDate(dateToSet, animated: true)
         }
     }
     
-    func getCategoryData(completion: @escaping () -> Void) {
+    func getCategoryData() {
         ref.child("MoMo").child("Category").observeSingleEvent(of: .value, with: { (snapshot) in
             if let category = snapshot.children.allObjects as? [DataSnapshot] {
                 for child in category {
@@ -76,12 +81,26 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
                     let image = snapshot.childSnapshot(forPath: "\(key)/recordTypeImg").value
 
                     self.categoryArray.append(Category(id: id as! String, description: description as! String, image: image as! String))
-
+                    
+                    if self.categoryArray.count > 0 {
+                        let indexArray = self.categoryArray.indices.filter {
+                            self.categoryArray[$0].image.localizedCaseInsensitiveContains(self.imageName)
+                        }
+                        if indexArray.count > 0 {
+                            self.categoryIndex = indexArray[0]
+                        }
+                    }
                     self.collv_category.reloadData()
                 }
             }
-            completion()
         })
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "recordToHomeNav",
+            let destination = segue.destination as? HomeViewController {
+            destination.currentDate = date
+        }
     }
 
     // MARK: - Table view data source
@@ -101,6 +120,14 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
             cell.iv_category.image = UIImage(named: categoryImg)
         } else {
             ai_spinner.isHidden = false
+        }
+        
+        if indexPath.row == categoryIndex {
+            cell.layer.borderWidth = 2
+            cell.layer.cornerRadius = 10
+            cell.layer.borderColor = lb_categoryDesc.textColor.cgColor
+            lb_categoryDesc.text = categoryArray[indexPath.row].description
+            imageName = categoryArray[indexPath.row].image
         }
         
         return cell

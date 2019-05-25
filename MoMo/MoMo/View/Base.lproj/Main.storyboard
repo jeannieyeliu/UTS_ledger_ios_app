@@ -157,7 +157,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ipU-yI-FCr">
                                 <rect key="frame" x="0.0" y="88" width="414" height="300"/>
-                                <color key="backgroundColor" red="0.89614673564383551" green="0.95906838147945217" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.89803921568627454" green="0.96078431372549022" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B0E-Xh-f60">
                                 <rect key="frame" x="0.0" y="396" width="414" height="466"/>
@@ -173,14 +173,14 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="398" height="70"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Eat BBQ at Korean restaurant, really good" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iwt-R7-wYT">
-                                                            <rect key="frame" x="68.000000000000014" y="23" width="253.33333333333337" height="24"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iwt-R7-wYT">
+                                                            <rect key="frame" x="68" y="23" width="302" height="24"/>
                                                             <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="17"/>
                                                             <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$120" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CI2-Oi-8Fa">
-                                                            <rect key="frame" x="329.33333333333331" y="21" width="48.666666666666686" height="28"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CI2-Oi-8Fa">
+                                                            <rect key="frame" x="378" y="21" width="0.0" height="28"/>
                                                             <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="20"/>
                                                             <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -193,7 +193,7 @@
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.83137254900000002" green="0.94042005100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.89803921568627454" green="0.96078431372549022" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="IsM-Jo-oTV" firstAttribute="top" secondItem="hvg-IX-2Z8" secondAttribute="topMargin" constant="4" id="7a3-0R-JYy"/>
                                                         <constraint firstAttribute="trailing" secondItem="CI2-Oi-8Fa" secondAttribute="trailing" constant="20" id="UIf-yC-5HV"/>
@@ -211,6 +211,7 @@
                                                     <outlet property="iv_category" destination="IsM-Jo-oTV" id="mO5-Eb-h6i"/>
                                                     <outlet property="lb_amount" destination="CI2-Oi-8Fa" id="CKa-Xl-jhR"/>
                                                     <outlet property="lb_note" destination="Iwt-R7-wYT" id="lH8-Xr-ggO"/>
+                                                    <segue destination="Bam-iG-13B" kind="presentation" identifier="editExpenseNav" modalTransitionStyle="flipHorizontal" id="ekc-qh-XBJ"/>
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="toPayCell" rowHeight="100" id="8Eu-Vy-1iN" customClass="ExpenseTableViewCell" customModule="MoMo" customModuleProvider="target">
@@ -273,12 +274,14 @@
                                                         <constraint firstItem="2X1-2K-BQX" firstAttribute="top" secondItem="pZi-2q-yha" secondAttribute="topMargin" constant="8" id="uv8-U6-eSI"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
-                                                <color key="backgroundColor" red="0.83137254900000002" green="0.94042005100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.8980392157" green="0.96078431369999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <outlet property="iv_category" destination="GaX-0d-vE2" id="2eG-n2-2WX"/>
                                                     <outlet property="lb_amount" destination="Om4-XY-QZf" id="yvy-Gx-nQX"/>
                                                     <outlet property="lb_countDown" destination="YCo-uV-Cp1" id="2Fe-pe-ReO"/>
+                                                    <outlet property="lb_dayLeft" destination="dAq-ZJ-USK" id="cOk-Bv-RdF"/>
                                                     <outlet property="lb_note" destination="2X1-2K-BQX" id="krz-hB-Gfg"/>
+                                                    <segue destination="Bam-iG-13B" kind="presentation" identifier="addToPayNav" modalTransitionStyle="flipHorizontal" id="uQI-Un-UwX"/>
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="footerCell" rowHeight="50" id="yZe-MF-5iF" customClass="ExpenseTableViewSection" customModule="MoMo" customModuleProvider="target">
@@ -345,7 +348,11 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Home" id="Rt2-cZ-He2">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" id="sFX-Lf-Ixn"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Statistic" id="sFX-Lf-Ixn">
+                                            <connections>
+                                                <action selector="btn_statistic:" destination="2tZ-IE-Sp5" id="m7o-se-LHj"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Sue-EB-KWB">
                                             <connections>
                                                 <action selector="btn_addRecord:" destination="2tZ-IE-Sp5" id="In1-Nn-obG"/>
@@ -372,9 +379,11 @@
                         <viewLayoutGuide key="safeArea" id="5ct-Cx-jy6"/>
                     </view>
                     <connections>
+                        <outlet property="lb_listName" destination="8tA-fh-7kY" id="SOx-GK-Iai"/>
                         <outlet property="tbl_records" destination="gWc-YI-N9W" id="VeK-Xu-zKS"/>
                         <outlet property="uv_calendar" destination="ipU-yI-FCr" id="Pg5-GK-obR"/>
                         <segue destination="Bam-iG-13B" kind="presentation" identifier="addRecordNav" modalTransitionStyle="flipHorizontal" id="oiy-Jl-NQz"/>
+                        <segue destination="m0E-Mq-HN2" kind="presentation" identifier="showStatisticNav" modalTransitionStyle="partialCurl" id="QfK-tb-Rxd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OG1-G8-N0f" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -731,7 +740,7 @@
                                                 <constraint firstItem="gQC-D2-Q94" firstAttribute="leading" secondItem="CKH-hc-8WE" secondAttribute="trailing" constant="8" symbolic="YES" id="wFC-Dc-giL"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.83137254900000002" green="0.94042005100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.8980392157" green="0.96078431369999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -746,7 +755,7 @@
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="always" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bTR-xg-GPc">
                                                     <rect key="frame" x="20" y="48" width="374" height="193"/>
-                                                    <color key="backgroundColor" red="0.83137254900000002" green="0.94042005100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.8980392157" green="0.96078431369999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="193" id="Hef-bc-Bp7"/>
                                                     </constraints>
@@ -795,7 +804,7 @@
                                                     <rect key="frame" x="197" y="116" width="20" height="20"/>
                                                 </activityIndicatorView>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.83137254900000002" green="0.94042005100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.8980392157" green="0.96078431369999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="bIe-ag-Ewx" firstAttribute="centerY" secondItem="mub-i6-dT3" secondAttribute="centerY" id="6ae-k9-MIx"/>
                                                 <constraint firstItem="bTR-xg-GPc" firstAttribute="leading" secondItem="mub-i6-dT3" secondAttribute="leadingMargin" id="9j9-zQ-ha8"/>
@@ -821,7 +830,7 @@
                                             <subviews>
                                                 <datePicker contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Fr9-f7-wvf">
                                                     <rect key="frame" x="20" y="0.0" width="374" height="160"/>
-                                                    <color key="backgroundColor" red="0.83137254900000002" green="0.94042005100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.8980392157" green="0.96078431369999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="579961026.37340403">
                                                         <!--2019-05-19 12:17:06 +0000-->
                                                     </date>
@@ -832,9 +841,6 @@
                                                         <!--2037-12-30 13:00:00 +0000-->
                                                     </date>
                                                     <locale key="locale" localeIdentifier="en_AU"/>
-                                                    <connections>
-                                                        <action selector="dp_date:" destination="Bam-iG-13B" eventType="valueChanged" id="lFx-if-itA"/>
-                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -844,7 +850,7 @@
                                                 <constraint firstItem="Fr9-f7-wvf" firstAttribute="leading" secondItem="F4F-Rd-Pra" secondAttribute="leading" constant="20" id="y35-BA-sRD"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.83137254900000002" green="0.94042005100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.8980392157" green="0.96078431369999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -859,12 +865,13 @@
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0j9-Tn-4CE">
                                                     <rect key="frame" x="20" y="11" width="374" height="138"/>
-                                                    <color key="backgroundColor" red="0.83137254900000002" green="0.94042005100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.8980392157" green="0.96078431369999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="25"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="alphabet" returnKeyType="next"/>
                                                 </textView>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.8980392157" green="0.96078431369999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="0j9-Tn-4CE" firstAttribute="top" secondItem="5FT-Sa-zSE" secondAttribute="topMargin" id="15y-81-a0B"/>
                                                 <constraint firstItem="0j9-Tn-4CE" firstAttribute="trailing" secondItem="5FT-Sa-zSE" secondAttribute="trailingMargin" id="Gbs-nx-nPG"/>
@@ -889,11 +896,187 @@
                         <outlet property="lb_categoryDesc" destination="fOx-JW-g72" id="Zhj-XR-x4F"/>
                         <outlet property="tf_amount" destination="gQC-D2-Q94" id="uFw-he-mjU"/>
                         <outlet property="tv_note" destination="0j9-Tn-4CE" id="KAL-Wx-g5E"/>
+                        <segue destination="2tZ-IE-Sp5" kind="presentation" identifier="recordToHomeNav" modalTransitionStyle="flipHorizontal" id="kdb-dl-eDA"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FqV-TI-c4g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-397.10144927536237" y="1879.6875"/>
+        </scene>
+        <!--Statistic-->
+        <scene sceneID="qgf-HC-11O">
+            <objects>
+                <viewController id="m0E-Mq-HN2" customClass="StatisticViewController" customModule="MoMo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RIl-NQ-uoR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7SD-EU-wWd">
+                                <rect key="frame" x="0.0" y="329" width="414" height="533"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Graph will be here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NvF-3c-2cs">
+                                        <rect key="frame" x="122.00000000000001" y="252.3333333333334" width="170.33333333333337" height="28.333333333333343"/>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
+                                        <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="NvF-3c-2cs" firstAttribute="centerY" secondItem="7SD-EU-wWd" secondAttribute="centerY" id="E9e-vq-2sj"/>
+                                    <constraint firstItem="NvF-3c-2cs" firstAttribute="centerX" secondItem="7SD-EU-wWd" secondAttribute="centerX" id="uEi-j1-CDZ"/>
+                                </constraints>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wV9-9C-x14">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Statistic" id="Ngx-yk-hbp">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="1a2-Tx-lWi"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EH0-rf-6eR">
+                                <rect key="frame" x="0.0" y="88" width="414" height="233"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iNp-4B-Rgi" customClass="ProgressUIView" customModule="MoMo" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="205" width="398" height="20"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EgX-Ed-GWp">
+                                        <rect key="frame" x="184" y="166" width="51" height="31"/>
+                                        <color key="onTintColor" red="0.0039215686269999999" green="0.49803921569999998" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="swt_mode:" destination="m0E-Mq-HN2" eventType="valueChanged" id="bRs-VQ-K0W"/>
+                                        </connections>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Week" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fY0-yv-EXm">
+                                        <rect key="frame" x="113.33333333333333" y="163.33333333333334" width="62.666666666666671" height="35.666666666666657"/>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="25"/>
+                                        <color key="textColor" red="0.0039215686269999999" green="0.49803921569999998" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9HU-Vx-RVG">
+                                        <rect key="frame" x="241" y="163.33333333333334" width="74" height="35.666666666666657"/>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="25"/>
+                                        <color key="textColor" red="0.0039215686269999999" green="0.49803921569999998" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="B8v-9l-a4t">
+                                        <rect key="frame" x="58.666666666666657" y="8" width="297" height="131.33333333333334"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="KwA-nY-Bwa">
+                                                <rect key="frame" x="0.0" y="0.0" width="161.33333333333334" height="131.33333333333334"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Budget" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="811-0v-WdC">
+                                                        <rect key="frame" x="0.0" y="0.0" width="83.666666666666671" height="36"/>
+                                                        <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="25"/>
+                                                        <color key="textColor" red="0.0039215686274509803" green="0.49803921568627452" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mk2-Rb-MZU">
+                                                        <rect key="frame" x="0.0" y="48" width="67.666666666666671" height="35.666666666666657"/>
+                                                        <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="25"/>
+                                                        <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Average" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Xn-Nl-oBT">
+                                                        <rect key="frame" x="0.0" y="95.666666666666657" width="161.33333333333334" height="35.666666666666657"/>
+                                                        <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="25"/>
+                                                        <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mLh-gh-eTz">
+                                                <rect key="frame" x="198.33333333333334" y="0.0" width="98.666666666666657" height="131.33333333333334"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="4Bg-5o-zsH">
+                                                        <rect key="frame" x="0.0" y="0.0" width="98.666666666666671" height="40"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ssn-sj-hHv">
+                                                                <rect key="frame" x="0.0" y="0.0" width="14.666666666666666" height="40"/>
+                                                                <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="25"/>
+                                                                <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1000" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h6e-2s-LHQ">
+                                                                <rect key="frame" x="19.666666666666686" y="0.0" width="79" height="40"/>
+                                                                <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="25"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WI9-xo-FkS">
+                                                        <rect key="frame" x="0.0" y="50" width="70.666666666666671" height="35.666666666666657"/>
+                                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="25"/>
+                                                        <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$40" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Irc-9k-5jp">
+                                                        <rect key="frame" x="0.0" y="95.666666666666657" width="43" height="35.666666666666657"/>
+                                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="25"/>
+                                                        <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.8980392157" green="0.96078431369999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="fY0-yv-EXm" firstAttribute="leading" secondItem="EH0-rf-6eR" secondAttribute="leading" constant="113.33333333333333" id="5Uf-UB-cjy"/>
+                                    <constraint firstAttribute="trailing" secondItem="iNp-4B-Rgi" secondAttribute="trailing" constant="8" id="8tG-1h-jJV"/>
+                                    <constraint firstItem="EgX-Ed-GWp" firstAttribute="leading" secondItem="fY0-yv-EXm" secondAttribute="trailing" constant="8" id="8v7-0Z-AY4"/>
+                                    <constraint firstItem="iNp-4B-Rgi" firstAttribute="top" secondItem="fY0-yv-EXm" secondAttribute="bottom" constant="6" id="Bv5-wv-Z6Q"/>
+                                    <constraint firstItem="EgX-Ed-GWp" firstAttribute="top" secondItem="B8v-9l-a4t" secondAttribute="bottom" constant="26.670000000000002" id="MVa-7L-SEj"/>
+                                    <constraint firstItem="9HU-Vx-RVG" firstAttribute="leading" secondItem="EgX-Ed-GWp" secondAttribute="trailing" constant="8" id="PUm-mc-x09"/>
+                                    <constraint firstItem="iNp-4B-Rgi" firstAttribute="top" secondItem="EgX-Ed-GWp" secondAttribute="bottom" constant="8" id="QYL-Jz-4ip"/>
+                                    <constraint firstAttribute="bottom" secondItem="iNp-4B-Rgi" secondAttribute="bottom" constant="8" id="RbL-He-vYA"/>
+                                    <constraint firstItem="iNp-4B-Rgi" firstAttribute="top" secondItem="9HU-Vx-RVG" secondAttribute="bottom" constant="6" id="SMq-yP-Ylp"/>
+                                    <constraint firstItem="B8v-9l-a4t" firstAttribute="centerX" secondItem="EH0-rf-6eR" secondAttribute="centerX" id="WUe-Xc-Aos"/>
+                                    <constraint firstAttribute="trailing" secondItem="9HU-Vx-RVG" secondAttribute="trailing" constant="99" id="ezZ-NB-aIU"/>
+                                    <constraint firstItem="iNp-4B-Rgi" firstAttribute="leading" secondItem="EH0-rf-6eR" secondAttribute="leading" constant="8" id="hXo-9a-Bjc"/>
+                                    <constraint firstItem="B8v-9l-a4t" firstAttribute="top" secondItem="EH0-rf-6eR" secondAttribute="topMargin" id="rav-C3-oo2"/>
+                                    <constraint firstItem="EgX-Ed-GWp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fY0-yv-EXm" secondAttribute="trailing" constant="8" symbolic="YES" id="tok-i6-DPh"/>
+                                    <constraint firstItem="iNp-4B-Rgi" firstAttribute="top" secondItem="EH0-rf-6eR" secondAttribute="top" constant="205" id="v0U-k5-mQa"/>
+                                    <constraint firstItem="9HU-Vx-RVG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="EgX-Ed-GWp" secondAttribute="trailing" constant="8" symbolic="YES" id="wYK-bM-sNd"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wV9-9C-x14" firstAttribute="trailing" secondItem="EH0-rf-6eR" secondAttribute="trailing" id="Cor-Vl-MDe"/>
+                            <constraint firstAttribute="trailing" secondItem="wV9-9C-x14" secondAttribute="trailing" id="Hdk-78-CDz"/>
+                            <constraint firstItem="wV9-9C-x14" firstAttribute="leading" secondItem="RIl-NQ-uoR" secondAttribute="leading" id="KrU-ku-Ya9"/>
+                            <constraint firstItem="7SD-EU-wWd" firstAttribute="top" secondItem="EH0-rf-6eR" secondAttribute="bottom" constant="8" symbolic="YES" id="Rez-cs-BEy"/>
+                            <constraint firstItem="EH0-rf-6eR" firstAttribute="leading" secondItem="7SD-EU-wWd" secondAttribute="leading" id="S8v-zs-VAp"/>
+                            <constraint firstItem="EH0-rf-6eR" firstAttribute="trailing" secondItem="7SD-EU-wWd" secondAttribute="trailing" id="SH8-7c-uLh"/>
+                            <constraint firstItem="7SD-EU-wWd" firstAttribute="top" secondItem="RIl-NQ-uoR" secondAttribute="top" constant="329" id="WaC-9y-c2H"/>
+                            <constraint firstItem="7SD-EU-wWd" firstAttribute="bottom" secondItem="HSs-01-EvL" secondAttribute="bottom" id="XDU-4t-uoN"/>
+                            <constraint firstItem="wV9-9C-x14" firstAttribute="top" secondItem="HSs-01-EvL" secondAttribute="top" id="b1f-hW-4Lf"/>
+                            <constraint firstItem="EH0-rf-6eR" firstAttribute="top" secondItem="wV9-9C-x14" secondAttribute="bottom" id="der-r1-kXc"/>
+                            <constraint firstItem="wV9-9C-x14" firstAttribute="leading" secondItem="EH0-rf-6eR" secondAttribute="leading" id="y1x-jt-fro"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="HSs-01-EvL"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Statistic" image="statistic" landscapeImage="statistic" largeContentSizeImage="statistic" id="iOZ-Fa-KQr">
+                        <inset key="landscapeImageInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                    </tabBarItem>
+                    <connections>
+                        <outlet property="lb_average" destination="Irc-9k-5jp" id="KdB-Ze-btK"/>
+                        <outlet property="lb_month" destination="9HU-Vx-RVG" id="5MP-Xa-6Hj"/>
+                        <outlet property="lb_spent" destination="WI9-xo-FkS" id="gWI-kf-8ny"/>
+                        <outlet property="lb_week" destination="fY0-yv-EXm" id="zcf-kD-zf9"/>
+                        <outlet property="swt_mode_outlet" destination="EgX-Ed-GWp" id="Mzp-ez-2qY"/>
+                        <outlet property="tf_budget" destination="h6e-2s-LHQ" id="bu6-Ss-Sp2"/>
+                        <outlet property="uv_progress" destination="iNp-4B-Rgi" id="ahx-A2-6yv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nnp-TN-2Ee" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2439.130434782609" y="1879.6875"/>
         </scene>
     </scenes>
     <resources>
@@ -905,6 +1088,6 @@
         <image name="to_pay_list" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oiy-Jl-NQz"/>
+        <segue reference="uQI-Un-UwX"/>
     </inferredMetricsTieBreakers>
 </document>
