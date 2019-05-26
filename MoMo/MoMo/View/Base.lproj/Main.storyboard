@@ -72,13 +72,13 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="VN4-am-fOK">
                                         <rect key="frame" x="138" y="52" width="98" height="40"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgi-dj-IFY">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgi-dj-IFY">
                                                 <rect key="frame" x="0.0" y="0.0" width="14" height="40"/>
                                                 <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="25"/>
                                                 <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1000" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sjR-Dw-F9h">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1000" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sjR-Dw-F9h">
                                                 <rect key="frame" x="19" y="0.0" width="79" height="40"/>
                                                 <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="25"/>
@@ -106,10 +106,6 @@
                                     <constraint firstItem="AGH-wC-7Bj" firstAttribute="trailing" secondItem="Ewj-cd-B7L" secondAttribute="trailingMargin" id="zU9-DJ-S7i"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tw0-In-gUL" userLabel="GraphView" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="20" y="409.33333333333326" width="374" height="452.66666666666674"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Du7-cs-igw">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
@@ -127,29 +123,52 @@
                                 <segments>
                                     <segment title="Week"/>
                                     <segment title="Month"/>
-                                    <segment title="All"/>
                                 </segments>
                                 <color key="tintColor" red="0.21865484120000001" green="0.49359011650000001" blue="0.73728734250000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <action selector="scDateRangeChange:" destination="xC2-NP-wXF" eventType="valueChanged" id="smB-ys-ZFt"/>
                                 </connections>
                             </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6VR-Ij-GOQ" userLabel="outsideChartView">
+                                <rect key="frame" x="20" y="409.33333333333326" width="374" height="432.66666666666674"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tw0-In-gUL" userLabel="BarGraphView" customClass="BarChartView" customModule="Charts">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="432.66666666666669"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u17-a6-FRI" userLabel="LineGraphView" customClass="LineChartView" customModule="Charts">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="432.66666666666669"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="tw0-In-gUL" firstAttribute="leading" secondItem="6VR-Ij-GOQ" secondAttribute="leading" id="0dp-Mv-fx7"/>
+                                    <constraint firstAttribute="trailing" secondItem="u17-a6-FRI" secondAttribute="trailing" id="4CW-lA-qrA"/>
+                                    <constraint firstItem="tw0-In-gUL" firstAttribute="top" secondItem="6VR-Ij-GOQ" secondAttribute="top" id="BOd-Z5-6V4"/>
+                                    <constraint firstAttribute="trailing" secondItem="tw0-In-gUL" secondAttribute="trailing" id="LcX-gd-gAe"/>
+                                    <constraint firstAttribute="bottom" secondItem="u17-a6-FRI" secondAttribute="bottom" id="XX4-Em-gjM"/>
+                                    <constraint firstItem="u17-a6-FRI" firstAttribute="top" secondItem="6VR-Ij-GOQ" secondAttribute="top" id="mEk-f7-mc5"/>
+                                    <constraint firstAttribute="bottom" secondItem="tw0-In-gUL" secondAttribute="bottom" id="sR2-nQ-ybw"/>
+                                    <constraint firstItem="u17-a6-FRI" firstAttribute="leading" secondItem="6VR-Ij-GOQ" secondAttribute="leading" id="vnc-eJ-AOJ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6fd-7v-mF0" firstAttribute="top" secondItem="Ewj-cd-B7L" secondAttribute="bottom" constant="20" id="1y5-cQ-zKl"/>
                             <constraint firstItem="Ewj-cd-B7L" firstAttribute="top" secondItem="Du7-cs-igw" secondAttribute="bottom" constant="20" id="2uE-KY-wIL"/>
-                            <constraint firstItem="tw0-In-gUL" firstAttribute="leading" secondItem="7N2-fG-8UN" secondAttribute="leading" constant="20" id="Blw-Qc-sP0"/>
-                            <constraint firstItem="tw0-In-gUL" firstAttribute="top" secondItem="6fd-7v-mF0" secondAttribute="bottom" constant="20" id="NeO-Yq-VIT"/>
+                            <constraint firstItem="6VR-Ij-GOQ" firstAttribute="leading" secondItem="7N2-fG-8UN" secondAttribute="leading" constant="20" id="HVG-dZ-Ssz"/>
                             <constraint firstItem="6fd-7v-mF0" firstAttribute="leading" secondItem="7N2-fG-8UN" secondAttribute="leading" constant="40" id="Oja-69-cPJ"/>
                             <constraint firstItem="Du7-cs-igw" firstAttribute="leading" secondItem="Zaw-Qb-RbH" secondAttribute="leading" id="RHS-Fm-Ffs"/>
+                            <constraint firstItem="6VR-Ij-GOQ" firstAttribute="top" secondItem="6fd-7v-mF0" secondAttribute="bottom" constant="20" id="UBz-B6-M83"/>
                             <constraint firstItem="7N2-fG-8UN" firstAttribute="trailing" secondItem="Ewj-cd-B7L" secondAttribute="trailing" constant="20" id="Uva-X4-Fo7"/>
                             <constraint firstItem="Du7-cs-igw" firstAttribute="top" secondItem="7N2-fG-8UN" secondAttribute="top" id="ZIz-L0-BuE"/>
                             <constraint firstItem="Du7-cs-igw" firstAttribute="centerX" secondItem="Ewj-cd-B7L" secondAttribute="centerX" id="aNb-xL-5h0"/>
                             <constraint firstItem="7N2-fG-8UN" firstAttribute="trailing" secondItem="6fd-7v-mF0" secondAttribute="trailing" constant="40" id="dc8-4x-V9j"/>
+                            <constraint firstItem="7N2-fG-8UN" firstAttribute="trailing" secondItem="6VR-Ij-GOQ" secondAttribute="trailing" constant="20" id="fBm-DV-JPp"/>
+                            <constraint firstItem="7N2-fG-8UN" firstAttribute="bottom" secondItem="6VR-Ij-GOQ" secondAttribute="bottom" constant="20" id="jMc-s5-fyG"/>
                             <constraint firstItem="Ewj-cd-B7L" firstAttribute="leading" secondItem="7N2-fG-8UN" secondAttribute="leading" constant="20" id="mar-ti-eOe"/>
-                            <constraint firstItem="tw0-In-gUL" firstAttribute="bottom" secondItem="7N2-fG-8UN" secondAttribute="bottom" id="xtK-bS-U27"/>
-                            <constraint firstItem="7N2-fG-8UN" firstAttribute="trailing" secondItem="tw0-In-gUL" secondAttribute="trailing" constant="20" id="zZb-0k-9ma"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7N2-fG-8UN"/>
                     </view>
@@ -157,7 +176,9 @@
                         <inset key="landscapeImageInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                     </tabBarItem>
                     <connections>
-                        <outlet property="chartContentView" destination="tw0-In-gUL" id="QWZ-Un-8h6"/>
+                        <outlet property="barChartView" destination="tw0-In-gUL" id="QWZ-Un-8h6"/>
+                        <outlet property="lineChartView" destination="u17-a6-FRI" id="nkJ-0Z-9M3"/>
+                        <outlet property="outsideChartView" destination="6VR-Ij-GOQ" id="qEL-Fr-bsP"/>
                         <outlet property="scDateRange" destination="6fd-7v-mF0" id="HoC-qq-fci"/>
                         <outlet property="tf_budget" destination="sjR-Dw-F9h" id="95k-ko-rfx"/>
                     </connections>
