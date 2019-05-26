@@ -11,6 +11,5 @@ import Foundation
 enum GraphType {
     case week
     case month
-    case all
 }
 

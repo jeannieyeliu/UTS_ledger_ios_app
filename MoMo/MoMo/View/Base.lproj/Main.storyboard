@@ -130,14 +130,14 @@
                                 </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6VR-Ij-GOQ" userLabel="outsideChartView">
-                                <rect key="frame" x="20" y="409.33333333333326" width="374" height="432.66666666666674"/>
+                                <rect key="frame" x="20" y="409.33333333333326" width="374" height="383.66666666666674"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tw0-In-gUL" userLabel="BarGraphView" customClass="BarChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="432.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="383.66666666666669"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u17-a6-FRI" userLabel="LineGraphView" customClass="LineChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="432.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="383.66666666666669"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
@@ -950,6 +950,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="oiy-Jl-NQz"/>
-        <segue reference="Y0K-0Z-ZoI"/>
+        <segue reference="q9p-vg-GDW"/>
     </inferredMetricsTieBreakers>
 </document>
