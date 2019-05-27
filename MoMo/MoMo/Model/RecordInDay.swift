@@ -11,7 +11,7 @@ import Foundation
 class Record {
     var id = String()
     var amount: Double = 0.0
-    var note: String = "Note number: "
+    var note: String = String()
     var category = String()
     
     init(id: String, amount: Double, category: String, note: String){
@@ -27,5 +27,13 @@ class Record {
             totalAmount.append(record.amount)
         }
         return totalAmount.reduce(0, +)
+    }
+}
+
+class RecordSum {
+    var amount = Double()
+    
+    init (amount: Double) {
+        self.amount = amount
     }
 }

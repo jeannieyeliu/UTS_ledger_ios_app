@@ -21,7 +21,6 @@ class HomeViewController: UIViewController {
     var recordArray = [Record]()
     var eventArray = [Event]()
     var sum = 0.0
-    var isMonth = true
     
     @IBAction func btn_addRecord(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: string.addRecord.rawValue, sender: nil)
@@ -146,7 +145,7 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let cell: ExpenseTableViewSection = tableView.dequeueReusableCell(withIdentifier: string.footer.rawValue) as! ExpenseTableViewSection
-        cell.lb_totalAmount.text = String.init(format: string.dollar.rawValue, getTotalAmount()) //"\(string.dollar.rawValue)\(getTotalAmount())"
+        cell.lb_totalAmount.text = "\(string.dollar.rawValue)\(getTotalAmount())"
         return cell.contentView
     }
     
@@ -169,7 +168,7 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
         }
         if recordArray.count > 0 {
             cell.iv_category.image = UIImage(named: recordArray[indexPath.row].category)
-            cell.lb_amount.text = "$\(recordArray[indexPath.row].amount)"
+            cell.lb_amount.text = "\(string.dollar.rawValue)\(recordArray[indexPath.row].amount)"
             cell.lb_note.text = recordArray[indexPath.row].note
         }
         return cell
@@ -181,18 +180,18 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCell.EditingStyle.delete) {
-            let alert = UIAlertController(title: "Delete", message: "Do you want to delete this record?", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+            let alert = UIAlertController(title: string.deleteTit.rawValue, message: string.deleteMes.rawValue, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: string.yes.rawValue, style: .default, handler: { action in
                 let id = self.recordArray[indexPath.row].id
                 self.refDate.child(self.currentDate).child(id).setValue(nil)
             }))
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: string.cancel.rawValue, style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
     }
     
     func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
-        let cell = calendar.dequeueReusableCell(withIdentifier: "calendarCell", for: date, at: position)
+        let cell = calendar.dequeueReusableCell(withIdentifier: string.calendar.rawValue, for: date, at: position)
         return cell
     }
     
@@ -219,7 +218,7 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         currentDate = getCorrectDate(forDate: date)
-        lb_listName.text = getDate(dateString: currentDate) <= today ? "Record List" : "To Pay List"
+        lb_listName.text = getDate(dateString: currentDate) <= today ? string.recordList.rawValue : string.toPayList.rawValue
         loadRecordDate(date: currentDate)
     }
     

@@ -10,143 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Statistic-->
-        <scene sceneID="3by-lr-y6R">
-            <objects>
-                <viewController id="xC2-NP-wXF" customClass="StatisticViewController" customModule="MoMo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Zaw-Qb-RbH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ewj-cd-B7L">
-                                <rect key="frame" x="20" y="44" width="374" height="233"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BUDGET PER MONTH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yOM-vg-Rox">
-                                        <rect key="frame" x="62.666666666666671" y="8" width="248.66666666666663" height="35.666666666666664"/>
-                                        <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="25"/>
-                                        <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9O0-5Y-ZaG">
-                                        <rect key="frame" x="8" y="99.666666666666657" width="169.66666666666666" height="79.333333333333343"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spent:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmm-Ra-Uzi">
-                                                <rect key="frame" x="0.0" y="0.0" width="75.666666666666671" height="35.666666666666664"/>
-                                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="25"/>
-                                                <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Average:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HkW-gV-8SX">
-                                                <rect key="frame" x="0.0" y="43.666666666666686" width="169.66666666666666" height="35.666666666666657"/>
-                                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="25"/>
-                                                <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="KmJ-In-O5j">
-                                        <rect key="frame" x="184.66666666666666" y="98.666666666666657" width="61" height="79.333333333333343"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAO-gg-FTq">
-                                                <rect key="frame" x="0.0" y="0.0" width="61" height="35.666666666666664"/>
-                                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="25"/>
-                                                <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$40" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCG-DB-YQh">
-                                                <rect key="frame" x="0.0" y="43.666666666666686" width="46.333333333333336" height="35.666666666666657"/>
-                                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="25"/>
-                                                <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="AGH-wC-7Bj">
-                                        <rect key="frame" x="8" y="212" width="358" height="2.6666666666666572"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1.6666666666666665" id="29V-4i-Nd8"/>
-                                        </constraints>
-                                        <color key="progressTintColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="trackTintColor" red="0.8310445125" green="0.94042005100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </progressView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="VN4-am-fOK">
-                                        <rect key="frame" x="137.66666666666666" y="51.666666666666671" width="98.666666666666657" height="40"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgi-dj-IFY">
-                                                <rect key="frame" x="0.0" y="0.0" width="14.666666666666666" height="40"/>
-                                                <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="25"/>
-                                                <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1000" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sjR-Dw-F9h">
-                                                <rect key="frame" x="19.666666666666686" y="0.0" width="79" height="40"/>
-                                                <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="25"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.8310445125" green="0.94042005100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="9O0-5Y-ZaG" firstAttribute="leading" secondItem="Ewj-cd-B7L" secondAttribute="leadingMargin" id="2CR-fo-MGP"/>
-                                    <constraint firstItem="VN4-am-fOK" firstAttribute="centerX" secondItem="AGH-wC-7Bj" secondAttribute="centerX" id="3qB-E7-94d"/>
-                                    <constraint firstItem="KmJ-In-O5j" firstAttribute="top" secondItem="VN4-am-fOK" secondAttribute="bottom" constant="7" id="Mhx-5b-jOI"/>
-                                    <constraint firstItem="VN4-am-fOK" firstAttribute="top" secondItem="yOM-vg-Rox" secondAttribute="bottom" constant="8" symbolic="YES" id="Wxl-r8-xEG"/>
-                                    <constraint firstItem="9O0-5Y-ZaG" firstAttribute="leading" secondItem="AGH-wC-7Bj" secondAttribute="leading" id="aAB-Yu-dpM"/>
-                                    <constraint firstItem="AGH-wC-7Bj" firstAttribute="top" secondItem="9O0-5Y-ZaG" secondAttribute="bottom" constant="33" id="gXn-zq-Zl7"/>
-                                    <constraint firstAttribute="bottom" secondItem="AGH-wC-7Bj" secondAttribute="bottom" constant="19.333333333333343" id="iSV-aX-e84"/>
-                                    <constraint firstItem="KmJ-In-O5j" firstAttribute="leading" secondItem="9O0-5Y-ZaG" secondAttribute="trailing" constant="7" id="pdw-mv-lEL"/>
-                                    <constraint firstItem="9O0-5Y-ZaG" firstAttribute="top" secondItem="VN4-am-fOK" secondAttribute="bottom" constant="8" symbolic="YES" id="szg-OH-Hma"/>
-                                    <constraint firstItem="yOM-vg-Rox" firstAttribute="centerX" secondItem="VN4-am-fOK" secondAttribute="centerX" id="tIs-pe-ItC"/>
-                                    <constraint firstItem="AGH-wC-7Bj" firstAttribute="top" secondItem="KmJ-In-O5j" secondAttribute="bottom" constant="34" id="u19-o1-1Y6"/>
-                                    <constraint firstItem="AGH-wC-7Bj" firstAttribute="trailing" secondItem="Ewj-cd-B7L" secondAttribute="trailingMargin" id="zU9-DJ-S7i"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tw0-In-gUL">
-                                <rect key="frame" x="20" y="285" width="374" height="528"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Graph will be here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pNu-AS-0pS">
-                                        <rect key="frame" x="102.00000000000001" y="249.66666666666663" width="170.33333333333337" height="29"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="29" id="gCh-zg-3X9"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
-                                        <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="pNu-AS-0pS" firstAttribute="centerY" secondItem="tw0-In-gUL" secondAttribute="centerY" id="VjV-OM-1Vt"/>
-                                    <constraint firstItem="pNu-AS-0pS" firstAttribute="centerX" secondItem="tw0-In-gUL" secondAttribute="centerX" id="fRa-eE-urT"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="tw0-In-gUL" firstAttribute="top" secondItem="Ewj-cd-B7L" secondAttribute="bottom" constant="8" symbolic="YES" id="7U1-4u-RT8"/>
-                            <constraint firstItem="Ewj-cd-B7L" firstAttribute="top" secondItem="7N2-fG-8UN" secondAttribute="top" id="CJc-CM-2GI"/>
-                            <constraint firstItem="Ewj-cd-B7L" firstAttribute="trailing" secondItem="Zaw-Qb-RbH" secondAttribute="trailingMargin" id="Uyr-yG-0Qy"/>
-                            <constraint firstItem="Ewj-cd-B7L" firstAttribute="leading" secondItem="Zaw-Qb-RbH" secondAttribute="leadingMargin" id="Zo8-cB-Y4W"/>
-                            <constraint firstItem="tw0-In-gUL" firstAttribute="top" secondItem="Zaw-Qb-RbH" secondAttribute="top" constant="285" id="f2E-Bn-taj"/>
-                            <constraint firstItem="Ewj-cd-B7L" firstAttribute="trailing" secondItem="tw0-In-gUL" secondAttribute="trailing" id="qqq-4r-0qC"/>
-                            <constraint firstItem="tw0-In-gUL" firstAttribute="bottom" secondItem="7N2-fG-8UN" secondAttribute="bottom" id="xtK-bS-U27"/>
-                            <constraint firstItem="Ewj-cd-B7L" firstAttribute="leading" secondItem="tw0-In-gUL" secondAttribute="leading" id="z8d-AA-C5G"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="7N2-fG-8UN"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Statistic" image="statistic" landscapeImage="statistic" largeContentSizeImage="statistic" id="mAN-VO-WHh">
-                        <inset key="landscapeImageInsets" minX="8" minY="8" maxX="8" maxY="8"/>
-                    </tabBarItem>
-                    <connections>
-                        <outlet property="tf_budget" destination="sjR-Dw-F9h" id="95k-ko-rfx"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ET3-rN-Cd0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="752.17391304347836" y="1111.6071428571429"/>
-        </scene>
         <!--Home View Controller-->
         <scene sceneID="3mx-Bk-MxT">
             <objects>
@@ -383,303 +246,12 @@
                         <outlet property="tbl_records" destination="gWc-YI-N9W" id="VeK-Xu-zKS"/>
                         <outlet property="uv_calendar" destination="ipU-yI-FCr" id="Pg5-GK-obR"/>
                         <segue destination="Bam-iG-13B" kind="presentation" identifier="addRecordNav" modalTransitionStyle="flipHorizontal" id="oiy-Jl-NQz"/>
-                        <segue destination="m0E-Mq-HN2" kind="presentation" identifier="showStatisticNav" modalTransitionStyle="partialCurl" id="QfK-tb-Rxd"/>
+                        <segue destination="m0E-Mq-HN2" kind="presentation" identifier="showStatisticNav" modalTransitionStyle="flipHorizontal" id="QfK-tb-Rxd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OG1-G8-N0f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1459.4202898550725" y="1879.6875"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="yl2-sM-qoP">
-            <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
-                        <rect key="frame" x="0.0" y="975" width="768" height="49"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="tintColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="1eG-eW-pVA" kind="relationship" relationship="viewControllers" id="btB-Kr-FBH"/>
-                        <segue destination="fqC-yN-B30" kind="relationship" relationship="viewControllers" id="JB0-gP-WJp"/>
-                        <segue destination="xC2-NP-wXF" kind="relationship" relationship="viewControllers" id="q9p-vg-GDW"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
-        </scene>
-        <!--Expenses-->
-        <scene sceneID="c6J-D1-p1U">
-            <objects>
-                <tableViewController id="1eG-eW-pVA" customClass="ExpenseTableViewController" customModule="MoMo" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="XMH-wj-bMA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="D74-cx-Hdi">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <items>
-                                <navigationItem title="Expenses" id="R7h-UN-gEN">
-                                    <barButtonItem key="rightBarButtonItem" systemItem="add" id="J6p-YG-t1W">
-                                        <connections>
-                                            <action selector="btn_add:" destination="1eG-eW-pVA" id="UVr-Jl-51h"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </navigationItem>
-                            </items>
-                        </navigationBar>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExpenseSection" rowHeight="51" id="mwo-ed-ilM" customClass="ExpenseTableViewSection" customModule="MoMo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="414" height="51"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mwo-ed-ilM" id="qpr-kK-IZx">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="51"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11/15/2019" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNV-ma-xDw">
-                                            <rect key="frame" x="20" y="0.0" width="107" height="51"/>
-                                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
-                                            <color key="textColor" red="0.8310445124684932" green="0.94042005100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$40" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLZ-Li-wJ8">
-                                            <rect key="frame" x="287" y="0.0" width="107" height="51"/>
-                                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
-                                            <color key="textColor" red="0.8310445125" green="0.94042005100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="rLZ-Li-wJ8" secondAttribute="bottom" id="9Kx-lP-IfT"/>
-                                        <constraint firstAttribute="trailing" secondItem="rLZ-Li-wJ8" secondAttribute="trailing" constant="20" id="HTc-rd-wKf"/>
-                                        <constraint firstItem="rLZ-Li-wJ8" firstAttribute="top" secondItem="qpr-kK-IZx" secondAttribute="top" id="NGI-06-eo1"/>
-                                        <constraint firstItem="rLZ-Li-wJ8" firstAttribute="width" secondItem="NNV-ma-xDw" secondAttribute="width" id="Oxm-EZ-Wzj"/>
-                                        <constraint firstAttribute="bottom" secondItem="rLZ-Li-wJ8" secondAttribute="bottom" id="RCH-RB-zfR"/>
-                                        <constraint firstItem="NNV-ma-xDw" firstAttribute="top" secondItem="qpr-kK-IZx" secondAttribute="top" id="TWX-7q-Rpq"/>
-                                        <constraint firstItem="NNV-ma-xDw" firstAttribute="top" secondItem="qpr-kK-IZx" secondAttribute="top" id="enk-RP-WJn"/>
-                                        <constraint firstItem="NNV-ma-xDw" firstAttribute="leading" secondItem="qpr-kK-IZx" secondAttribute="leading" constant="20" id="f3I-cp-p0j"/>
-                                        <constraint firstAttribute="bottom" secondItem="NNV-ma-xDw" secondAttribute="bottom" id="l6l-p0-Ayq"/>
-                                        <constraint firstItem="rLZ-Li-wJ8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NNV-ma-xDw" secondAttribute="trailing" constant="8" symbolic="YES" id="o53-AW-3hV"/>
-                                        <constraint firstAttribute="bottom" secondItem="NNV-ma-xDw" secondAttribute="bottom" id="xUS-T7-HAO"/>
-                                        <constraint firstItem="rLZ-Li-wJ8" firstAttribute="top" secondItem="qpr-kK-IZx" secondAttribute="top" id="xuP-TT-iKq"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="lb_date" destination="NNV-ma-xDw" id="ydh-4v-iWc"/>
-                                    <outlet property="lb_totalAmount" destination="rLZ-Li-wJ8" id="WUb-6s-Rfd"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExpenseCell" rowHeight="70" id="wjW-O9-QO6" customClass="ExpenseTableViewCell" customModule="MoMo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="123" width="414" height="70"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wjW-O9-QO6" id="0Vz-49-Kor">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-bill-64" translatesAutoresizingMaskIntoConstraints="NO" id="sgh-hJ-z9Q">
-                                            <rect key="frame" x="20" y="4" width="40" height="62"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="40" id="R9x-dp-Vtv"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Pay renting feePay renting feePay renting feePay renting feePay renting fee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qau-Uq-0gu">
-                                            <rect key="frame" x="68" y="11" width="238" height="48"/>
-                                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
-                                            <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1200.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="P6d-Fd-rnY">
-                                            <rect key="frame" x="314" y="11" width="80" height="48"/>
-                                            <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="20"/>
-                                            <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" red="0.77927332240000002" green="0.94042005100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <constraints>
-                                        <constraint firstItem="sgh-hJ-z9Q" firstAttribute="leading" secondItem="0Vz-49-Kor" secondAttribute="leadingMargin" id="5TT-yR-oSk"/>
-                                        <constraint firstItem="P6d-Fd-rnY" firstAttribute="leading" secondItem="Qau-Uq-0gu" secondAttribute="trailing" constant="8" symbolic="YES" id="EfB-V2-jzP"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="sgh-hJ-z9Q" secondAttribute="bottom" constant="-7" id="J6c-fH-d3j"/>
-                                        <constraint firstItem="sgh-hJ-z9Q" firstAttribute="centerY" secondItem="Qau-Uq-0gu" secondAttribute="centerY" id="Mpa-Z5-vjK"/>
-                                        <constraint firstItem="Qau-Uq-0gu" firstAttribute="bottom" secondItem="P6d-Fd-rnY" secondAttribute="bottom" id="QPJ-eB-NcM"/>
-                                        <constraint firstItem="Qau-Uq-0gu" firstAttribute="bottom" secondItem="0Vz-49-Kor" secondAttribute="bottomMargin" id="bHk-lK-EQ5"/>
-                                        <constraint firstItem="Qau-Uq-0gu" firstAttribute="leading" secondItem="sgh-hJ-z9Q" secondAttribute="trailing" constant="8" symbolic="YES" id="cpN-mq-l3g"/>
-                                        <constraint firstItem="Qau-Uq-0gu" firstAttribute="top" secondItem="P6d-Fd-rnY" secondAttribute="top" id="fjW-ai-nJl"/>
-                                        <constraint firstItem="P6d-Fd-rnY" firstAttribute="trailing" secondItem="0Vz-49-Kor" secondAttribute="trailingMargin" id="iTV-cw-bjX"/>
-                                        <constraint firstItem="sgh-hJ-z9Q" firstAttribute="centerY" secondItem="0Vz-49-Kor" secondAttribute="centerY" id="lbr-j8-PwF"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="iv_category" destination="sgh-hJ-z9Q" id="0xc-2K-8TK"/>
-                                    <outlet property="lb_amount" destination="P6d-Fd-rnY" id="sRF-rd-tq8"/>
-                                    <outlet property="lb_note" destination="Qau-Uq-0gu" id="mXg-J3-Ehh"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="1eG-eW-pVA" id="z44-TF-64j"/>
-                            <outlet property="delegate" destination="1eG-eW-pVA" id="RF4-y0-pHW"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Expenses" image="expenses" landscapeImage="expenses" largeContentSizeImage="expenses" id="IWS-ZP-nXg">
-                        <inset key="landscapeImageInsets" minX="8" minY="8" maxX="8" maxY="8"/>
-                    </tabBarItem>
-                    <connections>
-                        <outlet property="tbl_expense_table" destination="XMH-wj-bMA" id="W90-Dq-SWs"/>
-                        <segue destination="Bam-iG-13B" kind="presentation" identifier="Expense_Record" id="G9V-9F-eZY"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="H2q-In-QOH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-804" y="1112"/>
-        </scene>
-        <!--To-Pay List-->
-        <scene sceneID="pyd-5R-MoL">
-            <objects>
-                <tableViewController id="fqC-yN-B30" customClass="ToPayTableViewController" customModule="MoMo" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RXT-fa-gsG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="sde-fy-QAI">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <items>
-                                <navigationItem title="To-Pay List" id="5mc-EG-MjK">
-                                    <barButtonItem key="rightBarButtonItem" systemItem="add" id="XcE-dK-VO9">
-                                        <connections>
-                                            <action selector="btn_add:" destination="fqC-yN-B30" id="Lxc-ei-PX1"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </navigationItem>
-                            </items>
-                        </navigationBar>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToPaySection" rowHeight="51" id="Nf3-iI-BQw" customClass="ExpenseTableViewSection" customModule="MoMo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="414" height="51"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nf3-iI-BQw" id="pqR-aZ-4DF">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="51"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11/15/2019" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qj6-HK-PwJ">
-                                            <rect key="frame" x="20" y="0.0" width="107" height="51"/>
-                                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
-                                            <color key="textColor" red="0.8310445125" green="0.94042005100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1200" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIb-FR-cj2">
-                                            <rect key="frame" x="337" y="0.0" width="57" height="51"/>
-                                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
-                                            <color key="textColor" red="0.8310445125" green="0.94042005100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <constraints>
-                                        <constraint firstItem="qj6-HK-PwJ" firstAttribute="baseline" secondItem="lIb-FR-cj2" secondAttribute="baseline" id="5r1-ap-LWM"/>
-                                        <constraint firstItem="lIb-FR-cj2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qj6-HK-PwJ" secondAttribute="trailing" constant="8" symbolic="YES" id="Afl-q2-E1g"/>
-                                        <constraint firstItem="qj6-HK-PwJ" firstAttribute="firstBaseline" secondItem="lIb-FR-cj2" secondAttribute="firstBaseline" id="Mbo-4D-MEF"/>
-                                        <constraint firstItem="qj6-HK-PwJ" firstAttribute="top" secondItem="pqR-aZ-4DF" secondAttribute="top" id="NyJ-du-zVn"/>
-                                        <constraint firstItem="lIb-FR-cj2" firstAttribute="trailing" secondItem="pqR-aZ-4DF" secondAttribute="trailingMargin" id="OQw-S4-Rou"/>
-                                        <constraint firstAttribute="bottom" secondItem="qj6-HK-PwJ" secondAttribute="bottom" id="gd6-35-ECq"/>
-                                        <constraint firstItem="qj6-HK-PwJ" firstAttribute="leading" secondItem="pqR-aZ-4DF" secondAttribute="leadingMargin" id="hQc-aC-pGb"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="lb_date" destination="qj6-HK-PwJ" id="Fnk-QH-K4i"/>
-                                    <outlet property="lb_totalAmount" destination="lIb-FR-cj2" id="HAY-l5-wNW"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToPayCell" rowHeight="82" id="I72-ip-oJ3" customClass="ExpenseTableViewCell" customModule="MoMo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="123" width="414" height="82"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="I72-ip-oJ3" id="Aaf-YY-HQe">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="82"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1200.50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4SE-5X-tQI">
-                                            <rect key="frame" x="72" y="40" width="266.33333333333331" height="28"/>
-                                            <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="20"/>
-                                            <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="QMn-79-Aof">
-                                            <rect key="frame" x="346.33333333333331" y="11.333333333333332" width="47.666666666666686" height="59.666666666666671"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTm-gR-LxO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="47.666666666666664" height="28.333333333333332"/>
-                                                    <color key="backgroundColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
-                                                    <color key="textColor" red="0.8310445125" green="0.94042005100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DAYS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYf-I5-Xa6">
-                                                    <rect key="frame" x="0.0" y="31.333333333333329" width="47.666666666666664" height="28.333333333333329"/>
-                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
-                                                    <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-paid-64" translatesAutoresizingMaskIntoConstraints="NO" id="lG6-gc-X8k">
-                                            <rect key="frame" x="20" y="21" width="40" height="40"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Buy Dyson" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5M-lj-RkQ">
-                                            <rect key="frame" x="72" y="11" width="270" height="24"/>
-                                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
-                                            <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" red="0.77927332240000002" green="0.94042005100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <constraints>
-                                        <constraint firstItem="4SE-5X-tQI" firstAttribute="leading" secondItem="lG6-gc-X8k" secondAttribute="trailing" constant="12" id="ENj-sP-xbI"/>
-                                        <constraint firstItem="4SE-5X-tQI" firstAttribute="leading" secondItem="z5M-lj-RkQ" secondAttribute="leading" id="HsD-QC-Mrl"/>
-                                        <constraint firstItem="QMn-79-Aof" firstAttribute="leading" secondItem="Aaf-YY-HQe" secondAttribute="leadingMargin" constant="326.32999999999998" id="JG1-WU-qtC"/>
-                                        <constraint firstItem="lG6-gc-X8k" firstAttribute="leading" secondItem="Aaf-YY-HQe" secondAttribute="leadingMargin" id="V3U-Kz-V5l"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="z5M-lj-RkQ" secondAttribute="trailing" constant="52" id="Z2J-0g-KtD"/>
-                                        <constraint firstItem="4SE-5X-tQI" firstAttribute="top" secondItem="z5M-lj-RkQ" secondAttribute="bottom" constant="5" id="ZYk-8y-FTm"/>
-                                        <constraint firstItem="z5M-lj-RkQ" firstAttribute="top" secondItem="Aaf-YY-HQe" secondAttribute="topMargin" id="abY-v1-VLu"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="lG6-gc-X8k" secondAttribute="trailing" constant="334" id="caB-Cd-IMf"/>
-                                        <constraint firstItem="lG6-gc-X8k" firstAttribute="top" secondItem="Aaf-YY-HQe" secondAttribute="topMargin" constant="10" id="cds-cb-Mep"/>
-                                        <constraint firstItem="4SE-5X-tQI" firstAttribute="top" secondItem="Aaf-YY-HQe" secondAttribute="top" constant="40" id="cr3-oQ-z91"/>
-                                        <constraint firstAttribute="trailing" secondItem="QMn-79-Aof" secondAttribute="trailing" constant="20" id="dAJ-7q-VJA"/>
-                                        <constraint firstItem="QMn-79-Aof" firstAttribute="leading" secondItem="4SE-5X-tQI" secondAttribute="trailing" constant="8" symbolic="YES" id="ltO-HM-xqB"/>
-                                        <constraint firstItem="z5M-lj-RkQ" firstAttribute="leading" secondItem="Aaf-YY-HQe" secondAttribute="leadingMargin" constant="52" id="q0j-ah-OOt"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="4SE-5X-tQI" secondAttribute="bottom" constant="3" id="tff-Jj-EHQ"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="lG6-gc-X8k" secondAttribute="bottom" constant="10" id="uLJ-Bu-K6p"/>
-                                        <constraint firstAttribute="bottom" secondItem="QMn-79-Aof" secondAttribute="bottom" constant="11" id="vrv-K9-oen"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="iv_category" destination="lG6-gc-X8k" id="SvN-00-lWJ"/>
-                                    <outlet property="lb_amount" destination="4SE-5X-tQI" id="UZo-k0-0Fu"/>
-                                    <outlet property="lb_countDown" destination="wTm-gR-LxO" id="fwE-Qk-GkX"/>
-                                    <outlet property="lb_note" destination="z5M-lj-RkQ" id="fNT-8c-Ih4"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="fqC-yN-B30" id="oe5-6s-vrB"/>
-                            <outlet property="delegate" destination="fqC-yN-B30" id="kXf-Dt-fAc"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="To-Pay List" image="to_pay_list" landscapeImage="to_pay_list" largeContentSizeImage="to_pay_list" id="sPG-ns-5Qx">
-                        <inset key="landscapeImageInsets" minX="8" minY="8" maxX="8" maxY="8"/>
-                    </tabBarItem>
-                    <connections>
-                        <outlet property="btn_addToPay" destination="XcE-dK-VO9" id="jcS-O9-ivh"/>
-                        <outlet property="tbl_toPay" destination="RXT-fa-gsG" id="g5G-yq-av3"/>
-                        <segue destination="Bam-iG-13B" kind="presentation" identifier="ToPay_Record" id="Ups-yS-3l4"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JFP-fY-OZT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="0.0" y="1112"/>
         </scene>
         <!--Add Record Table View Controller-->
         <scene sceneID="NfG-9Q-Hg7">
@@ -931,7 +503,11 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Statistic" id="Ngx-yk-hbp">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="1a2-Tx-lWi"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="1a2-Tx-lWi">
+                                            <connections>
+                                                <action selector="btn_back:" destination="m0E-Mq-HN2" id="n9v-mq-NyN"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -951,13 +527,13 @@
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Week" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fY0-yv-EXm">
                                         <rect key="frame" x="113.33333333333333" y="163.33333333333334" width="62.666666666666671" height="35.666666666666657"/>
-                                        <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="25"/>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="25"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.49803921569999998" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9HU-Vx-RVG">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Month" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9HU-Vx-RVG">
                                         <rect key="frame" x="241" y="163.33333333333334" width="74" height="35.666666666666657"/>
-                                        <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="25"/>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="25"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.49803921569999998" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1004,6 +580,9 @@
                                                                 <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="25"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                                <connections>
+                                                                    <action selector="tf_budget_change:" destination="m0E-Mq-HN2" eventType="editingDidEnd" id="KgY-0y-htk"/>
+                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -1080,12 +659,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="expenses" width="32" height="32"/>
-        <image name="icons8-bill-64" width="64" height="64"/>
-        <image name="icons8-paid-64" width="64" height="64"/>
         <image name="icons8-rice-bowl-64" width="64" height="64"/>
         <image name="statistic" width="32" height="32"/>
-        <image name="to_pay_list" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="uQI-Un-UwX"/>

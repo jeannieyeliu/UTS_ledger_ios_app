@@ -14,22 +14,31 @@ class Enum {
     enum StringList: String {
         //General
         case blank = ""
-        case dollar = "$ &d"
+        case dollar = "$ "
         
         //HomeViewController
         case recordList = "Record List"
         case toPayList = "To Pay List"
         case dafaultImg = "icons8-rating-64"
         
+        //StatisticViewController
+        case overused = "Overused"
+        case zeroDouble = "0.0"
+        
         //Navigation
         case addRecord = "addRecordNav"
         case showStat = "showStatisticNav"
         case editExpense = "editExpenseNav"
         case addToPay = "addToPayNav"
+        case recordHome = "recordToHomeNav"
         
         //Firebase
         case root = "MoMo"
         case date = "Date"
+        case cate = "Category"
+        case cateID = "/id"
+        case cateDesc = "/recordTypeDesc"
+        case cateImg = "/recordTypeImg"
         
         //Record Model
         case amount = "amount"
@@ -41,11 +50,27 @@ class Enum {
         case footer = "footerCell"
         case expense = "expenseCell"
         case toPay = "toPayCell"
+        case categoryC = "categoryCell"
+        
+        //Alert
+        case deleteTit = "Delete"
+        case deleteMes = "Do you want to delete this record?"
+        case yes = "Yes"
+        case cancel = "Cancel"
         
         //Format
         case dateFormat1 = "MMM yy"
+        case dateFormat2 = "yyyy-MM-dd"
+        case yearFormat1 = "L"
+        case monthFormat1 = "y"
         
         //UIFont
         case chalkFont = "Chalkboard SE"
+        case chalkLight = "Chalkboard SE Light"
+        case chalkBold = "Chalkboard SE Bold"
+        
+        //Default
+        case budget = "budget"
+        case isMonth = "isMonth"
     }
 }
