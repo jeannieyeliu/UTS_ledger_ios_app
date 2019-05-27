@@ -112,7 +112,7 @@
                                     <navigationItem title="Statistics" id="hAG-64-H2n">
                                         <barButtonItem key="leftBarButtonItem" systemItem="reply" id="XzW-UL-UWq">
                                             <connections>
-                                                <segue destination="2tZ-IE-Sp5" kind="showDetail" id="TqJ-Y4-Vjw"/>
+                                                <segue destination="2tZ-IE-Sp5" kind="custom" customClass="BackSegue" customModule="MoMo" customModuleProvider="target" id="ios-yc-TcK"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -208,7 +208,7 @@
                                     <navigationItem title="Home" id="Rt2-cZ-He2">
                                         <barButtonItem key="leftBarButtonItem" title="Stats" id="sFX-Lf-Ixn">
                                             <connections>
-                                                <segue destination="xC2-NP-wXF" kind="showDetail" id="Y0K-0Z-ZoI"/>
+                                                <segue destination="xC2-NP-wXF" kind="custom" customClass="AnimSegue" customModule="MoMo" customModuleProvider="target" id="APn-Fr-dIu"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Sue-EB-KWB">
@@ -952,6 +952,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="oiy-Jl-NQz"/>
-        <segue reference="Y0K-0Z-ZoI"/>
+        <segue reference="APn-Fr-dIu"/>
     </inferredMetricsTieBreakers>
 </document>
