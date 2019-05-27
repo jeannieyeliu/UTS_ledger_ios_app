@@ -35,6 +35,7 @@ class HomeViewController: UIViewController {
         //getRecordDate(date: "2019-05-22")
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         currentDate = String("\(today)".prefix(10))
         loadRecordDate(date: currentDate)
