@@ -593,6 +593,7 @@
                                     <constraint firstAttribute="trailing" secondItem="iNp-4B-Rgi" secondAttribute="trailing" constant="8" id="8tG-1h-jJV"/>
                                     <constraint firstItem="EgX-Ed-GWp" firstAttribute="leading" secondItem="fY0-yv-EXm" secondAttribute="trailing" constant="8" id="8v7-0Z-AY4"/>
                                     <constraint firstItem="iNp-4B-Rgi" firstAttribute="top" secondItem="fY0-yv-EXm" secondAttribute="bottom" constant="6" id="Bv5-wv-Z6Q"/>
+                                    <constraint firstAttribute="height" constant="233" id="IBB-6P-0td"/>
                                     <constraint firstItem="EgX-Ed-GWp" firstAttribute="top" secondItem="B8v-9l-a4t" secondAttribute="bottom" constant="26.670000000000002" id="MVa-7L-SEj"/>
                                     <constraint firstItem="9HU-Vx-RVG" firstAttribute="leading" secondItem="EgX-Ed-GWp" secondAttribute="trailing" constant="8" id="PUm-mc-x09"/>
                                     <constraint firstItem="iNp-4B-Rgi" firstAttribute="top" secondItem="EgX-Ed-GWp" secondAttribute="bottom" constant="8" id="QYL-Jz-4ip"/>
@@ -607,57 +608,52 @@
                                     <constraint firstItem="9HU-Vx-RVG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="EgX-Ed-GWp" secondAttribute="trailing" constant="8" symbolic="YES" id="wYK-bM-sNd"/>
                                 </constraints>
                             </view>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="KEm-GO-5QZ">
-                                <rect key="frame" x="40" y="329" width="334" height="29"/>
-                                <segments>
-                                    <segment title="Week"/>
-                                    <segment title="Month"/>
-                                </segments>
-                                <color key="tintColor" red="0.21865484120000001" green="0.49359011650000001" blue="0.73728734250000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <connections>
-                                    <action selector="scDateRangeChange:" destination="m0E-Mq-HN2" eventType="valueChanged" id="bag-zs-w9Y"/>
-                                </connections>
-                            </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fTh-5D-YNo" userLabel="outsideChartView">
-                                <rect key="frame" x="20" y="365" width="374" height="497"/>
+                                <rect key="frame" x="10" y="331" width="394" height="531"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nOH-Ba-Rg8" userLabel="BarGraphView" customClass="BarChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="497"/>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WO8-Pj-pVh">
+                                        <rect key="frame" x="143.66666666666666" y="0.0" width="107" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="tTg-Jx-t4i"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="Week"/>
+                                            <segment title="Month"/>
+                                        </segments>
+                                        <color key="tintColor" red="0.21865484120000001" green="0.49359011650000001" blue="0.73728734250000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <connections>
+                                            <action selector="scDateRangeChange:" destination="m0E-Mq-HN2" eventType="valueChanged" id="Rlv-c7-s5I"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="41n-O0-2aM" userLabel="LineGraphView" customClass="LineChartView" customModule="Charts">
+                                        <rect key="frame" x="0.0" y="36" width="394" height="481"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="41n-O0-2aM" userLabel="LineGraphView" customClass="LineChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="497"/>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nOH-Ba-Rg8" userLabel="BarGraphView" customClass="BarChartView" customModule="Charts">
+                                        <rect key="frame" x="0.0" y="36" width="394" height="481"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="41n-O0-2aM" secondAttribute="trailing" id="BoG-wE-7WD"/>
-                                    <constraint firstAttribute="bottom" secondItem="41n-O0-2aM" secondAttribute="bottom" id="Bt8-Mk-8PY"/>
-                                    <constraint firstItem="41n-O0-2aM" firstAttribute="top" secondItem="fTh-5D-YNo" secondAttribute="top" id="Dd0-pR-jMb"/>
-                                    <constraint firstItem="nOH-Ba-Rg8" firstAttribute="leading" secondItem="fTh-5D-YNo" secondAttribute="leading" id="NdF-xL-Rki"/>
-                                    <constraint firstAttribute="bottom" secondItem="nOH-Ba-Rg8" secondAttribute="bottom" id="Ptn-EO-QLO"/>
-                                    <constraint firstItem="41n-O0-2aM" firstAttribute="leading" secondItem="fTh-5D-YNo" secondAttribute="leading" id="XBk-dK-5BZ"/>
-                                    <constraint firstItem="nOH-Ba-Rg8" firstAttribute="top" secondItem="fTh-5D-YNo" secondAttribute="top" id="c0b-sQ-D06"/>
-                                    <constraint firstAttribute="trailing" secondItem="nOH-Ba-Rg8" secondAttribute="trailing" id="jwT-hl-8Sq"/>
+                                    <constraint firstItem="WO8-Pj-pVh" firstAttribute="top" secondItem="fTh-5D-YNo" secondAttribute="top" id="MkV-7E-pMw"/>
+                                    <constraint firstItem="WO8-Pj-pVh" firstAttribute="centerX" secondItem="fTh-5D-YNo" secondAttribute="centerX" id="br6-73-j96"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="fTh-5D-YNo" firstAttribute="leading" secondItem="HSs-01-EvL" secondAttribute="leading" constant="10" id="8C9-kd-2k5"/>
                             <constraint firstItem="wV9-9C-x14" firstAttribute="trailing" secondItem="EH0-rf-6eR" secondAttribute="trailing" id="Cor-Vl-MDe"/>
-                            <constraint firstItem="KEm-GO-5QZ" firstAttribute="top" secondItem="EH0-rf-6eR" secondAttribute="bottom" constant="8" symbolic="YES" id="F2b-4P-Cvp"/>
                             <constraint firstAttribute="trailing" secondItem="wV9-9C-x14" secondAttribute="trailing" id="Hdk-78-CDz"/>
                             <constraint firstItem="wV9-9C-x14" firstAttribute="leading" secondItem="RIl-NQ-uoR" secondAttribute="leading" id="KrU-ku-Ya9"/>
-                            <constraint firstItem="KEm-GO-5QZ" firstAttribute="top" secondItem="RIl-NQ-uoR" secondAttribute="top" constant="329" id="NB4-V0-GWy"/>
-                            <constraint firstItem="fTh-5D-YNo" firstAttribute="bottom" secondItem="HSs-01-EvL" secondAttribute="bottom" id="QKS-eJ-Ug3"/>
-                            <constraint firstItem="KEm-GO-5QZ" firstAttribute="leading" secondItem="HSs-01-EvL" secondAttribute="leading" constant="40" id="ZaW-3H-pTj"/>
                             <constraint firstItem="wV9-9C-x14" firstAttribute="top" secondItem="HSs-01-EvL" secondAttribute="top" id="b1f-hW-4Lf"/>
                             <constraint firstItem="EH0-rf-6eR" firstAttribute="top" secondItem="wV9-9C-x14" secondAttribute="bottom" id="der-r1-kXc"/>
-                            <constraint firstItem="KEm-GO-5QZ" firstAttribute="centerX" secondItem="EH0-rf-6eR" secondAttribute="centerX" id="hZa-5p-ESQ"/>
-                            <constraint firstItem="fTh-5D-YNo" firstAttribute="top" secondItem="KEm-GO-5QZ" secondAttribute="bottom" constant="8" symbolic="YES" id="nml-Fu-IcV"/>
-                            <constraint firstItem="fTh-5D-YNo" firstAttribute="centerX" secondItem="KEm-GO-5QZ" secondAttribute="centerX" id="trK-1D-EBf"/>
-                            <constraint firstItem="fTh-5D-YNo" firstAttribute="leading" secondItem="RIl-NQ-uoR" secondAttribute="leadingMargin" id="xbU-He-umH"/>
+                            <constraint firstItem="HSs-01-EvL" firstAttribute="trailing" secondItem="fTh-5D-YNo" secondAttribute="trailing" constant="10" id="fnG-Ih-Byg"/>
+                            <constraint firstItem="fTh-5D-YNo" firstAttribute="top" secondItem="EH0-rf-6eR" secondAttribute="bottom" constant="10" id="uk4-9f-mAS"/>
+                            <constraint firstItem="fTh-5D-YNo" firstAttribute="bottom" secondItem="HSs-01-EvL" secondAttribute="bottom" id="xIh-3p-vua"/>
                             <constraint firstItem="wV9-9C-x14" firstAttribute="leading" secondItem="EH0-rf-6eR" secondAttribute="leading" id="y1x-jt-fro"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HSs-01-EvL"/>
@@ -666,22 +662,21 @@
                         <inset key="landscapeImageInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                     </tabBarItem>
                     <connections>
-                        <outlet property="barChartView" destination="nOH-Ba-Rg8" id="lQi-Oj-ZcT"/>
                         <outlet property="lb_average" destination="Irc-9k-5jp" id="KdB-Ze-btK"/>
                         <outlet property="lb_month" destination="9HU-Vx-RVG" id="5MP-Xa-6Hj"/>
                         <outlet property="lb_spent" destination="WI9-xo-FkS" id="gWI-kf-8ny"/>
                         <outlet property="lb_week" destination="fY0-yv-EXm" id="zcf-kD-zf9"/>
-                        <outlet property="lineChartView" destination="41n-O0-2aM" id="s85-8O-Z1f"/>
-                        <outlet property="outsideChartView" destination="fTh-5D-YNo" id="R4B-df-ulI"/>
-                        <outlet property="scDateRange" destination="KEm-GO-5QZ" id="wk2-iC-w9r"/>
                         <outlet property="swt_mode_outlet" destination="EgX-Ed-GWp" id="Mzp-ez-2qY"/>
                         <outlet property="tf_budget" destination="h6e-2s-LHQ" id="bu6-Ss-Sp2"/>
+                        <outlet property="uv_bar_chart" destination="nOH-Ba-Rg8" id="lQi-Oj-ZcT"/>
+                        <outlet property="uv_line_chart" destination="41n-O0-2aM" id="s85-8O-Z1f"/>
+                        <outlet property="uv_outer_chart" destination="fTh-5D-YNo" id="R4B-df-ulI"/>
                         <outlet property="uv_progress" destination="iNp-4B-Rgi" id="ahx-A2-6yv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nnp-TN-2Ee" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2439.130434782609" y="1879.6875"/>
+            <point key="canvasLocation" x="-1459.4202898550725" y="2619.6428571428569"/>
         </scene>
     </scenes>
     <resources>
