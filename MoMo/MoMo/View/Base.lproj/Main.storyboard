@@ -130,14 +130,14 @@
                                 </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6VR-Ij-GOQ" userLabel="outsideChartView">
-                                <rect key="frame" x="20" y="409.33333333333326" width="374" height="383.66666666666674"/>
+                                <rect key="frame" x="20" y="409.33333333333326" width="374" height="432.66666666666674"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tw0-In-gUL" userLabel="BarGraphView" customClass="BarChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="383.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="432.66666666666669"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u17-a6-FRI" userLabel="LineGraphView" customClass="LineChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="383.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="432.66666666666669"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
@@ -196,9 +196,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ipU-yI-FCr">
-                                <rect key="frame" x="0.0" y="88" width="414" height="300"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="298"/>
                                 <color key="backgroundColor" red="0.89614673564383551" green="0.95906838147945217" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="298" id="S97-kQ-nyw"/>
+                                </constraints>
                             </view>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9de-Ir-TLG">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Home" id="Rt2-cZ-He2">
+                                        <barButtonItem key="leftBarButtonItem" title="Stats" id="sFX-Lf-Ixn">
+                                            <connections>
+                                                <segue destination="xC2-NP-wXF" kind="showDetail" id="Y0K-0Z-ZoI"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Sue-EB-KWB">
+                                            <connections>
+                                                <action selector="btn_addRecord:" destination="2tZ-IE-Sp5" id="In1-Nn-obG"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B0E-Xh-f60">
                                 <rect key="frame" x="0.0" y="396" width="414" height="466"/>
                                 <subviews>
@@ -371,47 +391,29 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="8tA-fh-7kY" firstAttribute="top" secondItem="B0E-Xh-f60" secondAttribute="top" id="5R0-8A-Yp6"/>
-                                    <constraint firstItem="8tA-fh-7kY" firstAttribute="centerX" secondItem="B0E-Xh-f60" secondAttribute="centerX" id="7Yn-kw-acK"/>
                                     <constraint firstAttribute="trailing" secondItem="gWc-YI-N9W" secondAttribute="trailing" constant="8" id="8nA-8m-2Id"/>
-                                    <constraint firstItem="gWc-YI-N9W" firstAttribute="top" secondItem="8tA-fh-7kY" secondAttribute="bottom" constant="8" symbolic="YES" id="9Y7-a7-pBB"/>
                                     <constraint firstItem="gWc-YI-N9W" firstAttribute="top" secondItem="8tA-fh-7kY" secondAttribute="bottom" constant="8" id="CTs-Ui-z3O"/>
                                     <constraint firstItem="gWc-YI-N9W" firstAttribute="leading" secondItem="B0E-Xh-f60" secondAttribute="leading" constant="8" id="E08-fq-05g"/>
+                                    <constraint firstItem="8tA-fh-7kY" firstAttribute="centerX" secondItem="B0E-Xh-f60" secondAttribute="centerX" id="Hbt-sm-xf9"/>
                                     <constraint firstAttribute="bottom" secondItem="gWc-YI-N9W" secondAttribute="bottom" constant="8" id="J9M-Xv-wXj"/>
                                     <constraint firstItem="gWc-YI-N9W" firstAttribute="leading" secondItem="B0E-Xh-f60" secondAttribute="leading" constant="8" id="VNr-Nh-cH7"/>
                                     <constraint firstAttribute="trailing" secondItem="gWc-YI-N9W" secondAttribute="trailing" constant="8" id="c4p-bm-e9w"/>
                                 </constraints>
                             </view>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9de-Ir-TLG">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <items>
-                                    <navigationItem title="Home" id="Rt2-cZ-He2">
-                                        <barButtonItem key="leftBarButtonItem" title="Stats" id="sFX-Lf-Ixn">
-                                            <connections>
-                                                <segue destination="xC2-NP-wXF" kind="showDetail" id="Y0K-0Z-ZoI"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Sue-EB-KWB">
-                                            <connections>
-                                                <action selector="btn_addRecord:" destination="2tZ-IE-Sp5" id="In1-Nn-obG"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="ipU-yI-FCr" firstAttribute="leading" secondItem="5ct-Cx-jy6" secondAttribute="leading" id="15z-b5-EQF"/>
                             <constraint firstItem="9de-Ir-TLG" firstAttribute="top" secondItem="5ct-Cx-jy6" secondAttribute="top" id="3Vg-aN-0iN"/>
-                            <constraint firstItem="ipU-yI-FCr" firstAttribute="top" secondItem="9de-Ir-TLG" secondAttribute="bottom" id="6Ak-aF-yKA"/>
-                            <constraint firstItem="ipU-yI-FCr" firstAttribute="trailing" secondItem="B0E-Xh-f60" secondAttribute="trailing" id="8NW-NG-LqV"/>
-                            <constraint firstItem="B0E-Xh-f60" firstAttribute="top" secondItem="TEv-eX-OEE" secondAttribute="top" constant="396" id="Bnw-pv-XPh"/>
+                            <constraint firstItem="ipU-yI-FCr" firstAttribute="trailing" secondItem="5ct-Cx-jy6" secondAttribute="trailing" id="F5b-rh-Hgj"/>
                             <constraint firstAttribute="trailing" secondItem="9de-Ir-TLG" secondAttribute="trailing" id="FBS-Vi-bgf"/>
                             <constraint firstItem="B0E-Xh-f60" firstAttribute="bottom" secondItem="5ct-Cx-jy6" secondAttribute="bottom" id="MrI-pC-Gp5"/>
-                            <constraint firstItem="B0E-Xh-f60" firstAttribute="top" secondItem="ipU-yI-FCr" secondAttribute="bottom" constant="8" symbolic="YES" id="Pdc-gA-ti8"/>
-                            <constraint firstItem="9de-Ir-TLG" firstAttribute="leading" secondItem="ipU-yI-FCr" secondAttribute="leading" id="dE9-VG-fop"/>
+                            <constraint firstItem="B0E-Xh-f60" firstAttribute="centerX" secondItem="TEv-eX-OEE" secondAttribute="centerX" id="PQv-te-5oX"/>
+                            <constraint firstItem="B0E-Xh-f60" firstAttribute="top" secondItem="ipU-yI-FCr" secondAttribute="bottom" constant="10" id="Su6-I2-s0S"/>
                             <constraint firstItem="9de-Ir-TLG" firstAttribute="leading" secondItem="TEv-eX-OEE" secondAttribute="leading" id="dQr-UE-Wt8"/>
-                            <constraint firstItem="9de-Ir-TLG" firstAttribute="trailing" secondItem="ipU-yI-FCr" secondAttribute="trailing" id="qZA-hn-n1z"/>
-                            <constraint firstItem="ipU-yI-FCr" firstAttribute="leading" secondItem="B0E-Xh-f60" secondAttribute="leading" id="yoq-bq-jVZ"/>
+                            <constraint firstItem="B0E-Xh-f60" firstAttribute="leading" secondItem="5ct-Cx-jy6" secondAttribute="leading" id="hc9-Nh-bTW"/>
+                            <constraint firstItem="B0E-Xh-f60" firstAttribute="trailing" secondItem="5ct-Cx-jy6" secondAttribute="trailing" id="wtn-DK-vCD"/>
+                            <constraint firstItem="ipU-yI-FCr" firstAttribute="top" secondItem="9de-Ir-TLG" secondAttribute="bottom" id="yee-fY-O1n"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5ct-Cx-jy6"/>
                     </view>
@@ -950,6 +952,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="oiy-Jl-NQz"/>
-        <segue reference="q9p-vg-GDW"/>
+        <segue reference="Y0K-0Z-ZoI"/>
     </inferredMetricsTieBreakers>
 </document>
