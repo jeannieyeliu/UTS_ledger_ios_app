@@ -85,4 +85,13 @@ extension Date {
     func isLessThanToday(today: Date, and: Date) -> Bool {
         return today >= and
     }
+    
+//    func getMonth(from date: today) -> [Date] {
+//        let calendar = Calendar.current
+//        var comp = calendar.dateComponents([.year, .month, .day, .weekday], from: date)
+//        guard let day = comp.day, let month = comp.month, let year = comp.year else {
+//            return []
+//        }
+//        return getDatesByRange(from: 1 - day, to: Date().getDaysInMonth(year: year, month: month) - day)
+//    }
 }

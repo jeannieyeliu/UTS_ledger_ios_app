@@ -9,6 +9,7 @@
 import UIKit
 import FSCalendar
 import FirebaseDatabase
+import UserNotifications
 
 class HomeViewController: UIViewController {
     
@@ -233,4 +234,11 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
         }
         return [UIColor.oceanBlue]
     }
+    
+//    func sendNotification(note: String, amount: Double) {
+//        let content = UNMutableNotificationContent()
+//        content.title = "To Pay Reminder"
+//        content.subtitle = "\(note)"
+//        content.body = "Amount: \(amount)"
+//    }
 }

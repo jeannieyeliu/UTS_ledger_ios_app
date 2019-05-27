@@ -483,22 +483,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7SD-EU-wWd">
-                                <rect key="frame" x="0.0" y="329" width="414" height="533"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Graph will be here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NvF-3c-2cs">
-                                        <rect key="frame" x="122.00000000000001" y="252.3333333333334" width="170.33333333333337" height="28.333333333333343"/>
-                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
-                                        <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="NvF-3c-2cs" firstAttribute="centerY" secondItem="7SD-EU-wWd" secondAttribute="centerY" id="E9e-vq-2sj"/>
-                                    <constraint firstItem="NvF-3c-2cs" firstAttribute="centerX" secondItem="7SD-EU-wWd" secondAttribute="centerX" id="uEi-j1-CDZ"/>
-                                </constraints>
-                            </view>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wV9-9C-x14">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
@@ -623,19 +607,57 @@
                                     <constraint firstItem="9HU-Vx-RVG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="EgX-Ed-GWp" secondAttribute="trailing" constant="8" symbolic="YES" id="wYK-bM-sNd"/>
                                 </constraints>
                             </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="KEm-GO-5QZ">
+                                <rect key="frame" x="40" y="329" width="334" height="29"/>
+                                <segments>
+                                    <segment title="Week"/>
+                                    <segment title="Month"/>
+                                </segments>
+                                <color key="tintColor" red="0.21865484120000001" green="0.49359011650000001" blue="0.73728734250000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <action selector="scDateRangeChange:" destination="m0E-Mq-HN2" eventType="valueChanged" id="bag-zs-w9Y"/>
+                                </connections>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fTh-5D-YNo" userLabel="outsideChartView">
+                                <rect key="frame" x="20" y="365" width="374" height="497"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nOH-Ba-Rg8" userLabel="BarGraphView" customClass="BarChartView" customModule="Charts">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="497"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="41n-O0-2aM" userLabel="LineGraphView" customClass="LineChartView" customModule="Charts">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="497"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="41n-O0-2aM" secondAttribute="trailing" id="BoG-wE-7WD"/>
+                                    <constraint firstAttribute="bottom" secondItem="41n-O0-2aM" secondAttribute="bottom" id="Bt8-Mk-8PY"/>
+                                    <constraint firstItem="41n-O0-2aM" firstAttribute="top" secondItem="fTh-5D-YNo" secondAttribute="top" id="Dd0-pR-jMb"/>
+                                    <constraint firstItem="nOH-Ba-Rg8" firstAttribute="leading" secondItem="fTh-5D-YNo" secondAttribute="leading" id="NdF-xL-Rki"/>
+                                    <constraint firstAttribute="bottom" secondItem="nOH-Ba-Rg8" secondAttribute="bottom" id="Ptn-EO-QLO"/>
+                                    <constraint firstItem="41n-O0-2aM" firstAttribute="leading" secondItem="fTh-5D-YNo" secondAttribute="leading" id="XBk-dK-5BZ"/>
+                                    <constraint firstItem="nOH-Ba-Rg8" firstAttribute="top" secondItem="fTh-5D-YNo" secondAttribute="top" id="c0b-sQ-D06"/>
+                                    <constraint firstAttribute="trailing" secondItem="nOH-Ba-Rg8" secondAttribute="trailing" id="jwT-hl-8Sq"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="wV9-9C-x14" firstAttribute="trailing" secondItem="EH0-rf-6eR" secondAttribute="trailing" id="Cor-Vl-MDe"/>
+                            <constraint firstItem="KEm-GO-5QZ" firstAttribute="top" secondItem="EH0-rf-6eR" secondAttribute="bottom" constant="8" symbolic="YES" id="F2b-4P-Cvp"/>
                             <constraint firstAttribute="trailing" secondItem="wV9-9C-x14" secondAttribute="trailing" id="Hdk-78-CDz"/>
                             <constraint firstItem="wV9-9C-x14" firstAttribute="leading" secondItem="RIl-NQ-uoR" secondAttribute="leading" id="KrU-ku-Ya9"/>
-                            <constraint firstItem="7SD-EU-wWd" firstAttribute="top" secondItem="EH0-rf-6eR" secondAttribute="bottom" constant="8" symbolic="YES" id="Rez-cs-BEy"/>
-                            <constraint firstItem="EH0-rf-6eR" firstAttribute="leading" secondItem="7SD-EU-wWd" secondAttribute="leading" id="S8v-zs-VAp"/>
-                            <constraint firstItem="EH0-rf-6eR" firstAttribute="trailing" secondItem="7SD-EU-wWd" secondAttribute="trailing" id="SH8-7c-uLh"/>
-                            <constraint firstItem="7SD-EU-wWd" firstAttribute="top" secondItem="RIl-NQ-uoR" secondAttribute="top" constant="329" id="WaC-9y-c2H"/>
-                            <constraint firstItem="7SD-EU-wWd" firstAttribute="bottom" secondItem="HSs-01-EvL" secondAttribute="bottom" id="XDU-4t-uoN"/>
+                            <constraint firstItem="KEm-GO-5QZ" firstAttribute="top" secondItem="RIl-NQ-uoR" secondAttribute="top" constant="329" id="NB4-V0-GWy"/>
+                            <constraint firstItem="fTh-5D-YNo" firstAttribute="bottom" secondItem="HSs-01-EvL" secondAttribute="bottom" id="QKS-eJ-Ug3"/>
+                            <constraint firstItem="KEm-GO-5QZ" firstAttribute="leading" secondItem="HSs-01-EvL" secondAttribute="leading" constant="40" id="ZaW-3H-pTj"/>
                             <constraint firstItem="wV9-9C-x14" firstAttribute="top" secondItem="HSs-01-EvL" secondAttribute="top" id="b1f-hW-4Lf"/>
                             <constraint firstItem="EH0-rf-6eR" firstAttribute="top" secondItem="wV9-9C-x14" secondAttribute="bottom" id="der-r1-kXc"/>
+                            <constraint firstItem="KEm-GO-5QZ" firstAttribute="centerX" secondItem="EH0-rf-6eR" secondAttribute="centerX" id="hZa-5p-ESQ"/>
+                            <constraint firstItem="fTh-5D-YNo" firstAttribute="top" secondItem="KEm-GO-5QZ" secondAttribute="bottom" constant="8" symbolic="YES" id="nml-Fu-IcV"/>
+                            <constraint firstItem="fTh-5D-YNo" firstAttribute="centerX" secondItem="KEm-GO-5QZ" secondAttribute="centerX" id="trK-1D-EBf"/>
+                            <constraint firstItem="fTh-5D-YNo" firstAttribute="leading" secondItem="RIl-NQ-uoR" secondAttribute="leadingMargin" id="xbU-He-umH"/>
                             <constraint firstItem="wV9-9C-x14" firstAttribute="leading" secondItem="EH0-rf-6eR" secondAttribute="leading" id="y1x-jt-fro"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HSs-01-EvL"/>
@@ -644,10 +666,14 @@
                         <inset key="landscapeImageInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="barChartView" destination="nOH-Ba-Rg8" id="lQi-Oj-ZcT"/>
                         <outlet property="lb_average" destination="Irc-9k-5jp" id="KdB-Ze-btK"/>
                         <outlet property="lb_month" destination="9HU-Vx-RVG" id="5MP-Xa-6Hj"/>
                         <outlet property="lb_spent" destination="WI9-xo-FkS" id="gWI-kf-8ny"/>
                         <outlet property="lb_week" destination="fY0-yv-EXm" id="zcf-kD-zf9"/>
+                        <outlet property="lineChartView" destination="41n-O0-2aM" id="s85-8O-Z1f"/>
+                        <outlet property="outsideChartView" destination="fTh-5D-YNo" id="R4B-df-ulI"/>
+                        <outlet property="scDateRange" destination="KEm-GO-5QZ" id="wk2-iC-w9r"/>
                         <outlet property="swt_mode_outlet" destination="EgX-Ed-GWp" id="Mzp-ez-2qY"/>
                         <outlet property="tf_budget" destination="h6e-2s-LHQ" id="bu6-Ss-Sp2"/>
                         <outlet property="uv_progress" destination="iNp-4B-Rgi" id="ahx-A2-6yv"/>

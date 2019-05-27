@@ -61,8 +61,10 @@ class Enum {
         //Format
         case dateFormat1 = "MMM yy"
         case dateFormat2 = "yyyy-MM-dd"
-        case yearFormat1 = "L"
-        case monthFormat1 = "y"
+        case dayFormat1 = "dd"
+        case monthFormat1 = "L"
+        case monthFormat2 = "LL"
+        case yearFormat1 = "y"
         
         //UIFont
         case chalkFont = "Chalkboard SE"
@@ -72,5 +74,10 @@ class Enum {
         //Default
         case budget = "budget"
         case isMonth = "isMonth"
+    }
+    
+    enum GraphType {
+        case week
+        case month
     }
 }
