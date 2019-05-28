@@ -11,21 +11,18 @@ import FirebaseDatabase
 import Charts
 class StatisticViewController: UIViewController {
 
+    // MARK: Variables
     var ref: DatabaseReference!
     var sumArray = [RecordSum]()
     var today = Date()
+    let calendar = Calendar.current
     var isMonth = true
-    
     let string = Enum.StringList.self
     let limitShape = CAShapeLayer()
     let progressShape = CAShapeLayer()
-    
-    let calendar = Calendar.current
-    var barsDict: [String:Double] = [:]
-    var linesDict: [Int:Double] = [:]
-    var weekTitle = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
-    var chartFont = UIFont()//UIFont(name: "Chalkboard SE", size: 10)!
-    
+    var limitLine: ChartLimitLine = ChartLimitLine(limit: 0, label: "\(Consts.limitLineLabel): $\(0)")
+
+    // MARK: IBOutlet
     @IBOutlet weak var uv_progress: UIView!
     @IBOutlet weak var lb_average: UILabel!
     @IBOutlet weak var lb_spent: UILabel!
@@ -33,24 +30,24 @@ class StatisticViewController: UIViewController {
     @IBOutlet weak var swt_mode_outlet: UISwitch!
     @IBOutlet weak var lb_week: UILabel!
     @IBOutlet weak var lb_month: UILabel!
-    
     @IBOutlet weak var scDateRange: UISegmentedControl!
-    @IBOutlet weak var outsideChartView: UIView!
-
-    @IBOutlet weak var barChartView: BarChartView!
-    @IBOutlet weak var lineChartView: LineChartView!
+    @IBOutlet weak var uv_bar_chart: BarChartView!
+    @IBOutlet weak var uv_line_chart: LineChartView!
     
+    // MARK: IBAction
     @IBAction func tf_budget_change(_ sender: UITextField) {
         let budgetText: String = sender.text ?? string.zeroDouble.rawValue
         let budget = Double(budgetText) ?? 0.0
         UserDefaults.standard.set(budget, forKey: string.budget.rawValue)
         loadRecordDateMonth(controller: self)
+        changeLimitLine()
     }
     
     @IBAction func btn_back(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    // switch the data of the budget/daily average/progress bar for month and week
     @IBAction func swt_mode(_ sender: UISwitch) {
         isMonth = isMonth ? false : true
         loadRecordDateMonth(controller: self)
@@ -59,24 +56,27 @@ class StatisticViewController: UIViewController {
     
     @IBAction func scDateRangeChange(_ sender: UISegmentedControl) {
         switch scDateRange.selectedSegmentIndex {
-        case 0:
+        case 0: // display the weekly chart
             updateChartRecordArray(.week)
-        case 1:
+        case 1: // display the monthly chart
             updateChartRecordArray(.month)
         default:
             break
         }
     }
     
+    // MARK: Inherited view funtions
     override func viewDidLoad() {
         super.viewDidLoad()
         uv_progress.layer.cornerRadius = 10;
         uv_progress.layer.masksToBounds = true;
-        chartFont = UIFont(name: string.chalkFont.rawValue, size: 10)!
         tf_budget.text = "\(UserDefaults.standard.double(forKey: string.budget.rawValue))"
         ref = Database.database().reference().child(string.root.rawValue).child(string.date.rawValue)
-        initChartViewStyle()
-        updateChartRecordArray(.week)
+        ChartUtils.setChartViewStyle(limitLine: limitLine, chart: uv_bar_chart)
+        ChartUtils.setChartViewStyle(limitLine: limitLine, chart: uv_line_chart)
+        ChartUtils.setMarker(chartView: uv_bar_chart)
+        ChartUtils.setMarker(chartView: uv_line_chart)
+        updateChartRecordArray(Consts.defaultChartType)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,6 +89,11 @@ class StatisticViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        tf_budget.resignFirstResponder()
+    }
+    
+    // Set total amount for the progress bar
     func setTotalAmount (_ spent: Double) {
         guard let budgetText = tf_budget.text else { return }
         let budget: Double = Double(budgetText) ?? 0.0
@@ -129,7 +134,7 @@ class StatisticViewController: UIViewController {
     }
     
     func getLimitX(budget: Double) -> CGFloat {
-        let noOfDays = isMonth ? getNumberOfDay() : 7
+        let noOfDays = isMonth ? getNumberOfDaysInAMonth() : 7
         var daysPassed = isMonth ? getDaysPassedMonth() : getDaysPassedWeek()
         daysPassed = daysPassed == 0 ? 1 : daysPassed
         let shouldSpend = budget / Double(noOfDays) * Double(daysPassed)
@@ -142,10 +147,10 @@ class StatisticViewController: UIViewController {
         var daysPassed = 0
         
         if isMonth {
-            noOfDays = getNumberOfDay()
+            noOfDays = getNumberOfDaysInAMonth()
             daysPassed = getDaysPassedMonth()
         } else {
-            noOfDays = 7
+            noOfDays = Consts.daysInAWeek
             daysPassed = getDaysPassedWeek()
         }
         return  noOfDays - daysPassed
@@ -154,26 +159,6 @@ class StatisticViewController: UIViewController {
     func getAverageSpending(budget: Double, spent: Double, daysLeft: Int) -> Double {
         let average = round((budget - spent) / Double(daysLeft) * 100) / 100
         return average > 0 ? average : 0
-    }
-    
-    func getNumberOfDay() -> Int {
-        let month = Date().getComponent(format: string.monthFormat1.rawValue)
-        let year = Date().getComponent(format: string.yearFormat1.rawValue)
-        return Date().getDaysInMonth(year: Int(year) ?? 2019, month: Int(month) ?? 1)
-    }
-    
-    func getDaysPassedMonth() -> Int {
-        let startOfMonth = getCorrectDate(forDate: Date().startOfMonth())
-        return getCountDown(from: String("\(startOfMonth)".prefix(10)), to: String("\(today)".prefix(10)))
-    }
-    
-    func getDaysPassedWeek() -> Int {
-        let startOfWeek = getCorrectDate(forDate: Date().startOfWeek())
-        return getCountDown(from: String("\(startOfWeek)".prefix(10)), to: String("\(today)".prefix(10)))
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        tf_budget.resignFirstResponder()
     }
     
     func loadRecordDateMonth (controller: StatisticViewController) {
@@ -205,252 +190,127 @@ class StatisticViewController: UIViewController {
     }
     
     func getTotalAmount(array: [RecordSum]) -> Double {
-        var totalAmount = [Double]()
-        for amount in array {
-            totalAmount.append(amount.amount)
-        }
+        let totalAmount: [Double] = array.map { amount in amount.amount}
         return round(totalAmount.reduce(0, +) * 100 ) / 100
     }
     
-    func setBarChartValues(dataPoints: [String], values: [Double]) {
-        lineChartView.data = nil
-        lineChartView.alpha = 0.0
-        barChartView.alpha = 1.0
-        var dataEntries: [BarChartDataEntry] = []
-        
-        for i in 0..<dataPoints.count {
-            let dataEntry = BarChartDataEntry(x: Double(i), y: values[i])
-            dataEntries.append(dataEntry)
-        }
-        
-        if let set = barChartView.data?.dataSets.first as? BarChartDataSet {
-            set.replaceEntries(dataEntries)
-            barChartView.data?.notifyDataChanged()
-            barChartView.notifyDataSetChanged()
-        }else {
-            let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Money spent")
-            chartDataSet.colors = [NSUIColor(red: 0.00, green: 0.33, blue: 0.58, alpha: 1.0)]
-            chartDataSet.drawValuesEnabled = true
-            let data = BarChartData(dataSet: chartDataSet)
-            data.setValueFont(chartFont)
-            barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints)
-            barChartView.xAxis.labelFont = chartFont
-            barChartView.data = data
-
-            let leftAxisFormatter = NumberFormatter()
-            leftAxisFormatter.negativePrefix = string.dollar.rawValue
-            leftAxisFormatter.positivePrefix = string.dollar.rawValue
-            barChartView.leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
-            barChartView.leftAxis.labelFont = chartFont
-            barChartView.rightAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
-            barChartView.rightAxis.labelFont = chartFont
-            barChartView.xAxis.labelPosition = .bottom
-            
-            //TODO: get the daily Average
-            let ll1 = ChartLimitLine(limit: 150, label: "Daily Average: $150")
-            ll1.lineWidth = 2
-            ll1.lineDashLengths = [5, 5]
-            ll1.labelPosition = .topRight
-            ll1.valueFont = chartFont
-            ll1.valueTextColor = .red
-            barChartView.leftAxis.addLimitLine(ll1)
-        }
-    }
     
-    func setLineChartValues(dataPoints: [Int], values: [Double]) {
-        barChartView.data = nil
-        lineChartView.alpha = 1.0
-        barChartView.alpha = 0.0
-        let dataEntries : [ChartDataEntry] = (0..<dataPoints.count).map{ (i) -> ChartDataEntry in
-            return  ChartDataEntry(x: Double(i), y: values[i])
-        }
-        
-        if let set = lineChartView.data?.dataSets.first as? LineChartDataSet {
-            set.replaceEntries(dataEntries)
-            lineChartView.data?.notifyDataChanged()
-            lineChartView.notifyDataSetChanged()
-        }else {
-            let chartDataSet = LineChartDataSet(entries: dataEntries, label: "Monthly Money spent")
-            chartDataSet.colors = [NSUIColor(red: 0.00, green: 0.33, blue: 0.58, alpha: 1.0)]
-            chartDataSet.drawValuesEnabled = false
-            let data = LineChartData(dataSet: chartDataSet)
-            data.setValueFont(chartFont)
-            let month = Date().getComponent(format: string.monthFormat2.rawValue)
-            lineChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints.map{ (i) -> String in
-                let day = i >= 9 ? "\(i + 1)" : "0\(i+1)"
-                return "\(day)/\(month)"})
-            lineChartView.xAxis.labelFont = chartFont
-            lineChartView.data = data
-            let leftAxisFormatter = NumberFormatter()
-            leftAxisFormatter.negativePrefix = string.dollar.rawValue
-            leftAxisFormatter.positivePrefix = string.dollar.rawValue
-            lineChartView.leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
-            lineChartView.leftAxis.labelFont = chartFont
-            lineChartView.rightAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
-            lineChartView.rightAxis.labelFont = chartFont
-            lineChartView.xAxis.labelPosition = .bottom
-    
-            let l = lineChartView.legend
-            l.horizontalAlignment = .left
-            l.verticalAlignment = .bottom
-            l.orientation = .horizontal
-            l.drawInside = false
-            l.form = .circle
-            l.formSize = 5
-            l.font = chartFont
-            l.xEntrySpace = 4
-            
-            chartDataSet.circleRadius = 3
-            chartDataSet.setColor(NSUIColor(red:0.00, green:0.50, blue:0.76, alpha:1.0))
-            chartDataSet.setCircleColor(NSUIColor(red:0.00, green:0.50, blue:0.76, alpha:1.0))
-            
-            //TODO: get the daily Average
-            let ll1 = ChartLimitLine(limit: 150, label: "Daily Average: $150")
-            ll1.lineWidth = 2
-            ll1.lineDashLengths = [5, 5]
-            ll1.labelPosition = .topRight
-            ll1.valueFont = chartFont
-            ll1.valueTextColor = .red
-            lineChartView.leftAxis.addLimitLine(ll1)
-            
-            let marker = BalloonMarker(color: UIColor(red:0.00, green:0.50, blue:0.76, alpha:1.0),
-                                       font: chartFont,
-                                       textColor: .white,
-                                       insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8))
-            marker.chartView = lineChartView
-            marker.minimumSize = CGSize(width: 80, height: 40)
-            lineChartView.marker = marker
-           
-        }
-    }
-    
- 
-    func updateChartRecordArray(_ type: Enum.GraphType) {
-        var dates: [Date]
+    func getDailyAverage(_ type: Enum.GraphType)-> Double {
+        let budgetText = tf_budget.text ?? "0"
+        let budget: Double = Double(budgetText) ?? 0.0
+        let duration: Int
         switch type {
         case .week:
-            barsDict.removeAll()
-            dates = getWeekDates()
-            for date in dates {
-                let dateStr = String("\(date)".prefix(10))
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "EEE"
-                let weekName : String = dateFormatter.string(from: date)
-                
-                if self.barsDict[weekName] == nil{
-                    self.barsDict[weekName] = 0
-                }
-                
-                ref.child(dateStr).observe(.value, with: { (snapshot) in
-                    var dayTotal: Double = 0
-                    self.barsDict[weekName] = 0
-                    if snapshot.childrenCount > 0 {
-                        for record in snapshot.children.allObjects as! [DataSnapshot] {
-                            let recordObject = record.value as? [String: AnyObject]
-                            let amount = recordObject?[self.string.amount.rawValue] as! Double
-                            dayTotal += amount
-                        }
-                    }
-                    self.barsDict[weekName] = self.barsDict[weekName]! + dayTotal
- 
-                    let weekValues : [Double] = (0...(self.weekTitle.count-1)).map{ (i) -> Double in
-                        let title = self.weekTitle[i]
-                        return self.barsDict[title] == nil ? 0: self.barsDict[title]!
-                    }
-                    
-                    self.setBarChartValues(dataPoints: self.weekTitle, values: weekValues)
-                    
-                })
-            }
-            break
-            
-        case .month:
-            linesDict.removeAll()
-            dates = getMonthTillToday()
-            let dayTitle : [Int] = dates.map{(date) -> Int in
-                let dayName = subStr(str: "\(date)", from: 8, length: 2)
-                let day =  Int(dayName)
-                self.linesDict[day!] = 0.0
-                return day!
-            }
-            
-            for date in dates {
-                let dateStr = String("\(date)".prefix(10))
-                let dayName : String = subStr(str: "\(date)", from: 8, length: 2 )
-                let day =  Int(dayName)
-                
-                ref.child(dateStr).observe(.value, with: { (snapshot) in
-                    var dayTotal: Double = 0
-                    self.barsDict[dayName] = 0
-                    if snapshot.childrenCount > 0 {
-                        for record in snapshot.children.allObjects as! [DataSnapshot] {
-                            let recordObject = record.value as? [String: AnyObject]
-                            let amount = recordObject?[self.string.amount.rawValue] as! Double
-                            dayTotal += amount
-                        }
-                    }
-                    self.linesDict[day!] = self.linesDict[day!]! + dayTotal
-                    let dayValues = (0...(dates.count-1)).map { i in
-                        return self.linesDict[i] == nil ? 0 : self.linesDict[i]!
-                    }
-                    
-                    self.setLineChartValues(dataPoints: dayTitle, values: dayValues)
-                })
-            }
+            duration = Consts.daysInAWeek
+        default:
+            duration = Date().getDaysInThisMonth()
+        }
+        let average = budget / Double(duration)
+        return Double(round(100*average)/100);
+    }
+    
+    func changeLimitLine() {
+        var type: Enum.GraphType = .week
+        var chart: BarLineChartViewBase = uv_bar_chart
+        switch scDateRange.selectedSegmentIndex {
+        case 0: // weekly chart
+            type = .week
+            chart = uv_bar_chart
+        case 1: // monthly chart
+            type = .month
+            chart = uv_line_chart
+        default:
             break
         }
+        chart.data = nil
+        updateChartRecordArray(type)
     }
-    
-    // get the date of each day of the week
-    func getWeekDates() -> [Date] {
-        var comp = calendar.dateComponents([.year, .month, .day, .weekday], from: today)
-        let currentWeekDay = comp.weekday == 1 ? 7 : (comp.weekday!  - 1)
-        return getDatesByRange(from: 1 - currentWeekDay, to: 7-currentWeekDay)
-    }
-  
-    // get the dates of each month of the day
-    func getMonth() -> [Date] {
-        var comp = calendar.dateComponents([.year, .month, .day, .weekday], from: today)
-        guard let day = comp.day, let month = comp.month, let year = comp.year else {
-            return []
-        }
-        return getDatesByRange(from: 1 - day, to: Date().getDaysInMonth(year: year, month: month) - day)
-    }
-    
-    // get the dates of each month of the day
-    func getMonthTillToday() -> [Date] {
-        var comp = calendar.dateComponents([.year, .month, .day, .weekday], from: today)
-        return comp.day == nil ? [] : getDatesByRange(from: 2 - comp.day!, to: 1)
-    }
-    
-    // give a range of days, from means how many days before today; to means how many days after today
-    func getDatesByRange(from: Int, to: Int) -> [Date] {
-        var comp = calendar.dateComponents([.year, .month, .day, .weekday], from: today)
-        guard let day = comp.day else {
-            return []
-        }
 
-        let dates: [Date] = (from...to).map{ (i) -> Date in
-            comp.day = day + i
-            let date = calendar.date(from: comp)
-            return date!
-        }
+    func setBarChartValues(_ dataPoints: [Int], _ values: [Double]) {
+        ChartUtils.switchView(fromView: uv_line_chart , toView: uv_bar_chart)
+        let weekNum = Consts.weekNumber[Date().getWeekNameFromDate(today)]! + 2
+        let dataEntries1: [BarChartDataEntry] = (0..<weekNum).map { i in BarChartDataEntry(x: Double(i), y: values[i]) }
+        let dataEntries2: [BarChartDataEntry] = (weekNum..<dataPoints.count).map { i in BarChartDataEntry(x: Double(i), y: values[i]) }
         
-        return dates
+        let chartDataSet1 = BarChartDataSet(entries: dataEntries1, label: Consts.barLabel)
+        let chartDataSet2 = BarChartDataSet(entries: dataEntries2, label: Consts.topayLabel)
+        chartDataSet1.setColor(UIColor.darkBlue)
+        chartDataSet2.setColor(UIColor.lightBlue)
+        chartDataSet1.colors = [UIColor.darkBlue]
+        chartDataSet2.colors = [UIColor.lightBlue]
+        
+        let data = BarChartData(dataSets: [chartDataSet1, chartDataSet2] )
+        uv_bar_chart.xAxis.valueFormatter = IndexAxisValueFormatter(values: Consts.weekTitle)
+        uv_bar_chart.data = data
+        ChartUtils.setBarChartDataSetStyle(chartDataSet1)
+        ChartUtils.setBarChartDataSetStyle(chartDataSet2)
+        ChartUtils.setYAxisMoneyFormatter(uv_bar_chart)
+        
+        let limit = getDailyAverage(.week)
+        ChartUtils.updateLimitLine(limitLine: limitLine,
+                                   axis: uv_bar_chart.leftAxis,
+                                   limit: limit,
+                                   label: "\(Consts.limitLineLabel) \(limit)")
+    }
+
+    func setLineChartValues(_ dataPoints: [Int], _ values: [Double]) {
+        ChartUtils.switchView(fromView: uv_bar_chart, toView: uv_line_chart)
+        let dataEntries = (0..<dataPoints.count).map { i in ChartDataEntry(x: Double(i), y: values[i]) }
+        
+        if let set = uv_line_chart.data?.dataSets.first as? LineChartDataSet {
+            set.replaceEntries(dataEntries)
+            uv_line_chart.data?.notifyDataChanged()
+            uv_line_chart.notifyDataSetChanged()
+        } else {
+            let chartDataSet = LineChartDataSet(entries: dataEntries, label: Consts.barLabel)
+            
+            let data = LineChartData(dataSet: chartDataSet)
+            data.setValueFont(UIFont.chartFont)
+            uv_line_chart.data = data
+            ChartUtils.setAxisDateFormat(uv_line_chart, dataPoints: dataPoints)
+            ChartUtils.setLineChartDataSetStyle(chartDataSet)
+            ChartUtils.setYAxisMoneyFormatter(uv_line_chart)
+            ChartUtils.setLengent(uv_line_chart.legend)
+            let limit = getDailyAverage(.month)
+            ChartUtils.updateLimitLine(limitLine: limitLine,
+                                       axis: uv_line_chart.leftAxis, limit: limit,
+                                       label: "\(Consts.limitLineLabel): $\(limit)")
+        }
     }
     
-    func subStr(str: String, from: Int, length: Int) -> String {
-        let start = str.index(str.startIndex, offsetBy: from)
-        let end = str.index(start, offsetBy: length)
-        let range = start..<end
-        let mySubstring = str[range]
-        return String(mySubstring)
-    }
     
-    func initChartViewStyle() {
-        barChartView.rightAxis.labelFont = chartFont
-        barChartView.leftAxis.labelFont = chartFont
-        barChartView.chartDescription?.text = string.blank.rawValue
-        barChartView.noDataText = string.blank.rawValue
+    func updateChartRecordArray(_ type: Enum.GraphType) {
+        switch type {
+        case .week: // accumulate spense for each day of the week
+            let dates = Date().getWeekDates()
+            let dayTitle = dates.map { date in Date().getDayIntValueFromDate(date) }
+            var barValues: [Double] = Array(repeating: 0.0, count: Consts.daysInAWeek)
+            for date in Date().getWeekDates() {
+                ref.child(String("\(date)".prefix(10))).observe(.value, with: { (snapshot) in
+                    let weekName = Date().getWeekNameFromDate(date)
+                    for record in snapshot.children.allObjects as! [DataSnapshot] {
+                        let recordObject = record.value as? [String: AnyObject]
+                        barValues[Consts.weekNumber[weekName]!] += recordObject?[self.string.amount.rawValue] as! Double
+                        
+                    }
+                    self.setBarChartValues(dayTitle, barValues)
+                })
+            }
+        case .month: // accumulate spense for each day of the month
+            let dates = Date().getMonthTillToday()
+            let dayTitle = dates.map { date in Date().getDayIntValueFromDate(date) }
+            var barValues: [Double] = Array(repeating: 0.0, count: dates.count+1)
+            for date in dates {
+                let day: Int = Date().getDayIntValueFromDate(date)
+                ref.child(String("\(date)".prefix(10))).observe(.value, with: { (snapshot) in
+                    for record in snapshot.children.allObjects as! [DataSnapshot] {
+                        let recordObject = record.value as? [String: AnyObject]
+                        let amount = recordObject?[self.string.amount.rawValue] as! Double
+                        barValues[day] += amount
+                    }
+                    self.setLineChartValues(dayTitle, barValues)
+                })
+            }
+        }
     }
 }

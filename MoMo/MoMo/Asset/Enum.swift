@@ -6,7 +6,6 @@
 //  Copyright © 2019 Clima. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class Enum {
@@ -80,4 +79,5 @@ class Enum {
         case week
         case month
     }
+    
 }
