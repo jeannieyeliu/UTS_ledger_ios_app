@@ -166,7 +166,9 @@ extension Date {
     func getWeekNameFromDate(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEE"
-        return dateFormatter.string(from: date)
+        dateFormatter.timeZone = TimeZone.current
+        let correctDate = Calendar.current.date(byAdding: .day, value: -1, to: date)!
+        return dateFormatter.string(from: correctDate )
     }
     
     func getDayIntValueFromDate(_ date: Date) -> Int {

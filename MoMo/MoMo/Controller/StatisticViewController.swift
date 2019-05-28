@@ -225,31 +225,33 @@ class StatisticViewController: UIViewController {
         chart.data = nil
         updateChartRecordArray(type)
     }
-    
-    func setBarChartValues(_ dataPoints: [String], _ values: [Double]) {
+
+    func setBarChartValues(_ dataPoints: [Int], _ values: [Double]) {
         ChartUtils.switchView(fromView: uv_line_chart , toView: uv_bar_chart)
-        let dataEntries: [BarChartDataEntry] = (0..<dataPoints.count).map { i in BarChartDataEntry(x: Double(i), y: values[i]) }
+        let weekNum = Consts.weekNumber[Date().getWeekNameFromDate(today)]! + 2
+        let dataEntries1: [BarChartDataEntry] = (0..<weekNum).map { i in BarChartDataEntry(x: Double(i), y: values[i]) }
+        let dataEntries2: [BarChartDataEntry] = (weekNum..<dataPoints.count).map { i in BarChartDataEntry(x: Double(i), y: values[i]) }
         
-        if let set = uv_bar_chart.data?.dataSets.first as? BarChartDataSet {
-            set.replaceEntries(dataEntries)
-            uv_bar_chart.data?.notifyDataChanged()
-            uv_bar_chart.notifyDataSetChanged()
-        } else {
-            let chartDataSet = BarChartDataSet(entries: dataEntries, label: Consts.barLabel)
-            let data = BarChartData(dataSet: chartDataSet)
-            uv_bar_chart.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints)
-            uv_bar_chart.data = data
-            ChartUtils.setBarChartDataSetStyle(chartDataSet)
-            ChartUtils.setYAxisMoneyFormatter(uv_bar_chart)
-            
-            let limit = getDailyAverage(.week)
-            ChartUtils.updateLimitLine(limitLine: limitLine,
-                                       axis: uv_bar_chart.leftAxis,
-                                       limit: limit,
-                                       label: "\(Consts.limitLineLabel) \(limit)")
-        }
+        let chartDataSet1 = BarChartDataSet(entries: dataEntries1, label: Consts.barLabel)
+        let chartDataSet2 = BarChartDataSet(entries: dataEntries2, label: Consts.topayLabel)
+        chartDataSet1.setColor(UIColor.darkBlue)
+        chartDataSet2.setColor(UIColor.lightBlue)
+        chartDataSet1.colors = [UIColor.darkBlue]
+        chartDataSet2.colors = [UIColor.lightBlue]
+        
+        let data = BarChartData(dataSets: [chartDataSet1, chartDataSet2] )
+        uv_bar_chart.xAxis.valueFormatter = IndexAxisValueFormatter(values: Consts.weekTitle)
+        uv_bar_chart.data = data
+        ChartUtils.setBarChartDataSetStyle(chartDataSet1)
+        ChartUtils.setBarChartDataSetStyle(chartDataSet2)
+        ChartUtils.setYAxisMoneyFormatter(uv_bar_chart)
+        
+        let limit = getDailyAverage(.week)
+        ChartUtils.updateLimitLine(limitLine: limitLine,
+                                   axis: uv_bar_chart.leftAxis,
+                                   limit: limit,
+                                   label: "\(Consts.limitLineLabel) \(limit)")
     }
-    
 
     func setLineChartValues(_ dataPoints: [Int], _ values: [Double]) {
         ChartUtils.switchView(fromView: uv_bar_chart, toView: uv_line_chart)
@@ -280,6 +282,8 @@ class StatisticViewController: UIViewController {
     func updateChartRecordArray(_ type: Enum.GraphType) {
         switch type {
         case .week: // accumulate spense for each day of the week
+            let dates = Date().getWeekDates()
+            let dayTitle = dates.map { date in Date().getDayIntValueFromDate(date) }
             var barValues: [Double] = Array(repeating: 0.0, count: Consts.daysInAWeek)
             for date in Date().getWeekDates() {
                 ref.child(String("\(date)".prefix(10))).observe(.value, with: { (snapshot) in
@@ -287,8 +291,9 @@ class StatisticViewController: UIViewController {
                     for record in snapshot.children.allObjects as! [DataSnapshot] {
                         let recordObject = record.value as? [String: AnyObject]
                         barValues[Consts.weekNumber[weekName]!] += recordObject?[self.string.amount.rawValue] as! Double
+                        
                     }
-                    self.setBarChartValues(Consts.weekTitle, barValues)
+                    self.setBarChartValues(dayTitle, barValues)
                 })
             }
         case .month: // accumulate spense for each day of the month

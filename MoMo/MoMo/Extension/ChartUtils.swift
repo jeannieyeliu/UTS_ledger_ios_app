@@ -81,7 +81,6 @@ extension ChartUtils {
     }
     
     static func setLineChartDataSetStyle(_ chartDataSet: LineChartDataSet) {
-        chartDataSet.colors = [UIColor.darkBlue]
         chartDataSet.drawValuesEnabled = false
         chartDataSet.circleRadius = 3
         chartDataSet.setColor(NSUIColor(red:0.00, green:0.50, blue:0.76, alpha:1.0))
@@ -89,7 +88,6 @@ extension ChartUtils {
     }
     
     static func setBarChartDataSetStyle(_ chartDataSet: BarChartDataSet) {
-        chartDataSet.colors = [UIColor.darkBlue,UIColor.lightBlue]
         let data = BarChartData(dataSet: chartDataSet)
         data.setValueFont(UIFont.chartFont)
     }
