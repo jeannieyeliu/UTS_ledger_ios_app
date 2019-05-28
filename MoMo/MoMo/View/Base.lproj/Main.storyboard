@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2tZ-IE-Sp5">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,35 +15,35 @@
             <objects>
                 <viewController id="2tZ-IE-Sp5" customClass="HomeViewController" customModule="MoMo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TEv-eX-OEE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ipU-yI-FCr">
-                                <rect key="frame" x="0.0" y="64" width="375" height="324"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="300"/>
                                 <color key="backgroundColor" red="0.89803921568627454" green="0.96078431372549022" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B0E-Xh-f60">
-                                <rect key="frame" x="0.0" y="396" width="375" height="271"/>
+                                <rect key="frame" x="0.0" y="396" width="414" height="466"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gWc-YI-N9W">
-                                        <rect key="frame" x="8" y="44" width="359" height="219"/>
+                                        <rect key="frame" x="8" y="44" width="398" height="414"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="expenseCell" rowHeight="70" id="Vi7-3E-Tq7" customClass="ExpenseTableViewCell" customModule="MoMo" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="359" height="70"/>
+                                                <rect key="frame" x="0.0" y="28" width="398" height="70"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vi7-3E-Tq7" id="hvg-IX-2Z8">
-                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="70"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="398" height="70"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iwt-R7-wYT">
-                                                            <rect key="frame" x="68" y="23" width="208" height="24"/>
+                                                            <rect key="frame" x="68" y="23" width="263" height="24"/>
                                                             <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="17"/>
                                                             <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CI2-Oi-8Fa">
-                                                            <rect key="frame" x="284" y="21" width="0.0" height="28"/>
+                                                            <rect key="frame" x="339" y="21" width="0.0" height="28"/>
                                                             <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="20"/>
                                                             <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -78,30 +78,30 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="toPayCell" rowHeight="100" id="8Eu-Vy-1iN" customClass="ExpenseTableViewCell" customModule="MoMo" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="98" width="359" height="100"/>
+                                                <rect key="frame" x="0.0" y="98" width="398" height="100"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Eu-Vy-1iN" id="pZi-2q-yha">
-                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="100"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="398" height="100"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-rice-bowl-64" translatesAutoresizingMaskIntoConstraints="NO" id="GaX-0d-vE2">
-                                                            <rect key="frame" x="8" y="8" width="40" height="40"/>
+                                                            <rect key="frame" x="20" y="11" width="40" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="40" id="9gG-Xe-h1E"/>
                                                                 <constraint firstAttribute="height" constant="40" id="twR-aQ-Ukt"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Pay renting fee for this month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2X1-2K-BQX">
-                                                            <rect key="frame" x="56" y="16" width="140.5" height="24.5"/>
+                                                            <rect key="frame" x="68.000000000000014" y="19" width="171.33333333333337" height="24.333333333333329"/>
                                                             <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="17"/>
                                                             <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HY9-z9-wAg">
-                                                            <rect key="frame" x="8" y="56" width="158" height="28.5"/>
+                                                            <rect key="frame" x="20" y="59.000000000000007" width="158" height="28.333333333333336"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YCo-uV-Cp1">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="28.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="28.333333333333332"/>
                                                                     <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="40" id="C1T-pV-jv1"/>
@@ -111,7 +111,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DAY(S) LEFT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dAq-ZJ-USK">
-                                                                    <rect key="frame" x="48" y="0.0" width="110" height="28.5"/>
+                                                                    <rect key="frame" x="48" y="0.0" width="110" height="28.333333333333332"/>
                                                                     <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
                                                                     <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -119,7 +119,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1120.50" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Om4-XY-QZf">
-                                                            <rect key="frame" x="204.5" y="14" width="91.5" height="28.5"/>
+                                                            <rect key="frame" x="247.33333333333334" y="17" width="91.666666666666657" height="28.333333333333329"/>
                                                             <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="20"/>
                                                             <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -148,20 +148,20 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="footerCell" rowHeight="50" id="yZe-MF-5iF" customClass="ExpenseTableViewSection" customModule="MoMo" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="198" width="359" height="50"/>
+                                                <rect key="frame" x="0.0" y="198" width="398" height="50"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yZe-MF-5iF" id="BHo-tc-zTc">
-                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="50"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="398" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Amount:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MqU-pe-NJE">
-                                                            <rect key="frame" x="20" y="9.5" width="128" height="30.5"/>
+                                                            <rect key="frame" x="20" y="9.6666666666666661" width="128" height="30.666666666666671"/>
                                                             <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="20"/>
                                                             <color key="textColor" red="0.83137254900000002" green="0.94042005100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1200" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aAP-Yx-Gzf">
-                                                            <rect key="frame" x="223" y="9.5" width="61" height="30.5"/>
+                                                            <rect key="frame" x="278" y="9.6666666666666661" width="61" height="30.666666666666671"/>
                                                             <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="20"/>
                                                             <color key="textColor" red="0.83137254900000002" green="0.94042005100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -189,7 +189,7 @@
                                         </connections>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8tA-fh-7kY">
-                                        <rect key="frame" x="120" y="0.0" width="135" height="36"/>
+                                        <rect key="frame" x="139.66666666666666" y="0.0" width="134.99999999999997" height="36"/>
                                         <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="25"/>
                                         <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -208,7 +208,7 @@
                                 </constraints>
                             </view>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9de-Ir-TLG">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Home" id="Rt2-cZ-He2">
                                         <barButtonItem key="leftBarButtonItem" title="Statistic" id="sFX-Lf-Ixn">
@@ -258,11 +258,11 @@
             <objects>
                 <tableViewController storyboardIdentifier="addRecordSB" id="Bam-iG-13B" customClass="AddRecordTableViewController" customModule="MoMo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="V7H-kR-hCB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="GQz-B2-2Zo">
-                            <rect key="frame" x="0.0" y="0.0" width="430" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="453" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
                                 <navigationItem title="Add Record" id="ZzN-Fc-TNV">
@@ -283,20 +283,20 @@
                             <tableViewSection headerTitle="AMOUNT" id="Mt1-uw-obx">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RecordCell" id="uWa-NR-aV0">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uWa-NR-aV0" id="3bp-Q7-ebg">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="leading" contentVerticalAlignment="top" placeholder="Enter amount" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gQC-D2-Q94">
-                                                    <rect key="frame" x="42" y="0.0" width="291" height="44"/>
+                                                    <rect key="frame" x="46" y="0.0" width="322" height="44"/>
                                                     <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="30"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="next"/>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKH-hc-8WE">
-                                                    <rect key="frame" x="16" y="0.0" width="18" height="44"/>
+                                                    <rect key="frame" x="20" y="0.0" width="18" height="44"/>
                                                     <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="30"/>
                                                     <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -319,14 +319,14 @@
                             <tableViewSection headerTitle="CATEGORY" id="Y5u-ig-jOU">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RecordCell" rowHeight="252" id="c0S-ua-gEL">
-                                        <rect key="frame" x="0.0" y="144" width="375" height="252"/>
+                                        <rect key="frame" x="0.0" y="144" width="414" height="252"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c0S-ua-gEL" id="mub-i6-dT3">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="252"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="252"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="always" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bTR-xg-GPc">
-                                                    <rect key="frame" x="16" y="48" width="343" height="193"/>
+                                                    <rect key="frame" x="20" y="48" width="374" height="193"/>
                                                     <color key="backgroundColor" red="0.8980392157" green="0.96078431369999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="193" id="Hef-bc-Bp7"/>
@@ -346,7 +346,7 @@
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zlc-3e-wZT">
-                                                                        <rect key="frame" x="10" y="-14" width="30" height="78"/>
+                                                                        <rect key="frame" x="10" y="10" width="30" height="30"/>
                                                                     </imageView>
                                                                 </subviews>
                                                             </view>
@@ -367,13 +367,13 @@
                                                     </connections>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOx-JW-g72">
-                                                    <rect key="frame" x="187.5" y="40" width="0.0" height="0.0"/>
+                                                    <rect key="frame" x="207" y="40" width="0.0" height="0.0"/>
                                                     <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
                                                     <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="bIe-ag-Ewx">
-                                                    <rect key="frame" x="177.5" y="116" width="20" height="20"/>
+                                                    <rect key="frame" x="197" y="116" width="20" height="20"/>
                                                 </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" red="0.8980392157" green="0.96078431369999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -394,14 +394,14 @@
                             <tableViewSection headerTitle="DATE" id="uEz-GX-372">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RecordCell" rowHeight="160" id="aRs-mu-Uqa">
-                                        <rect key="frame" x="0.0" y="424" width="375" height="160"/>
+                                        <rect key="frame" x="0.0" y="424" width="414" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aRs-mu-Uqa" id="F4F-Rd-Pra">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="160"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Fr9-f7-wvf">
-                                                    <rect key="frame" x="20" y="0.0" width="335" height="160"/>
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="160"/>
                                                     <color key="backgroundColor" red="0.8980392157" green="0.96078431369999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="579961026.37340403">
                                                         <!--2019-05-19 12:17:06 +0000-->
@@ -429,14 +429,14 @@
                             <tableViewSection headerTitle="NOTE" id="27y-t4-ymb">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RecordCell" rowHeight="160" id="Vt2-3l-7Zy">
-                                        <rect key="frame" x="0.0" y="612" width="375" height="160"/>
+                                        <rect key="frame" x="0.0" y="612" width="414" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vt2-3l-7Zy" id="5FT-Sa-zSE">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="160"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0j9-Tn-4CE">
-                                                    <rect key="frame" x="16" y="11" width="343" height="138"/>
+                                                    <rect key="frame" x="20" y="11" width="374" height="138"/>
                                                     <color key="backgroundColor" red="0.8980392157" green="0.96078431369999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="25"/>
@@ -480,11 +480,11 @@
             <objects>
                 <viewController id="m0E-Mq-HN2" customClass="StatisticViewController" customModule="MoMo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RIl-NQ-uoR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wV9-9C-x14">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Statistic" id="Ngx-yk-hbp">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="1a2-Tx-lWi">
@@ -496,32 +496,32 @@
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EH0-rf-6eR">
-                                <rect key="frame" x="0.0" y="64" width="375" height="233"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="233"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iNp-4B-Rgi" customClass="ProgressUIView" customModule="MoMo" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="205" width="359" height="20"/>
+                                        <rect key="frame" x="8" y="205" width="398" height="20"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="B8v-9l-a4t">
-                                        <rect key="frame" x="39" y="8" width="297" height="131.5"/>
+                                        <rect key="frame" x="58.666666666666657" y="8" width="297" height="131.33333333333334"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BbC-4N-JGW" userLabel="TitleStackView">
-                                                <rect key="frame" x="0.0" y="0.0" width="161.5" height="131.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="161.33333333333334" height="131.33333333333334"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Budget" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="811-0v-WdC">
-                                                        <rect key="frame" x="0.0" y="0.0" width="161.5" height="40.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="161.33333333333334" height="40"/>
                                                         <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="25"/>
                                                         <color key="textColor" red="0.0039215686274509803" green="0.49803921568627452" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mk2-Rb-MZU">
-                                                        <rect key="frame" x="0.0" y="50.5" width="161.5" height="35.5"/>
+                                                        <rect key="frame" x="0.0" y="50" width="161.33333333333334" height="35.666666666666657"/>
                                                         <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="25"/>
                                                         <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Average" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Xn-Nl-oBT">
-                                                        <rect key="frame" x="0.0" y="96" width="161.5" height="35.5"/>
+                                                        <rect key="frame" x="0.0" y="95.666666666666657" width="161.33333333333334" height="35.666666666666657"/>
                                                         <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="25"/>
                                                         <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -529,19 +529,19 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mLh-gh-eTz" userLabel="numberStackView">
-                                                <rect key="frame" x="198.5" y="0.0" width="98.5" height="131.5"/>
+                                                <rect key="frame" x="198.33333333333334" y="0.0" width="98.666666666666657" height="131.33333333333334"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="4Bg-5o-zsH">
-                                                        <rect key="frame" x="0.0" y="0.0" width="98.5" height="40"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="98.666666666666671" height="40"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ssn-sj-hHv">
-                                                                <rect key="frame" x="0.0" y="0.0" width="14.5" height="40"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="14.666666666666666" height="40"/>
                                                                 <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="25"/>
                                                                 <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1000" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h6e-2s-LHQ">
-                                                                <rect key="frame" x="19.5" y="0.0" width="79" height="40"/>
+                                                                <rect key="frame" x="19.666666666666686" y="0.0" width="79" height="40"/>
                                                                 <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="25"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -552,13 +552,13 @@
                                                         </subviews>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1200" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WI9-xo-FkS">
-                                                        <rect key="frame" x="0.0" y="50" width="71" height="35.5"/>
+                                                        <rect key="frame" x="0.0" y="50" width="70.666666666666671" height="35.666666666666657"/>
                                                         <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="25"/>
                                                         <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$40" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Irc-9k-5jp">
-                                                        <rect key="frame" x="0.0" y="95.5" width="43" height="36"/>
+                                                        <rect key="frame" x="0.0" y="95.666666666666657" width="43" height="35.666666666666657"/>
                                                         <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="25"/>
                                                         <color key="textColor" red="0.002631179964" green="0.5" blue="0.75588437630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -568,23 +568,23 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="sqe-JS-Gcb" userLabel="switchStackView">
-                                        <rect key="frame" x="86" y="154.5" width="203.5" height="35.5"/>
+                                        <rect key="frame" x="105.66666666666669" y="154.33333333333334" width="203" height="35.666666666666657"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Week" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fY0-yv-EXm">
-                                                <rect key="frame" x="0.0" y="0.0" width="63" height="35.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="62.666666666666664" height="35.666666666666664"/>
                                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="25"/>
                                                 <color key="textColor" red="0.0039215686269999999" green="0.49803921569999998" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EgX-Ed-GWp">
-                                                <rect key="frame" x="73" y="0.0" width="51" height="35.5"/>
+                                                <rect key="frame" x="72.666666666666671" y="0.0" width="51" height="35.666666666666664"/>
                                                 <color key="onTintColor" red="0.0039215686269999999" green="0.49803921569999998" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <action selector="swt_mode:" destination="m0E-Mq-HN2" eventType="valueChanged" id="bRs-VQ-K0W"/>
                                                 </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Month" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9HU-Vx-RVG">
-                                                <rect key="frame" x="132" y="0.0" width="71.5" height="35.5"/>
+                                                <rect key="frame" x="131.66666666666669" y="0.0" width="71.333333333333314" height="35.666666666666664"/>
                                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="25"/>
                                                 <color key="textColor" red="0.0039215686269999999" green="0.49803921569999998" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -607,10 +607,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fTh-5D-YNo" userLabel="outsideChartView">
-                                <rect key="frame" x="10" y="307" width="355" height="360"/>
+                                <rect key="frame" x="10" y="331" width="394" height="531"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WO8-Pj-pVh">
-                                        <rect key="frame" x="124" y="0.0" width="107" height="29"/>
+                                        <rect key="frame" x="143.66666666666666" y="0.0" width="107" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="tTg-Jx-t4i"/>
                                         </constraints>
@@ -624,11 +624,11 @@
                                         </connections>
                                     </segmentedControl>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="41n-O0-2aM" userLabel="LineGraphView" customClass="LineChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="28" width="355" height="332"/>
+                                        <rect key="frame" x="0.0" y="28" width="394" height="503"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nOH-Ba-Rg8" userLabel="BarGraphView" customClass="BarChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="28" width="355" height="332"/>
+                                        <rect key="frame" x="0.0" y="28" width="394" height="503"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
