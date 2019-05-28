@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-class AddRecordTableViewController: UITableViewController, UICollectionViewDelegate, UICollectionViewDataSource  {
+class AddRecordTableViewController: UITableViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var refDate: DatabaseReference!
     var refCategory: DatabaseReference!

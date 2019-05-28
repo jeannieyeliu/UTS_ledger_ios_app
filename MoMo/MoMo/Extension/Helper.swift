@@ -93,7 +93,18 @@ extension Date {
         return formatter.string(from: today)
     }
     
-    func getDaysInMonth(year: Int, month: Int) -> Int{
+    func getDaysInMonth(year: Int, month: Int) -> Int {
+        let dateComponents = DateComponents(year: year, month: month)
+        let calendar = Calendar.current
+        let date = calendar.date(from: dateComponents)!
+        let range = calendar.range(of: .day, in: .month, for: date)!
+        return range.count
+    }
+    
+    func getDaysInThisMonth() -> Int {
+        var comp = Calendar.current.dateComponents([.year, .month, .day, .weekday], from: Date())
+        let year = comp.year ?? 2019
+        let month = comp.month ?? 5
         let dateComponents = DateComponents(year: year, month: month)
         let calendar = Calendar.current
         let date = calendar.date(from: dateComponents)!
@@ -151,19 +162,45 @@ extension Date {
         }
         return dates
     }
+    
+    func getWeekNameFromDate(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEE"
+        return dateFormatter.string(from: date)
+    }
+    
+    func getDayIntValueFromDate(_ date: Date) -> Int {
+        let dayName = String.subStr(str: "\(date)", from: 8, length: 2)
+        return Int(dayName)!
+    }
 }
 
 extension String {
     // Swift 4 doesn't provide direct substring so...
-    func subStr(str: String, from: Int, to: Int) -> String{
+    static func subStr(str: String, from: Int, to: Int) -> String {
         return subStr(str:str, from: from, length: to - from)
     }
     
-    func subStr(str: String, from: Int, length: Int) -> String{
+    static func subStr(str: String, from: Int, length: Int) -> String {
         let start = str.index(str.startIndex, offsetBy: from)
         let end = str.index(start, offsetBy: length)
         let range = start..<end
         let mySubstring = str[range]
         return String(mySubstring)
+    }
+    
+    // return 2 digit for a number, e.g. format(1) will return "01"
+    static func formatTwoDigit(_ digit: Int) -> String {
+        return digit >= 9 ? "\(digit + 1)" : "0\(digit+1)"
+    }
+    
+    // formatDayMonth(day: 2, month: 1) will return "02/01)
+    static func formatDayMonth(day: Int, month: Int) -> String {
+        return "\(formatTwoDigit(day))/\(formatTwoDigit(month))"
+    }
+    
+    
+    static func formatDayMonth(day: Int, month: String) -> String {
+        return "\(formatTwoDigit(day))/\(formatTwoDigit(Int(month)!))"
     }
 }

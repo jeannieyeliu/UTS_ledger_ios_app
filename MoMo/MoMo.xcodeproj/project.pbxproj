@@ -12,6 +12,7 @@
 		16A7CB33228E733D00B843BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16A7CB31228E733D00B843BD /* Main.storyboard */; };
 		16A7CB35228E733F00B843BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16A7CB34228E733F00B843BD /* Assets.xcassets */; };
 		16A7CB38228E733F00B843BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16A7CB36228E733F00B843BD /* LaunchScreen.storyboard */; };
+		16B6F026229CF292000C6496 /* ChartUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B6F025229CF292000C6496 /* ChartUtils.swift */; };
 		1C3CDA50228E992F004BE391 /* RecordInDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3CDA4F228E992F004BE391 /* RecordInDay.swift */; };
 		1C3CDA55228EBE4E004BE391 /* ExpenseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3CDA54228EBE4E004BE391 /* ExpenseTableViewController.swift */; };
 		1C3CDA57228ED100004BE391 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3CDA56228ED100004BE391 /* ExpenseTableViewCell.swift */; };
@@ -39,6 +40,7 @@
 		16A7CB34228E733F00B843BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16A7CB37228E733F00B843BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		16A7CB39228E733F00B843BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		16B6F025229CF292000C6496 /* ChartUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartUtils.swift; sourceTree = "<group>"; };
 		1C3CDA4F228E992F004BE391 /* RecordInDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordInDay.swift; sourceTree = "<group>"; };
 		1C3CDA54228EBE4E004BE391 /* ExpenseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExpenseTableViewController.swift; path = ../Controller/ExpenseTableViewController.swift; sourceTree = "<group>"; };
 		1C3CDA56228ED100004BE391 /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			children = (
 				1C7FD908229BA16500B78D46 /* BalloonMarker.swift */,
 				1CDC2A9122956FCA00F0165E /* Helper.swift */,
+				16B6F025229CF292000C6496 /* ChartUtils.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				1C3CDA6322924CF1004BE391 /* StatisticViewController.swift in Sources */,
 				1C3CDA692293D85B004BE391 /* CategoryCollectionViewCell.swift in Sources */,
 				1C7FD906229920CB00B78D46 /* Enum.swift in Sources */,
+				16B6F026229CF292000C6496 /* ChartUtils.swift in Sources */,
 				1C3CDA50228E992F004BE391 /* RecordInDay.swift in Sources */,
 				1C3CDA6B229506CC004BE391 /* Category.swift in Sources */,
 			);
