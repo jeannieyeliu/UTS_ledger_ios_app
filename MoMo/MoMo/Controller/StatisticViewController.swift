@@ -31,7 +31,7 @@ class StatisticViewController: UIViewController {
     @IBOutlet weak var swt_mode_outlet: UISwitch!
     @IBOutlet weak var lb_week: UILabel!
     @IBOutlet weak var lb_month: UILabel!
-    @IBOutlet weak var sc_date_range: UISegmentedControl!
+    @IBOutlet weak var scDateRange: UISegmentedControl!
     @IBOutlet weak var uv_bar_chart: BarChartView!
     @IBOutlet weak var uv_line_chart: LineChartView!
     
@@ -55,7 +55,7 @@ class StatisticViewController: UIViewController {
     }
     
     @IBAction func scDateRangeChange(_ sender: UISegmentedControl) {
-        switch sc_date_range.selectedSegmentIndex {
+        switch scDateRange.selectedSegmentIndex {
         case 0: // display the weekly chart
             updateChartRecordArray(.week)
         case 1: // display the monthly chart
@@ -199,21 +199,21 @@ class StatisticViewController: UIViewController {
         // set style for bar chart
         chart.rightAxis.labelFont = UIFont.chartFont
         chart.leftAxis.labelFont = UIFont.chartFont
+        chart.xAxis.labelFont = UIFont.chartFont
         chart.chartDescription?.text = string.blank.rawValue
         chart.noDataText = string.blank.rawValue
     }
     
     func setBarChartValues(dataPoints: [String], values: [Double]) {
-        uv_line_chart.data = nil
-        uv_line_chart.alpha = 0.0
-        uv_bar_chart.alpha = 1.0
-        var dataEntries: [BarChartDataEntry] = []
-        
-        for i in 0..<dataPoints.count {
-            let dataEntry = BarChartDataEntry(x: Double(i), y: values[i])
-            dataEntries.append(dataEntry)
+        changeView(fromView: uv_line_chart , toView: uv_bar_chart)
+        let dataEntries: [BarChartDataEntry] = (0..<dataPoints.count).map { (i) in
+            return BarChartDataEntry(x: Double(i), y: values[i])
         }
-        
+//        for i in 0..<dataPoints.count {
+//            let dataEntry = BarChartDataEntry(x: Double(i), y: values[i])
+//            dataEntries.append(dataEntry)
+//        }
+//
         if let set = uv_bar_chart.data?.dataSets.first as? BarChartDataSet {
             set.replaceEntries(dataEntries)
             uv_bar_chart.data?.notifyDataChanged()
@@ -225,9 +225,8 @@ class StatisticViewController: UIViewController {
             let data = BarChartData(dataSet: chartDataSet)
             data.setValueFont(UIFont.chartFont)
             uv_bar_chart.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints)
-            uv_bar_chart.xAxis.labelFont = UIFont.chartFont
             uv_bar_chart.data = data
-
+            
             let leftAxisFormatter = NumberFormatter()
             leftAxisFormatter.negativePrefix = string.dollar.rawValue
             leftAxisFormatter.positivePrefix = string.dollar.rawValue
@@ -236,21 +235,18 @@ class StatisticViewController: UIViewController {
             uv_bar_chart.rightAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
             uv_bar_chart.rightAxis.labelFont = UIFont.chartFont
             
-            //TODO: get the daily Average
-            let ll1 = ChartLimitLine(limit: 150, label: "Daily Average: $150")
-            ll1.lineWidth = 2
-            ll1.lineDashLengths = [5, 5]
-            ll1.labelPosition = .topRight
-            ll1.valueFont = UIFont.chartFont
-            ll1.valueTextColor = .red
-            uv_bar_chart.leftAxis.addLimitLine(ll1)
+            let limitLine = ChartLimitLine(limit: 150, label: "Daily Average: $150")
+            limitLine.lineWidth = 2
+            limitLine.lineDashLengths = [5, 5]
+            limitLine.labelPosition = .topRight
+            limitLine.valueFont = UIFont.chartFont
+            limitLine.valueTextColor = .red
+            uv_bar_chart.leftAxis.addLimitLine(limitLine)
         }
     }
     
     func setLineChartValues(dataPoints: [Int], values: [Double]) {
-        uv_bar_chart.data = nil
-        uv_line_chart.alpha = 1.0
-        uv_bar_chart.alpha = 0.0
+        changeView(fromView: uv_bar_chart, toView: uv_line_chart)
         let dataEntries : [ChartDataEntry] = (0..<dataPoints.count).map { (i) -> ChartDataEntry in
             return  ChartDataEntry(x: Double(i), y: values[i])
         }
@@ -277,7 +273,7 @@ class StatisticViewController: UIViewController {
             uv_line_chart.leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
             uv_line_chart.leftAxis.labelFont = UIFont.chartFont
             uv_line_chart.rightAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
-            uv_line_chart.rightAxis.labelFont = UIFont.chartFont
+            
             uv_line_chart.xAxis.labelPosition = .bottom
     
             let l = uv_line_chart.legend
@@ -389,5 +385,12 @@ class StatisticViewController: UIViewController {
             }
             break
         }
+    }
+    
+    // change to another view
+    func changeView(fromView: BarLineChartViewBase, toView: BarLineChartViewBase) {
+        fromView.data = nil
+        fromView.alpha = 0.0
+        toView.alpha = 1.0
     }
 }

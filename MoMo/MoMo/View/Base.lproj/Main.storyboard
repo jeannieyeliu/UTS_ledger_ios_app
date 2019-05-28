@@ -666,11 +666,11 @@
                         <outlet property="lb_month" destination="9HU-Vx-RVG" id="5MP-Xa-6Hj"/>
                         <outlet property="lb_spent" destination="WI9-xo-FkS" id="gWI-kf-8ny"/>
                         <outlet property="lb_week" destination="fY0-yv-EXm" id="zcf-kD-zf9"/>
+                        <outlet property="scDateRange" destination="WO8-Pj-pVh" id="wCc-Sb-c2K"/>
                         <outlet property="swt_mode_outlet" destination="EgX-Ed-GWp" id="Mzp-ez-2qY"/>
                         <outlet property="tf_budget" destination="h6e-2s-LHQ" id="bu6-Ss-Sp2"/>
                         <outlet property="uv_bar_chart" destination="nOH-Ba-Rg8" id="lQi-Oj-ZcT"/>
                         <outlet property="uv_line_chart" destination="41n-O0-2aM" id="s85-8O-Z1f"/>
-                        <outlet property="uv_outer_chart" destination="fTh-5D-YNo" id="R4B-df-ulI"/>
                         <outlet property="uv_progress" destination="iNp-4B-Rgi" id="ahx-A2-6yv"/>
                     </connections>
                 </viewController>
