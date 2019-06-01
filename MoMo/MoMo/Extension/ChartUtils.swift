@@ -8,7 +8,9 @@
 
 import UIKit
 import Charts
+
 extension ChartUtils {
+    
     // change to another view
     static func switchView(fromView: BarLineChartViewBase, toView: BarLineChartViewBase) {
         fromView.data = nil
@@ -16,7 +18,7 @@ extension ChartUtils {
         toView.alpha = 1.0
     }
     
-    static func setLengent(_ lengend: Legend) {
+    static func setLegend(_ lengend: Legend) {
         lengend.horizontalAlignment = .left
         lengend.verticalAlignment = .bottom
         lengend.orientation = .horizontal
@@ -40,7 +42,6 @@ extension ChartUtils {
     
     
     static func updateLimitLine(limitLine: ChartLimitLine, axis: YAxis, limit: Double, label: String) {
-        
         limitLine.limit = limit
         limitLine.label = label
     }
@@ -50,8 +51,8 @@ extension ChartUtils {
         chart.rightAxis.labelFont = UIFont.chartFont
         chart.leftAxis.labelFont = UIFont.chartFont
         chart.xAxis.labelFont = UIFont.chartFont
-        chart.chartDescription?.text = Enum.StringList.blank.rawValue
-        chart.noDataText = Enum.StringList.blank.rawValue
+        chart.chartDescription?.text = Const.blank
+        chart.noDataText = Const.blank
         chart.xAxis.labelPosition = .bottom
         
         // add a limit line
@@ -64,16 +65,15 @@ extension ChartUtils {
     }
     
     static func setYAxisMoneyFormatter(_ chart: BarLineChartViewBase) {
-    
-    let axisFormatter = NumberFormatter()
-    axisFormatter.negativePrefix = Enum.StringList.dollar.rawValue
-    axisFormatter.positivePrefix = Enum.StringList.dollar.rawValue
-    chart.leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: axisFormatter)
-    chart.rightAxis.valueFormatter = DefaultAxisValueFormatter(formatter: axisFormatter)
+        let axisFormatter = NumberFormatter()
+        axisFormatter.negativePrefix = Const.dollar
+        axisFormatter.positivePrefix = Const.dollar
+        chart.leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: axisFormatter)
+        chart.rightAxis.valueFormatter = DefaultAxisValueFormatter(formatter: axisFormatter)
     }
     
     static func setAxisDateFormat(_ chart: BarLineChartViewBase, dataPoints: [Int]) {
-        let month = Date().getComponent(format: Enum.StringList.monthFormat2.rawValue)
+        let month = Date().getComponent(format: Const.monthFormat2)
         chart.xAxis.valueFormatter = IndexAxisValueFormatter(
             values: dataPoints.map { (i) -> String in
                 return String.formatDayMonth(day: i, month: month)
@@ -83,13 +83,12 @@ extension ChartUtils {
     static func setLineChartDataSetStyle(_ chartDataSet: LineChartDataSet) {
         chartDataSet.drawValuesEnabled = false
         chartDataSet.circleRadius = 3
-        chartDataSet.setColor(NSUIColor(red:0.00, green:0.50, blue:0.76, alpha:1.0))
-        chartDataSet.setCircleColor(NSUIColor(red:0.00, green:0.50, blue:0.76, alpha:1.0))
+        chartDataSet.setColor(UIColor.oceanBlue)//(NSUIColor(red:0.00, green:0.50, blue:0.76, alpha:1.0))
+        chartDataSet.setCircleColor(UIColor.oceanBlue)//(NSUIColor(red:0.00, green:0.50, blue:0.76, alpha:1.0))
     }
     
     static func setBarChartDataSetStyle(_ chartDataSet: BarChartDataSet) {
         let data = BarChartData(dataSet: chartDataSet)
         data.setValueFont(UIFont.chartFont)
     }
-    
 }

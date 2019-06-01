@@ -171,7 +171,7 @@ open class BalloonMarker: MarkerImage {
     open override func refreshContent(entry: ChartDataEntry, highlight: Highlight) {
         //print(entry.y)
         let day = String.formatTwoDigit(Int(entry.x))
-        let month = Date().getComponent(format: Enum.StringList.monthFormat2.rawValue)
+        let month = Date().getComponent(format: Const.monthFormat2/*Enum.StringList.monthFormat2.rawValue*/)
         
         setLabel("Date: \(day)/\(month) \nSpent: $\(entry.y)")
     }

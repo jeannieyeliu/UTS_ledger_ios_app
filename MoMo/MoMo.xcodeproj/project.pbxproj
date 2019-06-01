@@ -7,17 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1653AC19229C03EF005E768D /* Consts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1653AC18229C03EF005E768D /* Consts.swift */; };
+		1653AC19229C03EF005E768D /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1653AC18229C03EF005E768D /* Const.swift */; };
 		16A7CB2C228E733D00B843BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A7CB2B228E733D00B843BD /* AppDelegate.swift */; };
 		16A7CB33228E733D00B843BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16A7CB31228E733D00B843BD /* Main.storyboard */; };
 		16A7CB35228E733F00B843BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16A7CB34228E733F00B843BD /* Assets.xcassets */; };
 		16A7CB38228E733F00B843BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16A7CB36228E733F00B843BD /* LaunchScreen.storyboard */; };
 		16B6F026229CF292000C6496 /* ChartUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B6F025229CF292000C6496 /* ChartUtils.swift */; };
-		1C3CDA50228E992F004BE391 /* RecordInDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3CDA4F228E992F004BE391 /* RecordInDay.swift */; };
-		1C3CDA55228EBE4E004BE391 /* ExpenseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3CDA54228EBE4E004BE391 /* ExpenseTableViewController.swift */; };
+		1C3CDA50228E992F004BE391 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3CDA4F228E992F004BE391 /* Record.swift */; };
 		1C3CDA57228ED100004BE391 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3CDA56228ED100004BE391 /* ExpenseTableViewCell.swift */; };
 		1C3CDA59228ED1E5004BE391 /* ExpenseTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3CDA58228ED1E5004BE391 /* ExpenseTableViewSection.swift */; };
-		1C3CDA5B228EE18A004BE391 /* ToPayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3CDA5A228EE18A004BE391 /* ToPayTableViewController.swift */; };
 		1C3CDA5D229172CB004BE391 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C3CDA5C229172CB004BE391 /* GoogleService-Info.plist */; };
 		1C3CDA61229197C9004BE391 /* AddRecordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3CDA60229197C9004BE391 /* AddRecordTableViewController.swift */; };
 		1C3CDA6322924CF1004BE391 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3CDA6222924CF1004BE391 /* StatisticViewController.swift */; };
@@ -33,7 +31,7 @@
 
 /* Begin PBXFileReference section */
 		1585869A212A6DCE56FF869C /* Pods-MoMo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoMo.release.xcconfig"; path = "Target Support Files/Pods-MoMo/Pods-MoMo.release.xcconfig"; sourceTree = "<group>"; };
-		1653AC18229C03EF005E768D /* Consts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consts.swift; sourceTree = "<group>"; };
+		1653AC18229C03EF005E768D /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		16A7CB28228E733D00B843BD /* MoMo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoMo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16A7CB2B228E733D00B843BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16A7CB32228E733D00B843BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -41,11 +39,9 @@
 		16A7CB37228E733F00B843BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		16A7CB39228E733F00B843BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16B6F025229CF292000C6496 /* ChartUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartUtils.swift; sourceTree = "<group>"; };
-		1C3CDA4F228E992F004BE391 /* RecordInDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordInDay.swift; sourceTree = "<group>"; };
-		1C3CDA54228EBE4E004BE391 /* ExpenseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExpenseTableViewController.swift; path = ../Controller/ExpenseTableViewController.swift; sourceTree = "<group>"; };
+		1C3CDA4F228E992F004BE391 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		1C3CDA56228ED100004BE391 /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
 		1C3CDA58228ED1E5004BE391 /* ExpenseTableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewSection.swift; sourceTree = "<group>"; };
-		1C3CDA5A228EE18A004BE391 /* ToPayTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ToPayTableViewController.swift; path = ../Controller/ToPayTableViewController.swift; sourceTree = "<group>"; };
 		1C3CDA5C229172CB004BE391 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1C3CDA60229197C9004BE391 /* AddRecordTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordTableViewController.swift; sourceTree = "<group>"; };
 		1C3CDA6222924CF1004BE391 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
@@ -93,7 +89,6 @@
 		16A7CB2A228E733D00B843BD /* MoMo */ = {
 			isa = PBXGroup;
 			children = (
-				1C7FD907229ACEF300B78D46 /* New Group */,
 				1C7FD904229920B800B78D46 /* Asset */,
 				1CDC2A9022956FBC00F0165E /* Extension */,
 				1C3CDA4C228E9117004BE391 /* Controller */,
@@ -101,6 +96,8 @@
 				1C3CDA4A228E9109004BE391 /* View */,
 				16A7CB39228E733F00B843BD /* Info.plist */,
 				1C3CDA5C229172CB004BE391 /* GoogleService-Info.plist */,
+				16A7CB31228E733D00B843BD /* Main.storyboard */,
+				16A7CB36228E733F00B843BD /* LaunchScreen.storyboard */,
 			);
 			path = MoMo;
 			sourceTree = "<group>";
@@ -108,8 +105,9 @@
 		1C3CDA4A228E9109004BE391 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				16A7CB31228E733D00B843BD /* Main.storyboard */,
-				16A7CB36228E733F00B843BD /* LaunchScreen.storyboard */,
+				1C3CDA58228ED1E5004BE391 /* ExpenseTableViewSection.swift */,
+				1C3CDA682293D85B004BE391 /* CategoryCollectionViewCell.swift */,
+				1C3CDA56228ED100004BE391 /* ExpenseTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -117,7 +115,7 @@
 		1C3CDA4B228E9112004BE391 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1C3CDA4F228E992F004BE391 /* RecordInDay.swift */,
+				1C3CDA4F228E992F004BE391 /* Record.swift */,
 				1C3CDA6A229506CC004BE391 /* Category.swift */,
 				1CDC2A8E22956BF400F0165E /* EventNumber.swift */,
 			);
@@ -128,9 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				16A7CB2B228E733D00B843BD /* AppDelegate.swift */,
-				1C3CDA682293D85B004BE391 /* CategoryCollectionViewCell.swift */,
-				1C3CDA58228ED1E5004BE391 /* ExpenseTableViewSection.swift */,
-				1C3CDA56228ED100004BE391 /* ExpenseTableViewCell.swift */,
 				1C3CDA642292EA87004BE391 /* HomeViewController.swift */,
 				1C3CDA60229197C9004BE391 /* AddRecordTableViewController.swift */,
 				1C3CDA6222924CF1004BE391 /* StatisticViewController.swift */,
@@ -143,18 +138,9 @@
 			children = (
 				16A7CB34228E733F00B843BD /* Assets.xcassets */,
 				1C7FD905229920CB00B78D46 /* Enum.swift */,
-				1653AC18229C03EF005E768D /* Consts.swift */,
+				1653AC18229C03EF005E768D /* Const.swift */,
 			);
 			path = Asset;
-			sourceTree = "<group>";
-		};
-		1C7FD907229ACEF300B78D46 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-				1C3CDA54228EBE4E004BE391 /* ExpenseTableViewController.swift */,
-				1C3CDA5A228EE18A004BE391 /* ToPayTableViewController.swift */,
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		1CDC2A9022956FBC00F0165E /* Extension */ = {
@@ -314,11 +300,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C3CDA59228ED1E5004BE391 /* ExpenseTableViewSection.swift in Sources */,
-				1653AC19229C03EF005E768D /* Consts.swift in Sources */,
+				1653AC19229C03EF005E768D /* Const.swift in Sources */,
 				1C3CDA57228ED100004BE391 /* ExpenseTableViewCell.swift in Sources */,
 				1CDC2A9222956FCA00F0165E /* Helper.swift in Sources */,
-				1C3CDA55228EBE4E004BE391 /* ExpenseTableViewController.swift in Sources */,
-				1C3CDA5B228EE18A004BE391 /* ToPayTableViewController.swift in Sources */,
 				1C3CDA61229197C9004BE391 /* AddRecordTableViewController.swift in Sources */,
 				1C3CDA652292EA87004BE391 /* HomeViewController.swift in Sources */,
 				1CDC2A8F22956BF400F0165E /* EventNumber.swift in Sources */,
@@ -328,7 +312,7 @@
 				1C3CDA692293D85B004BE391 /* CategoryCollectionViewCell.swift in Sources */,
 				1C7FD906229920CB00B78D46 /* Enum.swift in Sources */,
 				16B6F026229CF292000C6496 /* ChartUtils.swift in Sources */,
-				1C3CDA50228E992F004BE391 /* RecordInDay.swift in Sources */,
+				1C3CDA50228E992F004BE391 /* Record.swift in Sources */,
 				1C3CDA6B229506CC004BE391 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
