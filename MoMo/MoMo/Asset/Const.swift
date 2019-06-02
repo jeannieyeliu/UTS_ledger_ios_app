@@ -16,7 +16,7 @@ class Const {
     static let barLabel = "Expenses in last 7 days"
     static let lineLabel = "Expenses in last 30 days"
     static let topayLabel = "To Pay"
-    static let limitLineLabel = "Daily Limit:"
+    static let limitLineLabel = "Daily Average: $"
     static let daysInAWeek = 7
     static let daysInAMonth = 30
     static let weekNumber = ["Sun":0, "Mon":1, "Tue":2, "Wed":3, "Thu":4, "Fri":5, "Sat":6]
