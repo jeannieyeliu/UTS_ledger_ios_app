@@ -9,7 +9,7 @@ import UIKit
 
 extension UIViewController {
     
-    func getDate(dateString: String, format: String = Enum.StringList.dateFormat2.rawValue) -> Date {
+    func getDate(dateString: String, format: String = Const.dateFormat2/*Enum.StringList.dateFormat2.rawValue*/) -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
         let date = dateFormatter.date(from: dateString)!
@@ -34,8 +34,8 @@ extension UIViewController {
     }
     
     func getNumberOfDaysInAMonth() -> Int {
-        let month = Date().getComponent(format: Enum.StringList.monthFormat1.rawValue)
-        let year = Date().getComponent(format: Enum.StringList.yearFormat1.rawValue)
+        let month = Date().getComponent(format: Const.monthFormat1)
+        let year = Date().getComponent(format: Const.yearFormat1)
         return Date().getDaysInMonth(year: Int(year) ?? 2019, month: Int(month) ?? 1)
     }
     
@@ -48,6 +48,17 @@ extension UIViewController {
         let startOfWeek = getCorrectDate(forDate: Date().startOfWeek())
         return getCountDown(from: String("\(startOfWeek)".prefix(10)), to: String("\(Date())".prefix(10)))
     }
+    
+    // Source: https://github.com/goktugyil/EZSwiftExtensions
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }
 
 extension UIColor {
@@ -57,13 +68,14 @@ extension UIColor {
 }
 
 extension UIFont {
-    static let chartFont = UIFont(name: Enum.StringList.chalkFont.rawValue, size: 10)!
+    static let chartFont = UIFont(name: Const.chalkFont, size: 10)!
 }
 extension Calendar {
     static let iso8601 = Calendar(identifier: .iso8601)
 }
 
 extension Date {
+    
     func startOfMonth() -> Date {
         return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: self)))!
     }
@@ -86,6 +98,9 @@ extension Date {
         return Calendar.current.component(.month, from: date)
     }
     
+    /*
+     Get a component from a specific format (e.g. d, mm, yyyy, etc.)
+     */
     func getComponent(format: String) -> String {
         let formatter = DateFormatter()
         let today = Date()
@@ -102,107 +117,68 @@ extension Date {
     }
     
     func getDaysInThisMonth() -> Int {
-        var comp = Calendar.current.dateComponents([.year, .month, .day, .weekday], from: Date())
+        let comp = Calendar.current.dateComponents([.year, .month, .day, .weekday], from: Date())
         let year = comp.year ?? 2019
         let month = comp.month ?? 5
-        let dateComponents = DateComponents(year: year, month: month)
-        let calendar = Calendar.current
-        let date = calendar.date(from: dateComponents)!
-        let range = calendar.range(of: .day, in: .month, for: date)!
-        return range.count
+//        let dateComponents = DateComponents(year: year, month: month)
+//        let calendar = Calendar.current
+//        let date = calendar.date(from: dateComponents)!
+//        let range = calendar.range(of: .day, in: .month, for: date)!
+        let range = getDaysInMonth(year: year, month: month)
+        return range//.count
     }
     
     func isLessThanToday(today: Date, and: Date) -> Bool {
         return today >= and
     }
     
-//    func getMonth(from date: today) -> [Date] {
-//        let calendar = Calendar.current
-//        var comp = calendar.dateComponents([.year, .month, .day, .weekday], from: date)
-//        guard let day = comp.day, let month = comp.month, let year = comp.year else {
-//            return []
-//        }
-//        return getDatesByRange(from: 1 - day, to: Date().getDaysInMonth(year: year, month: month) - day)
-//    }
-    
-    
-    // get the date of each day of the week
-    func getWeekDates() -> [Date] {
-        var comp = Calendar.current.dateComponents([.year, .month, .day, .weekday], from: Date())
-        let currentWeekDay = comp.weekday == 1 ? 7 : (comp.weekday!  - 1)
-        return getDatesByRange(from: 1 - currentWeekDay, to: 7-currentWeekDay)
-    }
-    
-    // get the dates of each month of the day
-    func getMonth() -> [Date] {
-        var comp = Calendar.current.dateComponents([.year, .month, .day, .weekday], from: Date())
-        guard let day = comp.day, let month = comp.month, let year = comp.year else {
-            return []
-        }
-        return getDatesByRange(from: 1 - day, to: Date().getDaysInMonth(year: year, month: month) - day)
-    }
-    
-    // get the dates of each month of the day
-    func getMonthTillToday() -> [Date] {
-        var comp = Calendar.current.dateComponents([.year, .month, .day, .weekday], from: Date())
-        return comp.day == nil ? [] : getDatesByRange(from: 2 - comp.day!, to: 1)
-    }
-    
-    // give a range of days, from means how many days before today; to means how many days after today
-    func getDatesByRange(from: Int, to: Int) -> [Date] {
-        var comp = Calendar.current.dateComponents([.year, .month, .day, .weekday], from: Date())
-        guard let day = comp.day else {
-            return []
-        }
-        
-        let dates: [Date] = (from...to).map { (i) -> Date in
-            comp.day = day + i
-            let date = Calendar.current.date(from: comp)
-            return date!
-        }
-        return dates
-    }
-    
     func getWeekNameFromDate(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEE"
         dateFormatter.timeZone = TimeZone.current
-        let correctDate = Calendar.current.date(byAdding: .day, value: -1, to: date)!
-        return dateFormatter.string(from: correctDate )
+        return dateFormatter.string(from: date )
     }
     
-    func getDayIntValueFromDate(_ date: Date) -> Int {
-        let dayName = String.subStr(str: "\(date)", from: 8, length: 2)
-        return Int(dayName)!
+    func getXAxisFormatDate(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM"
+        dateFormatter.timeZone = TimeZone.current
+        return dateFormatter.string(from: date)
+    }
+    
+    func getFormatDate(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.timeZone = TimeZone.current
+        return dateFormatter.string(from: date)
+    }
+    
+    func getLastNDays(_ lastNDay: Int) -> [Date] {
+        return (1...lastNDay).map {
+            Calendar.current.date(byAdding: .day, value: $0 - lastNDay, to: Date())!
+        }
     }
 }
 
-extension String {
-    // Swift 4 doesn't provide direct substring so...
-    static func subStr(str: String, from: Int, to: Int) -> String {
-        return subStr(str:str, from: from, length: to - from)
-    }
+extension UITextField {
     
-    static func subStr(str: String, from: Int, length: Int) -> String {
-        let start = str.index(str.startIndex, offsetBy: from)
-        let end = str.index(start, offsetBy: length)
-        let range = start..<end
-        let mySubstring = str[range]
-        return String(mySubstring)
-    }
-    
-    // return 2 digit for a number, e.g. format(1) will return "01"
-    static func formatTwoDigit(_ digit: Int) -> String {
-        return digit >= 9 ? "\(digit + 1)" : "0\(digit+1)"
-    }
-    
-    // formatDayMonth(day: 2, month: 1) will return "02/01)
-    static func formatDayMonth(day: Int, month: Int) -> String {
-        return "\(formatTwoDigit(day))/\(formatTwoDigit(month))"
-    }
-    
-    
-    static func formatDayMonth(day: Int, month: String) -> String {
-        return "\(formatTwoDigit(day))/\(formatTwoDigit(Int(month)!))"
+    // Source: https://gist.github.com/jplazcano87/8b5d3bc89c3578e45c3e
+    func addDoneButtonToKeyboard(myAction:Selector?){
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 300, height: 40))
+        doneToolbar.barStyle = UIBarStyle.default
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: Const.done,
+                                                    style: UIBarButtonItem.Style.done,
+                                                    target: self, action: myAction)
+        
+        var items = [UIBarButtonItem]()
+        items.append(flexSpace)
+        items.append(done)
+        
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+        
+        self.inputAccessoryView = doneToolbar
     }
 }
