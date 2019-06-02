@@ -30,11 +30,12 @@ extension ChartUtils {
     }
     
     // set up the balloon pop up when clicked
-    static func setMarker(chartView: BarLineChartViewBase) {
+    static func setMarker(chartView: BarLineChartViewBase, lastNDays: Int) {
         let marker = BalloonMarker(color: UIColor.darkBlue,
                                    font: UIFont.chartFont,
                                    textColor: .white,
-                                   insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8))
+                                   insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8),
+                                   chartXEntryLength: lastNDays)
         marker.chartView = chartView
         marker.minimumSize = CGSize(width: 80, height: 40)
         chartView.marker = marker
@@ -54,7 +55,7 @@ extension ChartUtils {
         chart.chartDescription?.text = Const.blank
         chart.noDataText = Const.blank
         chart.xAxis.labelPosition = .bottom
-        
+        chart.leftAxis.axisMinimum = 0
         // add a limit line
         limitLine.lineWidth = 2
         limitLine.lineDashLengths = [5, 5]
@@ -72,22 +73,15 @@ extension ChartUtils {
         chart.rightAxis.valueFormatter = DefaultAxisValueFormatter(formatter: axisFormatter)
     }
     
-    static func setAxisDateFormat(_ chart: BarLineChartViewBase, dataPoints: [Int]) {
-        let month = Date().getComponent(format: Const.monthFormat2)
-        chart.xAxis.valueFormatter = IndexAxisValueFormatter(
-            values: dataPoints.map { (i) -> String in
-                return String.formatDayMonth(day: i, month: month)
-        })
-    }
-    
     static func setLineChartDataSetStyle(_ chartDataSet: LineChartDataSet) {
         chartDataSet.drawValuesEnabled = false
         chartDataSet.circleRadius = 3
-        chartDataSet.setColor(UIColor.oceanBlue)//(NSUIColor(red:0.00, green:0.50, blue:0.76, alpha:1.0))
-        chartDataSet.setCircleColor(UIColor.oceanBlue)//(NSUIColor(red:0.00, green:0.50, blue:0.76, alpha:1.0))
+        chartDataSet.setColor(UIColor.oceanBlue)
+        chartDataSet.setCircleColor(UIColor.oceanBlue)
     }
     
     static func setBarChartDataSetStyle(_ chartDataSet: BarChartDataSet) {
+        chartDataSet.drawValuesEnabled = false
         let data = BarChartData(dataSet: chartDataSet)
         data.setValueFont(UIFont.chartFont)
     }

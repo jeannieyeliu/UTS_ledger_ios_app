@@ -132,84 +132,31 @@ extension Date {
         return today >= and
     }
     
-    // get the date of each day of the week
-    func getWeekDates() -> [Date] {
-        var comp = Calendar.current.dateComponents([.year, .month, .day, .weekday], from: Date())
-        let currentWeekDay = comp.weekday == 1 ? 7 : (comp.weekday!  - 1)
-        return getDatesByRange(from: 1 - currentWeekDay, to: 7 - currentWeekDay)
-    }
-    
-    // get the dates of each month of the day
-    func getMonth() -> [Date] {
-        var comp = Calendar.current.dateComponents([.year, .month, .day, .weekday], from: Date())
-        guard let day = comp.day, let month = comp.month, let year = comp.year else {
-            return []
-        }
-        return getDatesByRange(from: 1 - day, to: Date().getDaysInMonth(year: year, month: month) - day)
-    }
-    
-    // get the dates of each month of the day
-    func getMonthTillToday() -> [Date] {
-        var comp = Calendar.current.dateComponents([.year, .month, .day, .weekday], from: Date())
-        return comp.day == nil ? [] : getDatesByRange(from: 2 - comp.day!, to: 1)
-    }
-    
-    // give a range of days, from means how many days before today; to means how many days after today
-    func getDatesByRange(from: Int, to: Int) -> [Date] {
-        var comp = Calendar.current.dateComponents([.year, .month, .day, .weekday], from: Date())
-        guard let day = comp.day else {
-            return []
-        }
-        
-        let dates: [Date] = (from...to).map { (i) -> Date in
-            comp.day = day + i
-            let date = Calendar.current.date(from: comp)
-            return date!
-        }
-        return dates
-    }
-    
     func getWeekNameFromDate(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEE"
         dateFormatter.timeZone = TimeZone.current
-        let correctDate = Calendar.current.date(byAdding: .day, value: -1, to: date)!
-        return dateFormatter.string(from: correctDate )
+        return dateFormatter.string(from: date )
     }
     
-    func getDayIntValueFromDate(_ date: Date) -> Int {
-        let dayName = String.subStr(str: "\(date)", from: 8, length: 2)
-        return Int(dayName)!
-    }
-}
-
-extension String {
-    // Swift 4 doesn't provide direct substring so...
-    static func subStr(str: String, from: Int, to: Int) -> String {
-        return subStr(str:str, from: from, length: to - from)
+    func getXAxisFormatDate(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM"
+        dateFormatter.timeZone = TimeZone.current
+        return dateFormatter.string(from: date)
     }
     
-    static func subStr(str: String, from: Int, length: Int) -> String {
-        let start = str.index(str.startIndex, offsetBy: from)
-        let end = str.index(start, offsetBy: length)
-        let range = start..<end
-        let mySubstring = str[range]
-        return String(mySubstring)
+    func getFormatDate(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.timeZone = TimeZone.current
+        return dateFormatter.string(from: date)
     }
     
-    // return 2 digit for a number, e.g. format(1) will return "01"
-    static func formatTwoDigit(_ digit: Int) -> String {
-        return digit >= 9 ? "\(digit + 1)" : "0\(digit + 1)"
-    }
-    
-    // formatDayMonth(day: 2, month: 1) will return "02/01)
-    static func formatDayMonth(day: Int, month: Int) -> String {
-        return "\(formatTwoDigit(day))/\(formatTwoDigit(month))"
-    }
-    
-    
-    static func formatDayMonth(day: Int, month: String) -> String {
-        return "\(formatTwoDigit(day))/\(formatTwoDigit(Int(month)!))"
+    func getLastNDays(_ lastNDay: Int) -> [Date] {
+        return (1...lastNDay).map {
+            Calendar.current.date(byAdding: .day, value: $0 - lastNDay, to: Date())!
+        }
     }
 }
 

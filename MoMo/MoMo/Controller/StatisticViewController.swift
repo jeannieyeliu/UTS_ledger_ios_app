@@ -77,8 +77,8 @@ class StatisticViewController: UIViewController {
         ref = Database.database().reference().child(Const.root).child(Const.date)
         ChartUtils.setChartViewStyle(limitLine: limitLine, chart: uv_bar_chart)
         ChartUtils.setChartViewStyle(limitLine: limitLine, chart: uv_line_chart)
-        ChartUtils.setMarker(chartView: uv_bar_chart)
-        ChartUtils.setMarker(chartView: uv_line_chart)
+        ChartUtils.setMarker(chartView: uv_bar_chart, lastNDays: Const.daysInAWeek)
+        ChartUtils.setMarker(chartView: uv_line_chart, lastNDays: Const.daysInAMonth)
         updateChartRecordArray(Const.defaultChartType)
     }
     
@@ -229,90 +229,73 @@ class StatisticViewController: UIViewController {
         updateChartRecordArray(type)
     }
     
-    func setBarChartValues(_ dataPoints: [Int], _ values: [Double]) {
+    func setBarChartValues(_ dataPoints: [Date], _ values: [Double]) {
         ChartUtils.switchView(fromView: uv_line_chart , toView: uv_bar_chart)
-        let weekNum = Const.weekNumber[Date().getWeekNameFromDate(today)]! + 2
-        let dataEntries1: [BarChartDataEntry] = (zero ..< weekNum).map { i in BarChartDataEntry(x: Double(i), y: values[i]) }
-        let dataEntries2: [BarChartDataEntry] = (weekNum ..< dataPoints.count).map { i in BarChartDataEntry(x: Double(i), y: values[i]) }
+        let dataEntries: [BarChartDataEntry] = (zero..<dataPoints.count).map{ BarChartDataEntry(x: Double($0), y: values[$0]) }
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: Const.barLabel)
+        chartDataSet.setColor(UIColor.darkBlue)
+        chartDataSet.colors = [UIColor.darkBlue]
         
-        let chartDataSet1 = BarChartDataSet(entries: dataEntries1, label: Const.barLabel)
-        let chartDataSet2 = BarChartDataSet(entries: dataEntries2, label: Const.topayLabel)
-        chartDataSet1.setColor(UIColor.darkBlue)
-        chartDataSet2.setColor(UIColor.lightBlue)
-        chartDataSet1.colors = [UIColor.darkBlue]
-        chartDataSet2.colors = [UIColor.lightBlue]
-        
-        let data = BarChartData(dataSets: [chartDataSet1, chartDataSet2] )
-        uv_bar_chart.xAxis.valueFormatter = IndexAxisValueFormatter(values: Const.weekTitle)
+        let data = BarChartData(dataSet: chartDataSet)
+        data.setValueFont(UIFont.chartFont)
+        uv_bar_chart.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints.map{ Date().getWeekNameFromDate($0) })
         uv_bar_chart.data = data
-        ChartUtils.setBarChartDataSetStyle(chartDataSet1)
-        ChartUtils.setBarChartDataSetStyle(chartDataSet2)
+        ChartUtils.setBarChartDataSetStyle(chartDataSet)
         ChartUtils.setYAxisMoneyFormatter(uv_bar_chart)
-        
+        ChartUtils.setLegend(uv_bar_chart.legend)
         let limit = getDailyAverage(.week)
-        ChartUtils.updateLimitLine(limitLine: limitLine, axis: uv_bar_chart.leftAxis, limit: limit, label: "\(Const.limitLineLabel) \(limit)")
+        ChartUtils.updateLimitLine(limitLine: limitLine,
+                                   axis: uv_bar_chart.leftAxis,
+                                   limit: limit,
+                                   label: "\(Const.limitLineLabel) \(limit)")
     }
     
-    func setLineChartValues(_ dataPoints: [Int], _ values: [Double]) {
+    func setLineChartValues(_ dataPoints: [Date], _ values: [Double]) {
         ChartUtils.switchView(fromView: uv_bar_chart, toView: uv_line_chart)
-        let dataEntries = (zero ..< dataPoints.count).map { i in ChartDataEntry(x: Double(i), y: values[i]) }
+        let dataEntries = (zero..<dataPoints.count).map{ ChartDataEntry(x: Double($0), y: values[$0]) }
         
         if let set = uv_line_chart.data?.dataSets.first as? LineChartDataSet {
             set.replaceEntries(dataEntries)
             uv_line_chart.data?.notifyDataChanged()
             uv_line_chart.notifyDataSetChanged()
-            
         } else {
-            let chartDataSet = LineChartDataSet(entries: dataEntries, label: Const.barLabel)
+            let chartDataSet = LineChartDataSet(entries: dataEntries, label: Const.lineLabel)
             let data = LineChartData(dataSet: chartDataSet)
             data.setValueFont(UIFont.chartFont)
             uv_line_chart.data = data
+            uv_line_chart.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints.map{ Date().getXAxisFormatDate($0) })
             
-            ChartUtils.setAxisDateFormat(uv_line_chart, dataPoints: dataPoints)
             ChartUtils.setLineChartDataSetStyle(chartDataSet)
             ChartUtils.setYAxisMoneyFormatter(uv_line_chart)
             ChartUtils.setLegend(uv_line_chart.legend)
             let limit = getDailyAverage(.month)
-            ChartUtils.updateLimitLine(limitLine: limitLine, axis: uv_line_chart.leftAxis, limit: limit, label: "\(Const.limitLineLabel): $\(limit)")
+            ChartUtils.updateLimitLine(limitLine: limitLine,
+                                       axis: uv_line_chart.leftAxis, limit: limit,
+                                       label: "\(Const.limitLineLabel): $\(limit)")
         }
     }
-    
     
     func updateChartRecordArray(_ type: Enum.GraphType) {
         switch type {
         case .week: // accumulate spense for each day of the week
-            let dates = Date().getWeekDates()
-            let dayTitle = dates.map { date in Date().getDayIntValueFromDate(date) }
-            var barValues: [Double] = Array(repeating: Double(zero), count: Const.daysInAWeek)
-            
-            for date in Date().getWeekDates() {
-                ref.child(String("\(date)".prefix(10))).observe(.value, with: { (snapshot) in
-                    let weekName = Date().getWeekNameFromDate(date)
-                    
-                    for record in snapshot.children.allObjects as! [DataSnapshot] {
-                        let recordObject = record.value as? [String: AnyObject]
-                        barValues[Const.weekNumber[weekName]!] += recordObject?[Const.amount] as! Double
-                    }
-                    self.setBarChartValues(dayTitle, barValues)
-                })
-            }
+            updateChartRecordArray(lastNDays:Const.daysInAWeek, drawChartFunction: self.setBarChartValues)
         case .month: // accumulate spense for each day of the month
-            let dates = Date().getMonthTillToday()
-            let dayTitle = dates.map { date in Date().getDayIntValueFromDate(date) }
-            var barValues: [Double] = Array(repeating: Double(zero), count: dates.count + 1)
-            
-            for date in dates {
-                let day: Int = Date().getDayIntValueFromDate(date)
-                ref.child(String("\(date)".prefix(10))).observe(.value, with: { (snapshot) in
-                    
-                    for record in snapshot.children.allObjects as! [DataSnapshot] {
-                        let recordObject = record.value as? [String: AnyObject]
-                        let amount = recordObject?[Const.amount] as! Double
-                        barValues[day] += amount
-                    }
-                    self.setLineChartValues(dayTitle, barValues)
-                })
-            }
+            updateChartRecordArray(lastNDays:Const.daysInAMonth, drawChartFunction: self.setLineChartValues)
+        }
+    }
+    
+    func updateChartRecordArray(lastNDays: Int, drawChartFunction: @escaping (_ date : [Date], _ values: [Double])  -> Void) {
+        let dates = Date().getLastNDays(lastNDays)
+        var chartValues: [Double] = Array(repeating: Double(zero), count: dates.count)
+        for i in 0..<dates.count {
+            let date = dates[i]
+            ref.child(String("\(date)".prefix(10))).observe(.value, with: { (snapshot) in
+                for record in snapshot.children.allObjects as! [DataSnapshot] {
+                    let recordObject = record.value as? [String: AnyObject]
+                    chartValues[i] += recordObject?[Const.amount] as! Double
+                }
+                drawChartFunction(dates, chartValues)
+            })
         }
     }
 }

@@ -18,17 +18,19 @@ open class BalloonMarker: MarkerImage {
     open var textColor: UIColor
     open var insets: UIEdgeInsets
     open var minimumSize = CGSize()
-    
+    open var chartXEntryLength: Int
     fileprivate var label: String?
     fileprivate var _labelSize: CGSize = CGSize()
     fileprivate var _paragraphStyle: NSMutableParagraphStyle?
     fileprivate var _drawAttributes = [NSAttributedString.Key : Any]()
     
-    public init(color: UIColor, font: UIFont, textColor: UIColor, insets: UIEdgeInsets) {
+    // changed by ye liu
+    public init(color: UIColor, font: UIFont, textColor: UIColor, insets: UIEdgeInsets, chartXEntryLength: Int) {
         self.color = color
         self.font = font
         self.textColor = textColor
         self.insets = insets
+        self.chartXEntryLength = chartXEntryLength
         
         _paragraphStyle = NSParagraphStyle.default.mutableCopy() as? NSMutableParagraphStyle
         _paragraphStyle?.alignment = .center
@@ -169,11 +171,10 @@ open class BalloonMarker: MarkerImage {
     
     //changes make by Ye liu
     open override func refreshContent(entry: ChartDataEntry, highlight: Highlight) {
-        //print(entry.y)
-        let day = String.formatTwoDigit(Int(entry.x))
-        let month = Date().getComponent(format: Const.monthFormat2/*Enum.StringList.monthFormat2.rawValue*/)
-        
-        setLabel("Date: \(day)/\(month) \nSpent: $\(entry.y)")
+        let dates = Date().getLastNDays(self.chartXEntryLength)
+        let date = Date().getFormatDate(dates[Int(entry.x)])
+        let spent = String(format: "%.2f", entry.y)
+        setLabel("Date: \(date) \nSpent: $\(spent)")
     }
     
     open func setLabel(_ newLabel: String) {
