@@ -23,6 +23,7 @@ class StatisticViewController: UIViewController {
     var today = Date()
     var isMonth = true
     var limitLine: ChartLimitLine = ChartLimitLine(limit: 0, label: "\(Const.limitLineLabel): \(Const.dollar)\(0)")
+    var showLimitLine = true
     
     // MARK: IBOutlet
     @IBOutlet weak var uv_progress: UIView!
@@ -60,9 +61,9 @@ class StatisticViewController: UIViewController {
     @IBAction func sc_DateRangeChange(_ sender: UISegmentedControl) {
         switch sc_DateRange.selectedSegmentIndex {
         case 0: // display the weekly chart
-            updateChartRecordArray(.week)
+            changeLimitLine()
         case 1: // display the monthly chart
-            updateChartRecordArray(.month)
+            changeLimitLine()
         default:
             break
         }
@@ -75,8 +76,8 @@ class StatisticViewController: UIViewController {
         uv_progress.layer.masksToBounds = true;
         tf_budget.text = "\(UserDefaults.standard.double(forKey: Const.budget))"
         ref = Database.database().reference().child(Const.root).child(Const.date)
-        ChartUtils.setChartViewStyle(limitLine: limitLine, chart: uv_bar_chart)
-        ChartUtils.setChartViewStyle(limitLine: limitLine, chart: uv_line_chart)
+        ChartUtils.setChartViewStyle(limitLine: limitLine, chart: uv_bar_chart, showLimitLine: false)
+        ChartUtils.setChartViewStyle(limitLine: limitLine, chart: uv_line_chart, showLimitLine: false)
         ChartUtils.setMarker(chartView: uv_bar_chart, lastNDays: Const.daysInAWeek)
         ChartUtils.setMarker(chartView: uv_line_chart, lastNDays: Const.daysInAMonth)
         updateChartRecordArray(Const.defaultChartType)
@@ -149,7 +150,6 @@ class StatisticViewController: UIViewController {
     func getDaysLeft() -> Int {
         var noOfDays = zero
         var daysPassed = zero
-        
         if isMonth {
             noOfDays = getNumberOfDaysInAMonth()
             daysPassed = getDaysPassedMonth()
@@ -216,15 +216,18 @@ class StatisticViewController: UIViewController {
         var type: Enum.GraphType = .week
         var chart: BarLineChartViewBase = uv_bar_chart
         switch sc_DateRange.selectedSegmentIndex {
-        case 0: // weekly chart
-            type = .week
-            chart = uv_bar_chart
-        case 1: // monthly chart
-            type = .month
-            chart = uv_line_chart
-        default:
-            break
+            case 0: // weekly chart
+                type = .week
+                chart = uv_bar_chart
+                showLimitLine = swt_mode_outlet.isOn ? false : true
+            case 1: // monthly chart
+                type = .month
+                chart = uv_line_chart
+                showLimitLine = swt_mode_outlet.isOn ? true : false
+            default:
+                break
         }
+        print("changeLimitLine \(showLimitLine)")
         chart.data = nil
         updateChartRecordArray(type)
     }
@@ -243,11 +246,22 @@ class StatisticViewController: UIViewController {
         ChartUtils.setBarChartDataSetStyle(chartDataSet)
         ChartUtils.setYAxisMoneyFormatter(uv_bar_chart)
         ChartUtils.setLegend(uv_bar_chart.legend)
-        let limit = getDailyAverage(.week)
-        ChartUtils.updateLimitLine(limitLine: limitLine,
-                                   axis: uv_bar_chart.leftAxis,
-                                   limit: limit,
-                                   label: "\(Const.limitLineLabel) \(limit)")
+        
+        guard let budgetText = tf_budget.text else { return }
+        let spend = self.getTotalAmount(array: self.sumArray)
+        let budget: Double = Double(budgetText) ?? Double(zero)
+        let daysLeft = getDaysLeft()
+        let limit = getAverageSpending(budget: budget, spent: spend, daysLeft: daysLeft)
+        
+        if (showLimitLine) {
+            ChartUtils.updateLimitLine(limitLine: limitLine,
+                                       axis: uv_bar_chart.leftAxis,
+                                       limit: limit,
+                                       label: "\(Const.limitLineLabel) \(limit)",
+                                       chart: uv_bar_chart)
+        } else {
+            uv_bar_chart.leftAxis.removeLimitLine(limitLine)
+        }
     }
     
     func setLineChartValues(_ dataPoints: [Date], _ values: [Double]) {
@@ -268,10 +282,19 @@ class StatisticViewController: UIViewController {
             ChartUtils.setLineChartDataSetStyle(chartDataSet)
             ChartUtils.setYAxisMoneyFormatter(uv_line_chart)
             ChartUtils.setLegend(uv_line_chart.legend)
-            let limit = getDailyAverage(.month)
-            ChartUtils.updateLimitLine(limitLine: limitLine,
-                                       axis: uv_line_chart.leftAxis, limit: limit,
-                                       label: "\(Const.limitLineLabel): $\(limit)")
+            
+            guard let budgetText = tf_budget.text else { return }
+            let spend = self.getTotalAmount(array: self.sumArray)
+            let budget: Double = Double(budgetText) ?? Double(zero)
+            let daysLeft = getDaysLeft()
+            let limit = getAverageSpending(budget: budget, spent: spend, daysLeft: daysLeft)
+            if (showLimitLine) {
+                ChartUtils.updateLimitLine(limitLine: limitLine,
+                                           axis: uv_line_chart.leftAxis, limit: limit,
+                                           label: "\(Const.limitLineLabel): $\(limit)", chart: uv_line_chart)
+            } else {
+                uv_line_chart.leftAxis.removeLimitLine(limitLine)
+            }
         }
     }
     

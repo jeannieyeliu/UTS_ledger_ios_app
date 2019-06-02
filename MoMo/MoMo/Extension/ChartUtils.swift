@@ -42,12 +42,14 @@ extension ChartUtils {
     }
     
     
-    static func updateLimitLine(limitLine: ChartLimitLine, axis: YAxis, limit: Double, label: String) {
+    static func updateLimitLine(limitLine: ChartLimitLine, axis: YAxis, limit: Double, label: String, chart: BarLineChartViewBase) {
         limitLine.limit = limit
         limitLine.label = label
+        chart.leftAxis.removeLimitLine(limitLine)
+        chart.leftAxis.addLimitLine(limitLine)
     }
     
-    static func setChartViewStyle(limitLine: ChartLimitLine, chart: BarLineChartViewBase) {
+    static func setChartViewStyle(limitLine: ChartLimitLine, chart: BarLineChartViewBase, showLimitLine: Bool) {
         // set style for chart
         chart.rightAxis.labelFont = UIFont.chartFont
         chart.leftAxis.labelFont = UIFont.chartFont
@@ -62,7 +64,9 @@ extension ChartUtils {
         limitLine.labelPosition = .topRight
         limitLine.valueFont = UIFont.chartFont
         limitLine.valueTextColor = .red
-        chart.leftAxis.addLimitLine(limitLine)
+        if (showLimitLine) {
+            chart.leftAxis.addLimitLine(limitLine)
+        }
     }
     
     static func setYAxisMoneyFormatter(_ chart: BarLineChartViewBase) {
