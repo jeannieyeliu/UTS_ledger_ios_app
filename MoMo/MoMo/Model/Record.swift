@@ -20,14 +20,6 @@ class Record {
         self.note = note
         self.category = category
     }
-    
-    func getTotalAmount(recordArray: [Record]) -> Double {
-        var totalAmount = [Double]()
-        for record in recordArray {
-            totalAmount.append(record.amount)
-        }
-        return totalAmount.reduce(0, +)
-    }
 }
 
 class RecordSum {

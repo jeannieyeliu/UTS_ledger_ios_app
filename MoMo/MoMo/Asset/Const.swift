@@ -72,10 +72,13 @@ class Const {
     //Format
     static let dateFormat1 = "MMM yy"
     static let dateFormat2 = "yyyy-MM-dd"
+    static let dateFormat3 = "dd/MM/yyyy"
     static let dayFormat1 = "dd"
+    static let weekFormat1 = "EEE"
     static let monthFormat1 = "L"
     static let monthFormat2 = "LL"
     static let yearFormat1 = "y"
+    static let xAxisFormat1 = "dd/MM"
     
     //UIFont
     static let chalkFont = "Chalkboard SE"

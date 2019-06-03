@@ -18,11 +18,7 @@ class ExpenseTableViewCell: UITableViewCell {
     
     let warningDate = 3
     
-    /*
-     This function is to set the color of the labels accordingly.
-     
-     day: the range of countdown date that will change the event color to red.
-     */
+    // This function is to set the color of the labels accordingly (e.g. < warningDate -> red, > warningDate -> blue)
     func setColor(day: Int) {
         if day <= warningDate {
             lb_dayLeft.textColor = UIColor.red

@@ -42,7 +42,7 @@ class StatisticViewController: UIViewController {
         let budgetText: String = sender.text ?? Const.zeroDouble
         let budget = Double(budgetText) ?? Double(zero)
         UserDefaults.standard.set(budget, forKey: Const.budget)
-        loadRecordDateMonth(controller: self)
+        loadExpenseRecord(controller: self)
         changeLimitLine()
     }
     
@@ -50,32 +50,46 @@ class StatisticViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    // switch the statistic mode to month / week
+    // Switch the statistic mode to monthly / weekly and save to default setting
     @IBAction func swt_mode(_ sender: UISwitch) {
         isMonth = isMonth ? false : true
-        loadRecordDateMonth(controller: self)
+        loadExpenseRecord(controller: self)
         changeLimitLine()
         UserDefaults.standard.set(isMonth, forKey: Const.isMonth)
     }
     
+    // Update the limit line when user changes the segment
     @IBAction func sc_DateRangeChange(_ sender: UISegmentedControl) {
-        switch sc_DateRange.selectedSegmentIndex {
-        case 0: // display the weekly chart
-            changeLimitLine()
-        case 1: // display the monthly chart
-            changeLimitLine()
-        default:
-            break
-        }
+        changeLimitLine()
     }
     
-    // MARK: Inherited view funtions
     override func viewDidLoad() {
         super.viewDidLoad()
         uv_progress.layer.cornerRadius = 10;
         uv_progress.layer.masksToBounds = true;
         tf_budget.text = "\(UserDefaults.standard.double(forKey: Const.budget))"
         ref = Database.database().reference().child(Const.root).child(Const.date)
+        setUpCharts()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        swt_mode_outlet.isOn = UserDefaults.standard.bool(forKey: Const.isMonth)
+        isMonth = swt_mode_outlet.isOn
+        loadExpenseRecord(controller: self)
+        setUpCharts()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    // Hide the keyboard when user touches the screen
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        tf_budget.resignFirstResponder()
+    }
+    
+    func setUpCharts() {
         ChartUtils.setChartViewStyle(limitLine: limitLine, chart: uv_bar_chart, showLimitLine: false)
         ChartUtils.setChartViewStyle(limitLine: limitLine, chart: uv_line_chart, showLimitLine: false)
         ChartUtils.setMarker(chartView: uv_bar_chart, lastNDays: Const.daysInAWeek)
@@ -83,26 +97,13 @@ class StatisticViewController: UIViewController {
         updateChartRecordArray(Const.defaultChartType)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        swt_mode_outlet.isOn = UserDefaults.standard.bool(forKey: Const.isMonth)
-        isMonth = swt_mode_outlet.isOn
-        loadRecordDateMonth(controller: self)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        tf_budget.resignFirstResponder()
-    }
-    
-    // Set total amount for the progress bar
+    // Update label values with spending data, and draw a rectangle and a limit stroke on the progress bar to show it
     func setTotalAmount (_ spent: Double) {
         guard let budgetText = tf_budget.text else { return }
-        let budget: Double = Double(budgetText) ?? Double(zero)
+        let budget = Double(budgetText) ?? Double(zero)
         let daysLeft = getDaysLeft()
         let average = getAverageSpending(budget: budget, spent: spent, daysLeft: daysLeft)
+        let limitPathPadding: CGFloat = 3
         
         lb_spent.text = "\(Const.dollar)\(spent)"
         lb_average.text = average == Double(zero) ? Const.overused : "\(Const.dollar)\(average)"
@@ -111,12 +112,12 @@ class StatisticViewController: UIViewController {
         let progressX = spent * Double(uv_progress.bounds.width) / budget
         
         let limitPath = UIBezierPath()
-        limitPath.move(to: CGPoint(x: limitX, y: 3))
-        limitPath.addLine(to: CGPoint(x: limitX, y: uv_progress.bounds.maxY - 3))
+        limitPath.move(to: CGPoint(x: limitX, y: limitPathPadding))
+        limitPath.addLine(to: CGPoint(x: limitX, y: uv_progress.bounds.maxY - limitPathPadding))
         
         limitShape.path = limitPath.cgPath
         limitShape.strokeColor = UIColor.lightBlue.cgColor
-        limitShape.lineWidth = 3.0
+        limitShape.lineWidth = 3.5
         
         progressShape.path = UIBezierPath(rect: CGRect(x: CGFloat(zero), y: CGFloat(zero),
                                                        width: CGFloat(progressX), height: uv_progress.bounds.maxY)).cgPath
@@ -126,6 +127,7 @@ class StatisticViewController: UIViewController {
         uv_progress.layer.addSublayer(limitShape)
     }
     
+    // Get the color based on the spending status (e.g. in control -> blue, exceed -> red)
     func getProgressColor(limit: Double, progress: Double) -> UIColor {
         let result = progress / limit * 100
         switch result {
@@ -138,6 +140,7 @@ class StatisticViewController: UIViewController {
         }
     }
     
+    // Get the x location for the limit stroke
     func getLimitX(budget: Double) -> CGFloat {
         let noOfDays = isMonth ? getNumberOfDaysInAMonth() : 7
         var daysPassed = isMonth ? getDaysPassedMonth() : getDaysPassedWeek()
@@ -147,6 +150,7 @@ class StatisticViewController: UIViewController {
         return CGFloat(shouldSpend * Double(uv_progress.bounds.width) / budget)
     }
     
+    // Get the number of days left by week or by month
     func getDaysLeft() -> Int {
         var noOfDays = zero
         var daysPassed = zero
@@ -165,7 +169,8 @@ class StatisticViewController: UIViewController {
         return average > Double(zero) ? average : Double(zero)
     }
     
-    func loadRecordDateMonth (controller: StatisticViewController) {
+    // Retrieve the data from Firebase to get the total spending amount and pass the data to the callback function
+    func loadExpenseRecord (controller: StatisticViewController) {
         ref.observe(.value, with: { (snapshot) in
             self.sumArray.removeAll()
             var systemCalendar = Int()
@@ -193,41 +198,28 @@ class StatisticViewController: UIViewController {
         })
     }
     
+    // Calculate the sum of an attribute inside the array
     func getTotalAmount(array: [RecordSum]) -> Double {
-        let totalAmount: [Double] = array.map { amount in amount.amount}
+        let totalAmount: [Double] = array.map { amount in amount.amount }
         return round(totalAmount.reduce(0, +) * 100 ) / 100
     }
     
-    func getDailyAverage(_ type: Enum.GraphType)-> Double {
-        let budgetText = tf_budget.text ?? Const.zeroDouble
-        let budget: Double = Double(budgetText) ?? Double(zero)
-        let duration: Int
-        switch type {
-        case .week:
-            duration = Const.daysInAWeek
-        default:
-            duration = Date().getDaysInThisMonth()
-        }
-        let average = budget / Double(duration)
-        return Double(round(100 * average) / 100);
-    }
-    
+    // Modify the limit line based on the current mode (e.g. weekly mode -> display / hide limit line in week / month chart)
     func changeLimitLine() {
         var type: Enum.GraphType = .week
         var chart: BarLineChartViewBase = uv_bar_chart
         switch sc_DateRange.selectedSegmentIndex {
-            case 0: // weekly chart
+            case 0:
                 type = .week
                 chart = uv_bar_chart
                 showLimitLine = swt_mode_outlet.isOn ? false : true
-            case 1: // monthly chart
+            case 1:
                 type = .month
                 chart = uv_line_chart
                 showLimitLine = swt_mode_outlet.isOn ? true : false
             default:
-                break
+                fatalError()
         }
-        print("changeLimitLine \(showLimitLine)")
         chart.data = nil
         updateChartRecordArray(type)
     }
@@ -247,18 +239,14 @@ class StatisticViewController: UIViewController {
         ChartUtils.setYAxisMoneyFormatter(uv_bar_chart)
         ChartUtils.setLegend(uv_bar_chart.legend)
         
-        guard let budgetText = tf_budget.text else { return }
-        let spend = self.getTotalAmount(array: self.sumArray)
-        let budget: Double = Double(budgetText) ?? Double(zero)
-        let daysLeft = getDaysLeft()
-        let limit = getAverageSpending(budget: budget, spent: spend, daysLeft: daysLeft)
+        let limit = getLimitValue()
         
-        if (showLimitLine) {
+        if showLimitLine {
             ChartUtils.updateLimitLine(limitLine: limitLine,
                                        axis: uv_bar_chart.leftAxis,
                                        limit: limit,
                                        label: "\(Const.limitLineLabel) \(limit)",
-                                       chart: uv_bar_chart)
+                chart: uv_bar_chart)
         } else {
             uv_bar_chart.leftAxis.removeLimitLine(limitLine)
         }
@@ -272,6 +260,7 @@ class StatisticViewController: UIViewController {
             set.replaceEntries(dataEntries)
             uv_line_chart.data?.notifyDataChanged()
             uv_line_chart.notifyDataSetChanged()
+            
         } else {
             let chartDataSet = LineChartDataSet(entries: dataEntries, label: Const.lineLabel)
             let data = LineChartData(dataSet: chartDataSet)
@@ -283,12 +272,8 @@ class StatisticViewController: UIViewController {
             ChartUtils.setYAxisMoneyFormatter(uv_line_chart)
             ChartUtils.setLegend(uv_line_chart.legend)
             
-            guard let budgetText = tf_budget.text else { return }
-            let spend = self.getTotalAmount(array: self.sumArray)
-            let budget: Double = Double(budgetText) ?? Double(zero)
-            let daysLeft = getDaysLeft()
-            let limit = getAverageSpending(budget: budget, spent: spend, daysLeft: daysLeft)
-            if (showLimitLine) {
+            let limit = getLimitValue()
+            if showLimitLine {
                 ChartUtils.updateLimitLine(limitLine: limitLine,
                                            axis: uv_line_chart.leftAxis, limit: limit,
                                            label: "\(Const.limitLineLabel): $\(limit)", chart: uv_line_chart)
@@ -298,19 +283,30 @@ class StatisticViewController: UIViewController {
         }
     }
     
+    // Get the limit value for the charts
+    func getLimitValue() -> Double {
+        guard let budgetText = tf_budget.text else { return 0.0 }
+        let spend = self.getTotalAmount(array: self.sumArray)
+        let budget: Double = Double(budgetText) ?? Double(zero)
+        let daysLeft = getDaysLeft()
+        return getAverageSpending(budget: budget, spent: spend, daysLeft: daysLeft)
+    }
+    
+    // Get the sum of spending amount for each day of week / month
     func updateChartRecordArray(_ type: Enum.GraphType) {
         switch type {
-        case .week: // accumulate spense for each day of the week
-            updateChartRecordArray(lastNDays:Const.daysInAWeek, drawChartFunction: self.setBarChartValues)
-        case .month: // accumulate spense for each day of the month
-            updateChartRecordArray(lastNDays:Const.daysInAMonth, drawChartFunction: self.setLineChartValues)
+        case .week:
+            updateChartRecordArray(lastNDays: Const.daysInAWeek, drawChartFunction: self.setBarChartValues)
+        case .month:
+            updateChartRecordArray(lastNDays: Const.daysInAMonth, drawChartFunction: self.setLineChartValues)
         }
     }
     
+    // Retrive the data from Firebase for the charts
     func updateChartRecordArray(lastNDays: Int, drawChartFunction: @escaping (_ date : [Date], _ values: [Double])  -> Void) {
         let dates = Date().getLastNDays(lastNDays)
         var chartValues: [Double] = Array(repeating: Double(zero), count: dates.count)
-        for i in 0..<dates.count {
+        for i in 0 ..< dates.count {
             let date = dates[i]
             ref.child(String("\(date)".prefix(10))).observe(.value, with: { (snapshot) in
                 for record in snapshot.children.allObjects as! [DataSnapshot] {
@@ -320,5 +316,10 @@ class StatisticViewController: UIViewController {
                 drawChartFunction(dates, chartValues)
             })
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        ref.removeAllObservers()
     }
 }

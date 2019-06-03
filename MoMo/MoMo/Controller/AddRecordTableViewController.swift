@@ -12,6 +12,7 @@ import UserNotifications
 
 class AddRecordTableViewController: UITableViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, UITextViewDelegate {
     
+    // MARK: Variables
     var refDate: DatabaseReference!
     var refCategory: DatabaseReference!
     var categoryArray = [Category]()
@@ -22,6 +23,7 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
     var imageName = String()
     var categoryIndex = Int()
     
+    // MARK: IBOutlet
     @IBOutlet weak var ai_spinner: UIActivityIndicatorView!
     @IBOutlet weak var lb_categoryDesc: UILabel!
     @IBOutlet weak var tf_amount: UITextField!
@@ -29,10 +31,12 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
     @IBOutlet weak var collv_category: UICollectionView!
     @IBOutlet weak var dp_date_outlet: UIDatePicker!
     
+    // MARK: IBAction
     @IBAction func btn_cancel(_ sender: Any) {
         performSegue(withIdentifier: Const.recordHome, sender: nil)
     }
     
+    // Update data (if the ID is passed from the home screen) or add new data (if ID is empty) to the Firebase
     @IBAction func btn_save(_ sender: UIBarButtonItem) {
         guard let amountText = tf_amount.text else { return; }
         amount = Double(amountText) ?? 0.0
@@ -41,19 +45,22 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
         let dateString = String("\(correctDate)".prefix(10))
         
         if id != Const.blank {
+            // If the date passed is different from the date in the date picker, remove data from Firebase
             if date != dateString {
                 refDate.child(date).child(id).setValue(nil)
             }
+            // Add new data with the new date
             date = dateString
             refDate.child(date).child(id).setValue([Const.amount: amount, Const.category: imageName, Const.note: note])
         } else {
             date = dateString
             addRecord()
         }
-        sendNotification(note: note, amount: amount, date: getDate(dateString: dateString))
+        sendNotification(note: note, amount: amount, date: dateString)
         performSegue(withIdentifier: Const.recordHome, sender: nil)
     }
     
+    // Add new data to Firebase
     func addRecord() {
         let record = [Const.amount: amount as Double, Const.category: imageName as String, Const.note: note as String] as [String : Any]
         refDate.child(date).childByAutoId().setValue(record)
@@ -68,6 +75,7 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
         tf_amount.text = amount == Double(Int.max) ? Const.blank : "\(amount)"
         tv_note.text = note
         
+        // Update the date picker with the date passed from the home screen which user chooses to add new record
         if date != Const.blank {
             let dateToSet = getDate(dateString: date)
             dp_date_outlet.setDate(dateToSet, animated: true)
@@ -76,9 +84,12 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
         self.hideKeyboardWhenTappedAround()
         tf_amount.delegate = self
         tv_note.delegate = self
+        
+        // Add done button to hide keyboard for the decimal number pad
         tf_amount.addDoneButtonToKeyboard(myAction: #selector(self.tf_amount.resignFirstResponder))
     }
     
+    // Retrieve the data for the category from Firebase and update the collection view
     func getCategoryData() {
         refCategory.observeSingleEvent(of: .value, with: { (snapshot) in
             if let category = snapshot.children.allObjects as? [DataSnapshot] {
@@ -110,6 +121,7 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
         return true
     }
     
+    // Hide key board when user hits return
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == Const.newLine {
             tv_note.resignFirstResponder()
@@ -118,6 +130,7 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
         return true
     }
     
+    // Do preparation before moving to another view
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Const.recordHome,
             let destination = segue.destination as? HomeViewController {
@@ -171,15 +184,25 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
         imageName = categoryArray[12].image
     }
     
-    func sendNotification(note: String, amount: Double, date: Date) {
-        let content = UNMutableNotificationContent()
-        content.title = Const.noti_title
-        content.subtitle = note.isEmpty ? Const.blank : "\(Const.noti_subtitle)\(note)"
-        content.body = "\(Const.noti_body)\(Const.dollar)\(amount)"
-        content.badge = 1
+    // Call the notification when user add a record with the countdown = 1
+    func sendNotification(note: String, amount: Double, date: String) {
+        let today = Date()
+        if getCountDown(from: String("\(today)".prefix(10)), to: date) == 1 {
+            let content = UNMutableNotificationContent()
+            content.title = Const.noti_title
+            content.subtitle = note.isEmpty ? Const.blank : "\(Const.noti_subtitle)\(note)"
+            content.body = "\(Const.noti_body)\(Const.dollar)\(amount)"
+            content.badge = 1
 
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        let request = UNNotificationRequest(identifier: "\(note)\(amount)", content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            let request = UNNotificationRequest(identifier: "\(note)\(amount)", content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        refDate.removeAllObservers()
+        refCategory.removeAllObservers()
     }
 }
