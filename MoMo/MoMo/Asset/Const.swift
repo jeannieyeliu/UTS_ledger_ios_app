@@ -8,7 +8,9 @@
 
 import UIKit
 
+// This class is to store all the constants to avoid hard coding
 class Const {
+    
     // Charts
     static let weekTitle = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     static let weekTitleMon = ["Mon"," Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
@@ -25,6 +27,10 @@ class Const {
     static let blank = ""
     static let dollar = "$ "
     static let newLine = "\n"
+    
+    // Number
+    static let zero = 0
+    static let datePrefix = 10
     
     //HomeViewController
     static let recordList = "Record List"
@@ -93,4 +99,7 @@ class Const {
     //Default
     static let budget = "budget"
     static let isMonth = "isMonth"
+    static let defaultYear = 2019
+    static let defaultMonth = 1
+    static let countDownLimit = 3
 }

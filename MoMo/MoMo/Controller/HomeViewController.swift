@@ -10,9 +10,9 @@ import UIKit
 import FSCalendar
 import FirebaseDatabase
 
+// This class is to show the calendar and the expense records
 class HomeViewController: UIViewController {
     
-    // MARK: Variables
     fileprivate weak var calendar: FSCalendar!
     var today = Date()
     var currentDate = String()
@@ -20,32 +20,32 @@ class HomeViewController: UIViewController {
     var recordArray = [Record]()
     var eventArray = [Event]()
     var sum = Double()
-    
-    // MARK: IBOutlet
+
     @IBOutlet weak var uv_calendar: UIView!
     @IBOutlet weak var tbl_records: UITableView!
     @IBOutlet weak var lb_listName: UILabel!
     
-    // MARK: IBAction
+    // This button is to add a new record
     @IBAction func btn_addRecord(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: Const.addRecord, sender: nil)
     }
     
+    // This button is to navigate to the statistic screen
     @IBAction func btn_statistic(_ sender: Any) {
         performSegue(withIdentifier: Const.showStat, sender: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UIApplication.shared.applicationIconBadgeNumber = 0
+        UIApplication.shared.applicationIconBadgeNumber = Const.zero
         refDate = Database.database().reference().child(Const.root).child(Const.date)
         setUpCalendar()
-        currentDate = currentDate.isEmpty ? String("\(today)".prefix(10)) : currentDate
+        currentDate = currentDate.isEmpty ? today.getShortDate() : currentDate
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        UIApplication.shared.applicationIconBadgeNumber = 0
+        UIApplication.shared.applicationIconBadgeNumber = Const.zero
         calendar.select(getDate(dateString: currentDate), scrollToDate: true)
         loadRecordDate(date: currentDate)
         getEventNumber()
@@ -56,7 +56,7 @@ class HomeViewController: UIViewController {
         refDate.child(date).observe(.value, with: { (snapshot) in
             self.recordArray.removeAll()
             
-            if snapshot.childrenCount > 0 {
+            if snapshot.childrenCount > Const.zero {
                 for record in snapshot.children.allObjects as! [DataSnapshot] {
                     let recordObject = record.value as? [String: AnyObject]
                     let amount = recordObject?[Const.amount]
@@ -77,7 +77,7 @@ class HomeViewController: UIViewController {
         refDate.observe(.value, with: { (snapshot) in
             self.eventArray.removeAll()
             
-            if snapshot.childrenCount > 0 {
+            if snapshot.childrenCount > Const.zero {
                 for event in snapshot.children.allObjects as! [DataSnapshot] {
                     let dateKey = event.key
                     let noOfEvent = event.children.allObjects.count
@@ -101,7 +101,7 @@ class HomeViewController: UIViewController {
         self.calendar = calendar
         calendar.firstWeekday = 2
         
-        calendar.appearance.headerMinimumDissolvedAlpha = 0.0;
+        calendar.appearance.headerMinimumDissolvedAlpha = CGFloat(Const.zero);
         calendar.appearance.headerDateFormat = Const.dateFormat1
         
         calendar.appearance.weekdayTextColor = UIColor.darkBlue
@@ -142,6 +142,7 @@ class HomeViewController: UIViewController {
         for record in recordArray {
             totalAmount.append(record.amount)
         }
+        // The 0 cannot be replaced by the constant
         return totalAmount.reduce(0, +)
     }
     
@@ -177,11 +178,12 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
         } else {
             tableView.rowHeight = 100
             cell = tableView.dequeueReusableCell(withIdentifier: Const.toPay, for: indexPath) as! ExpenseTableViewCell
-            let countDown = getCountDown(from: String("\(today)".prefix(10)), to: currentDate)
+            let countDown = getCountDown(from: today.getShortDate(), to: currentDate)
             cell.lb_countDown.text = "\(countDown)"
             cell.setColor(day: countDown)
         }
-        if recordArray.count > 0 {
+        
+        if recordArray.count > Const.zero {
             cell.iv_category.image = UIImage(named: recordArray[indexPath.row].category)
             cell.lb_amount.text = "\(Const.dollar)\(recordArray[indexPath.row].amount)"
             cell.lb_note.text = recordArray[indexPath.row].note
@@ -214,7 +216,7 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
     // Show the number of events under the date
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         let correctDate = getCorrectDate(forDate: date)
-        var eventCounter = 0
+        var eventCounter = Const.zero
         for event in eventArray {
             if event.date == correctDate {
                 eventCounter = Int(event.eventNumber)
@@ -241,8 +243,10 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
     
     // Get event color based on the countdown date
     func getEventColor(forDate: String) -> [UIColor] {
-        let countDown = getCountDown(from: String("\(today)".prefix(10)), to: forDate)
-        if (countDown <= 3) && (countDown > 0) && (getDate(dateString: forDate) > getDate(dateString: String("\(today)".prefix(10)))) {
+        let countDown = getCountDown(from: today.getShortDate(), to: forDate)
+        if (countDown <= Const.countDownLimit)
+            && (countDown > Const.zero)
+            && (getDate(dateString: forDate) > getDate(dateString: today.getShortDate())) {
             return [UIColor.red]
         }
         return [UIColor.oceanBlue]
@@ -251,7 +255,7 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
     // Add animation for the record table cells
     func cellAnimation() {
         let visibleCells = tbl_records.visibleCells
-        var delayOffset: Double = 0.0
+        var delayOffset: Double = Double(Const.zero)
         
         for cell in visibleCells {
             cell.transform = CGAffineTransform(translationX: tbl_records.frame.width, y: 0)

@@ -8,8 +8,8 @@
 
 import UIKit
 
+//This class is to store the different types of Enum
 class Enum {
-    
     enum GraphType {
         case week
         case month

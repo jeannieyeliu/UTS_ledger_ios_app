@@ -8,11 +8,12 @@
 
 import Foundation
 
+// This class is to store the record data
 class Record {
     var id = String()
     var amount: Double = 0.0
     var note: String = String()
-    var category = String()
+    var category = String() // maybe this should be Category instance
     
     init(id: String, amount: Double, category: String, note: String){
         self.id = id
@@ -22,6 +23,7 @@ class Record {
     }
 }
 
+// This class is to store the record sum data
 class RecordSum {
     var amount = Double()
     

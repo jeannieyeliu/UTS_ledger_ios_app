@@ -8,7 +8,7 @@
 
 import UIKit
 
+// This class is to show the category cell view
 class CategoryCollectionViewCell: UICollectionViewCell {
-    
     @IBOutlet weak var iv_category: UIImageView!
 }

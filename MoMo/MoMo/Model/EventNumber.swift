@@ -8,6 +8,7 @@
 
 import Foundation
 
+// This class is to store the event data
 class Event {
     var date = String()
     var eventNumber = Int()

@@ -7,6 +7,7 @@
 //
 import UIKit
 
+// This is collection of extensions
 extension UIViewController {
     
     // Convert a string with a specific format to a date
@@ -22,34 +23,34 @@ extension UIViewController {
     // Calculate the difference between two days
     func getCountDown(from: String, to: String) -> Int {
         let countDown = Calendar.current.dateComponents([.day],
-                                                        from: getDate(dateString: String("\(from)".prefix(10))),
+                                                        from: getDate(dateString: from.getShortDate()),
                                                         to: getDate(dateString: to))
         if let number = Int("\(countDown)".components(separatedBy:CharacterSet.decimalDigits.inverted).joined()) {
             return number
         }
-        return 0
+        return Const.zero
     }
     
     // Because of the timezone problem, the date got from the calendar function is always less than today 1 day -> add 1 more day
     func getCorrectDate(forDate: Date) -> String {
         let correctDate = Calendar.current.date(byAdding: .day, value: 1, to: forDate)!
-        return String("\(correctDate)".prefix(10))
+        return correctDate.getShortDate()
     }
     
     func getNumberOfDaysInAMonth() -> Int {
         let month = Date().getComponent(format: Const.monthFormat1)
         let year = Date().getComponent(format: Const.yearFormat1)
-        return Date().getDaysInMonth(year: Int(year) ?? 2019, month: Int(month) ?? 1)
+        return Date().getDaysInMonth(year: Int(year) ?? Const.defaultYear, month: Int(month) ?? Const.defaultMonth)
     }
     
     func getDaysPassedMonth() -> Int {
         let startOfMonth = getCorrectDate(forDate: Date().startOfMonth())
-        return getCountDown(from: String("\(startOfMonth)".prefix(10)), to: String("\(Date())".prefix(10)))
+        return getCountDown(from: startOfMonth.getShortDate(), to: Date().getShortDate())
     }
     
     func getDaysPassedWeek() -> Int {
         let startOfWeek = getCorrectDate(forDate: Date().startOfWeek())
-        return getCountDown(from: String("\(startOfWeek)".prefix(10)), to: String("\(Date())".prefix(10)))
+        return getCountDown(from: startOfWeek.getShortDate(), to: Date().getShortDate())
     }
     
     // Source: https://github.com/goktugyil/EZSwiftExtensions
@@ -109,6 +110,10 @@ extension Date {
         return formatter.string(from: today)
     }
     
+    func getShortDate() -> String {
+        return String("\(self)".prefix(Const.datePrefix))
+    }
+    
     func getDaysInMonth(year: Int, month: Int) -> Int {
         let dateComponents = DateComponents(year: year, month: month)
         let calendar = Calendar.current
@@ -119,8 +124,8 @@ extension Date {
     
     func getDaysInThisMonth() -> Int {
         let comp = Calendar.current.dateComponents([.year, .month, .day, .weekday], from: Date())
-        let year = comp.year ?? 2019
-        let month = comp.month ?? 5
+        let year = comp.year ?? Const.defaultYear
+        let month = comp.month ?? Const.defaultMonth
         let range = getDaysInMonth(year: year, month: month)
         return range
     }
@@ -157,11 +162,17 @@ extension Date {
     }
 }
 
+extension String {
+    func getShortDate() -> String {
+        return String(self.prefix(Const.datePrefix))
+    }
+}
+
 extension UITextField {
     
     // Source: https://gist.github.com/jplazcano87/8b5d3bc89c3578e45c3e
     func addDoneButtonToKeyboard(myAction:Selector?) {
-        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 300, height: 40))
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: Const.zero, y: Const.zero, width: 300, height: 40))
         doneToolbar.barStyle = UIBarStyle.default
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)

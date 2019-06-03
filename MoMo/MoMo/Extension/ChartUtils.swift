@@ -9,9 +9,10 @@
 import UIKit
 import Charts
 
+// This extension is to support the charts
 extension ChartUtils {
     
-    // change to another view
+    // Change to another view
     static func switchView(fromView: BarLineChartViewBase, toView: BarLineChartViewBase) {
         fromView.data = nil
         fromView.alpha = 0.0
@@ -50,7 +51,7 @@ extension ChartUtils {
     }
     
     static func setChartViewStyle(limitLine: ChartLimitLine, chart: BarLineChartViewBase, showLimitLine: Bool) {
-        // set style for chart
+        // Set style for chart
         chart.rightAxis.labelFont = UIFont.chartFont
         chart.leftAxis.labelFont = UIFont.chartFont
         chart.xAxis.labelFont = UIFont.chartFont
@@ -58,13 +59,14 @@ extension ChartUtils {
         chart.noDataText = Const.blank
         chart.xAxis.labelPosition = .bottom
         chart.leftAxis.axisMinimum = 0
-        // add a limit line
+        
+        // Add a limit line
         limitLine.lineWidth = 2
         limitLine.lineDashLengths = [5, 5]
         limitLine.labelPosition = .topRight
         limitLine.valueFont = UIFont.chartFont
         limitLine.valueTextColor = .red
-        if (showLimitLine) {
+        if showLimitLine {
             chart.leftAxis.addLimitLine(limitLine)
         }
     }

@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         // Set default values for the application
-        UserDefaults.standard.register(defaults: [Const.budget : 0.0])
+        UserDefaults.standard.register(defaults: [Const.budget : Double(Const.zero)])
         UserDefaults.standard.register(defaults: [Const.isMonth : true])
         
         // Set up notification center

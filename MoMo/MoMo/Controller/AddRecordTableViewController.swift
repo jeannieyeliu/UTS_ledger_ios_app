@@ -10,9 +10,9 @@ import UIKit
 import FirebaseDatabase
 import UserNotifications
 
+// This class is to add a new record with the amount, category, date and note
 class AddRecordTableViewController: UITableViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, UITextViewDelegate {
-    
-    // MARK: Variables
+ 
     var refDate: DatabaseReference!
     var refCategory: DatabaseReference!
     var categoryArray = [Category]()
@@ -22,8 +22,7 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
     var id = String()
     var imageName = String()
     var categoryIndex = Int()
-    
-    // MARK: IBOutlet
+  
     @IBOutlet weak var ai_spinner: UIActivityIndicatorView!
     @IBOutlet weak var lb_categoryDesc: UILabel!
     @IBOutlet weak var tf_amount: UITextField!
@@ -31,18 +30,19 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
     @IBOutlet weak var collv_category: UICollectionView!
     @IBOutlet weak var dp_date_outlet: UIDatePicker!
     
-    // MARK: IBAction
+    // This button is to navigate back to the home screen
     @IBAction func btn_cancel(_ sender: Any) {
         performSegue(withIdentifier: Const.recordHome, sender: nil)
     }
     
-    // Update data (if the ID is passed from the home screen) or add new data (if ID is empty) to the Firebase
+    // Update data (if the ID is passed from the home screen)
+    // or add new data (if ID is empty) to the Firebase
     @IBAction func btn_save(_ sender: UIBarButtonItem) {
         guard let amountText = tf_amount.text else { return; }
-        amount = Double(amountText) ?? 0.0
+        amount = Double(amountText) ?? Double(Const.zero)
         note = tv_note.text ?? Const.blank
         let correctDate = Calendar.current.date(byAdding: .day, value: 1, to: dp_date_outlet.date)!
-        let dateString = String("\(correctDate)".prefix(10))
+        let dateString = correctDate.getShortDate()
         
         if id != Const.blank {
             // If the date passed is different from the date in the date picker, remove data from Firebase
@@ -62,7 +62,9 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
     
     // Add new data to Firebase
     func addRecord() {
-        let record = [Const.amount: amount as Double, Const.category: imageName as String, Const.note: note as String] as [String : Any]
+        let record = [Const.amount: amount as Double,
+                      Const.category: imageName as String,
+                      Const.note: note as String] as [String : Any]
         refDate.child(date).childByAutoId().setValue(record)
     }
     
@@ -75,7 +77,8 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
         tf_amount.text = amount == Double(Int.max) ? Const.blank : "\(amount)"
         tv_note.text = note
         
-        // Update the date picker with the date passed from the home screen which user chooses to add new record
+        // Update the date picker with the date passed from the home screen which user
+        // chooses to add new record
         if date != Const.blank {
             let dateToSet = getDate(dateString: date)
             dp_date_outlet.setDate(dateToSet, animated: true)
@@ -102,12 +105,12 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
                     
                     self.categoryArray.append(Category(id: id as! String, description: description as! String, image: image as! String))
                     
-                    if self.categoryArray.count > 0 {
+                    if self.categoryArray.count > Const.zero {
                         let indexArray = self.categoryArray.indices.filter {
                             self.categoryArray[$0].image.localizedCaseInsensitiveContains(self.imageName)
                         }
-                        if indexArray.count > 0 {
-                            self.categoryIndex = indexArray[0]
+                        if indexArray.count > Const.zero {
+                            self.categoryIndex = indexArray[Const.zero]
                         }
                     }
                     self.collv_category.reloadData()
@@ -116,12 +119,13 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
         })
     }
     
+    // This function is to hide the key board when user hits return in text field
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         tf_amount.resignFirstResponder()
         return true
     }
     
-    // Hide key board when user hits return
+    // This function is to hide the key board when user hits return in text view
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == Const.newLine {
             tv_note.resignFirstResponder()
@@ -148,7 +152,7 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: CategoryCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.categoryC, for: indexPath) as! CategoryCollectionViewCell
-        if categoryArray.count > 0 {
+        if categoryArray.count > Const.zero {
             ai_spinner.isHidden = true
             let categoryImg = categoryArray[indexPath.row].image
             cell.iv_category.image = UIImage(named: categoryImg)
@@ -178,7 +182,7 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)!
-        cell.layer.borderWidth = 0
+        cell.layer.borderWidth = CGFloat(Const.zero)
         cell.layer.borderColor = nil
         lb_categoryDesc.text = Const.blank
         imageName = categoryArray[12].image
@@ -187,7 +191,8 @@ class AddRecordTableViewController: UITableViewController, UICollectionViewDeleg
     // Call the notification when user add a record with the countdown = 1
     func sendNotification(note: String, amount: Double, date: String) {
         let today = Date()
-        if getCountDown(from: String("\(today)".prefix(10)), to: date) == 1 {
+        
+        if getCountDown(from: today.getShortDate(), to: date) == 1 {
             let content = UNMutableNotificationContent()
             content.title = Const.noti_title
             content.subtitle = note.isEmpty ? Const.blank : "\(Const.noti_subtitle)\(note)"

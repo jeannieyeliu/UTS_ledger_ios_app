@@ -5,12 +5,11 @@
 //  Copyright 2015 Daniel Cohen Gindi & Philipp Jahoda
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
-//  This reused from:
-//  https://github.com/danielgindi/Charts
-//  how every, I may make some changes, too
+
 import Foundation
 import Charts
 
+//  Source: https://github.com/danielgindi/Charts
 open class BalloonMarker: MarkerImage {
     open var color: UIColor
     open var arrowSize = CGSize(width: 15, height: 11)
@@ -168,8 +167,7 @@ open class BalloonMarker: MarkerImage {
         
         context.restoreGState()
     }
-    
-    //changes make by Ye liu
+
     open override func refreshContent(entry: ChartDataEntry, highlight: Highlight) {
         let dates = Date().getLastNDays(self.chartXEntryLength)
         let date = Date().getFormatDate(dates[Int(entry.x)])

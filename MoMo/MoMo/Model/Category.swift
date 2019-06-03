@@ -8,6 +8,7 @@
 
 import Foundation
 
+// This class is to store the category data
 class Category {
     var id = String()
     var description = String()

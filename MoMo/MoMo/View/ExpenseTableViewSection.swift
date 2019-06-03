@@ -8,8 +8,7 @@
 
 import UIKit
 
+// This class is to show the expense section view
 class ExpenseTableViewSection: UITableViewCell {
-
     @IBOutlet weak var lb_totalAmount: UILabel!
-    @IBOutlet weak var lb_date: UILabel!
 }
