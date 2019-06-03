@@ -239,10 +239,6 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
         loadRecordDate(date: currentDate)
     }
     
-//    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
-//        self.calendar.frame = CGRect(origin: calendar.frame.origin, size: bounds.size)
-//    }
-    
     // Get event color based on the countdown date
     func getEventColor(forDate: String) -> [UIColor] {
         let countDown = getCountDown(from: String("\(today)".prefix(10)), to: forDate)
