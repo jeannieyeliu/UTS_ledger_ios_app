@@ -9,7 +9,8 @@ import UIKit
 
 extension UIViewController {
     
-    func getDate(dateString: String, format: String = Const.dateFormat2/*Enum.StringList.dateFormat2.rawValue*/) -> Date {
+    // Convert a string with a specific format to a date
+    func getDate(dateString: String, format: String = Const.dateFormat2) -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
         let date = dateFormatter.date(from: dateString)!
@@ -18,6 +19,7 @@ extension UIViewController {
         return date
     }
     
+    // Calculate the difference between two days
     func getCountDown(from: String, to: String) -> Int {
         let countDown = Calendar.current.dateComponents([.day],
                                                         from: getDate(dateString: String("\(from)".prefix(10))),
@@ -28,6 +30,7 @@ extension UIViewController {
         return 0
     }
     
+    // Because of the timezone problem, the date got from the calendar function is always less than today 1 day -> add 1 more day
     func getCorrectDate(forDate: Date) -> String {
         let correctDate = Calendar.current.date(byAdding: .day, value: 1, to: forDate)!
         return String("\(correctDate)".prefix(10))
@@ -98,9 +101,7 @@ extension Date {
         return Calendar.current.component(.month, from: date)
     }
     
-    /*
-     Get a component from a specific format (e.g. d, mm, yyyy, etc.)
-     */
+    // Get a component from a specific format (e.g. d, mm, yyyy, etc.)
     func getComponent(format: String) -> String {
         let formatter = DateFormatter()
         let today = Date()
@@ -120,12 +121,8 @@ extension Date {
         let comp = Calendar.current.dateComponents([.year, .month, .day, .weekday], from: Date())
         let year = comp.year ?? 2019
         let month = comp.month ?? 5
-//        let dateComponents = DateComponents(year: year, month: month)
-//        let calendar = Calendar.current
-//        let date = calendar.date(from: dateComponents)!
-//        let range = calendar.range(of: .day, in: .month, for: date)!
         let range = getDaysInMonth(year: year, month: month)
-        return range//.count
+        return range
     }
     
     func isLessThanToday(today: Date, and: Date) -> Bool {
@@ -134,27 +131,27 @@ extension Date {
     
     func getWeekNameFromDate(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEE"
+        dateFormatter.dateFormat = Const.weekFormat1
         dateFormatter.timeZone = TimeZone.current
         return dateFormatter.string(from: date )
     }
     
     func getXAxisFormatDate(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM"
+        dateFormatter.dateFormat = Const.xAxisFormat1
         dateFormatter.timeZone = TimeZone.current
         return dateFormatter.string(from: date)
     }
     
     func getFormatDate(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.dateFormat = Const.dateFormat3
         dateFormatter.timeZone = TimeZone.current
         return dateFormatter.string(from: date)
     }
     
     func getLastNDays(_ lastNDay: Int) -> [Date] {
-        return (1...lastNDay).map {
+        return (1 ... lastNDay).map {
             Calendar.current.date(byAdding: .day, value: $0 - lastNDay, to: Date())!
         }
     }
@@ -163,7 +160,7 @@ extension Date {
 extension UITextField {
     
     // Source: https://gist.github.com/jplazcano87/8b5d3bc89c3578e45c3e
-    func addDoneButtonToKeyboard(myAction:Selector?){
+    func addDoneButtonToKeyboard(myAction:Selector?) {
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 300, height: 40))
         doneToolbar.barStyle = UIBarStyle.default
         

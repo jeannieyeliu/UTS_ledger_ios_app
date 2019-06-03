@@ -12,6 +12,7 @@ import FirebaseDatabase
 
 class HomeViewController: UIViewController {
     
+    // MARK: Variables
     fileprivate weak var calendar: FSCalendar!
     var today = Date()
     var currentDate = String()
@@ -20,10 +21,12 @@ class HomeViewController: UIViewController {
     var eventArray = [Event]()
     var sum = Double()
     
+    // MARK: IBOutlet
     @IBOutlet weak var uv_calendar: UIView!
     @IBOutlet weak var tbl_records: UITableView!
     @IBOutlet weak var lb_listName: UILabel!
     
+    // MARK: IBAction
     @IBAction func btn_addRecord(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: Const.addRecord, sender: nil)
     }
@@ -48,6 +51,7 @@ class HomeViewController: UIViewController {
         getEventNumber()
     }
     
+    // Retrieve the data from Firebase and update the record array
     func loadRecordDate(date: String) {
         refDate.child(date).observe(.value, with: { (snapshot) in
             self.recordArray.removeAll()
@@ -68,6 +72,7 @@ class HomeViewController: UIViewController {
         })
     }
     
+    // Get the event numbers by counting the number of records in a day
     func getEventNumber() {
         refDate.observe(.value, with: { (snapshot) in
             self.eventArray.removeAll()
@@ -84,6 +89,7 @@ class HomeViewController: UIViewController {
         })
     }
     
+    // Set up the appearance and characteristic for the FSCalendar
     func setUpCalendar() {
         let calendar = FSCalendar(frame: CGRect(x: (uv_calendar.bounds.maxX / 2) - (uv_calendar.bounds.maxX - 40) / 2, y: 0, width: uv_calendar.bounds.maxX - 40, height: uv_calendar.bounds.maxY))
         
@@ -109,7 +115,7 @@ class HomeViewController: UIViewController {
         calendar.appearance.headerTitleFont = UIFont(name: Const.chalkFont, size: 25)
     }
     
-    // do preparation before navigation
+    // Do preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == Const.editExpense || segue.identifier == Const.addToPay),
             let destination = segue.destination as? AddRecordTableViewController,
@@ -130,6 +136,7 @@ class HomeViewController: UIViewController {
         }
     }
     
+    // Calculate the sum of an attribute inside the array
     func getTotalAmount() -> Double {
         var totalAmount = [Double]()
         for record in recordArray {
@@ -150,6 +157,7 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
         return recordArray.count
     }
     
+    // Set the cell view to the footer view
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let cell: ExpenseTableViewSection = tableView.dequeueReusableCell(withIdentifier: Const.footer) as! ExpenseTableViewSection
         cell.lb_totalAmount.text = "\(Const.dollar)\(getTotalAmount())"
@@ -185,6 +193,7 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
         return true
     }
     
+    // Add delete function with an alert for each cell
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCell.EditingStyle.delete) {
             let alert = UIAlertController(title: Const.deleteTit, message: Const.deleteMes, preferredStyle: .alert)
@@ -202,6 +211,7 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
         return cell
     }
     
+    // Show the number of events under the date
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         let correctDate = getCorrectDate(forDate: date)
         var eventCounter = 0
@@ -229,10 +239,11 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
         loadRecordDate(date: currentDate)
     }
     
-    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
-        self.calendar.frame = CGRect(origin: calendar.frame.origin, size: bounds.size)
-    }
+//    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+//        self.calendar.frame = CGRect(origin: calendar.frame.origin, size: bounds.size)
+//    }
     
+    // Get event color based on the countdown date
     func getEventColor(forDate: String) -> [UIColor] {
         let countDown = getCountDown(from: String("\(today)".prefix(10)), to: forDate)
         if (countDown <= 3) && (countDown > 0) && (getDate(dateString: forDate) > getDate(dateString: String("\(today)".prefix(10)))) {
@@ -241,16 +252,17 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
         return [UIColor.oceanBlue]
     }
     
+    // Add animation for the record table cells
     func cellAnimation() {
         let visibleCells = tbl_records.visibleCells
         var delayOffset: Double = 0.0
         
         for cell in visibleCells {
-            cell.transform = CGAffineTransform(translationX: 0, y: tbl_records.frame.height)
+            cell.transform = CGAffineTransform(translationX: tbl_records.frame.width, y: 0)
         }
         
         for cell in visibleCells {
-            UIView.animate(withDuration: 1,
+            UIView.animate(withDuration: 0.75,
                            delay: delayOffset * 0.05,
                            usingSpringWithDamping: 0.75,
                            initialSpringVelocity: 0,
