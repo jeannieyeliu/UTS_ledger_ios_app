@@ -243,10 +243,8 @@ class StatisticViewController: UIViewController {
         
         if showLimitLine {
             ChartUtils.updateLimitLine(limitLine: limitLine,
-                                       axis: uv_bar_chart.leftAxis,
-                                       limit: limit,
-                                       label: "\(Const.limitLineLabel) \(limit)",
-                chart: uv_bar_chart)
+                                       axis: uv_bar_chart.leftAxis, limit: limit,
+                                       label: "\(Const.limitLineLabel) \(limit)", chart: uv_bar_chart)
         } else {
             uv_bar_chart.leftAxis.removeLimitLine(limitLine)
         }
