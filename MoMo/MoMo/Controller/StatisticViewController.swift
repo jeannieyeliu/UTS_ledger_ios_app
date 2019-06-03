@@ -68,6 +68,9 @@ class StatisticViewController: UIViewController {
         uv_progress.layer.cornerRadius = 10;
         uv_progress.layer.masksToBounds = true;
         tf_budget.text = "\(UserDefaults.standard.double(forKey: Const.budget))"
+        // Add done button to hide keyboard for the decimal number pad
+        tf_budget.addDoneButtonToKeyboard(myAction: #selector(self.tf_budget.resignFirstResponder))
+        
         ref = Database.database().reference().child(Const.root).child(Const.date)
         setUpCharts()
     }
@@ -194,6 +197,7 @@ class StatisticViewController: UIViewController {
                     }
                 }
                 controller.setTotalAmount(self.getTotalAmount(array: self.sumArray))
+                self.changeLimitLine()
             }
         })
     }
